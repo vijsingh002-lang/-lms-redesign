@@ -18,6 +18,9 @@ body{font-family:"Instrument Sans",ui-sans-serif,system-ui,-apple-system,"Segoe 
 .tw{overflow-x:auto;margin:10px 0 14px;border:1px solid #E1E5EC;border-radius:12px}
 .guide table{width:100%;border-collapse:collapse;font-size:15px}.guide th{text-align:left;background:#F7F9FC;color:#3D4757;font-size:13px;text-transform:uppercase;letter-spacing:.04em;padding:10px 14px;border-bottom:1px solid #E1E5EC}
 .guide td{padding:10px 14px;border-bottom:1px solid #EDF0F4;vertical-align:top}.guide tr:last-child td{border-bottom:0}.guide td:first-child{font-weight:600;white-space:nowrap}
+.callout{background:#FFF8E6;border:1px solid #F3D38A;border-left:6px solid #E9A23B;border-radius:12px;padding:14px 18px;color:#5C3A00}
+.callout .ctitle{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#8A4B00;margin-bottom:4px}
+.callout ul{margin:4px 0 0;padding-left:22px}.callout li{font-size:16.5px}
 .st{display:inline-block;font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid transparent;white-space:nowrap}
 .s-new{background:#F2F3F5;color:#4B5563;border-color:#E1E4E9}.s-prog{background:#EAF1FE;color:#1D4ED8;border-color:#BFD3FB}.s-done{background:#E9F9F1;color:#0B7A55;border-color:#B6EBD3}
 .s-soon{background:#fff;color:#8D9AB0;border:1px dashed #C6CEDA}.s-fail{background:#FDECEA;color:#9B1C12;border-color:#F5C2BC}.s-req{background:#FFF4E5;color:#8A4B00;border-color:#F3D3A6}
@@ -36,6 +39,13 @@ html{scroll-behavior:smooth}
 <header class="ghead">
   <h1>LMS Redesign – Functional Flow Guide</h1>
   <p class="gsub">How the training module works across the Admin app, the Web learner app and the Mobile learner app. Updated 15 Oct 2026.</p>
+<div class="callout" role="note" style="margin-bottom:18px">
+  <div class="ctitle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>Important</div>
+  <ul>
+    <li><b>This is a standalone native app with no dependency on Moodle.</b></li>
+    <li><b>All course, video, and quiz configurations are managed through our Admin Platform.</b></li>
+  </ul>
+</div>
 </header>
 <nav class="toc" aria-label="Guide contents">
   <a href="#g-overview">Overview</a><a href="#g-rules">Key rules</a><a href="#g-admin">Admin flow</a><a href="#g-web">Web learner flow</a><a href="#g-mobile">Mobile learner flow</a><a href="#g-status">Statuses and labels</a><a href="#g-notes">Notes</a>
@@ -194,10 +204,13 @@ html{scroll-behavior:smooth}
 
 <section id="g-notes">
 <h2>Notes</h2>
-<ul>
-<li>This is a native app and there is no dependency on <b>Moodle</b>.</li>
-<li>All course, video and quiz configuration is done in our Admin platform.</li>
-</ul>
+<div class="callout" role="note">
+  <div class="ctitle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>Important</div>
+  <ul>
+    <li><b>This is a standalone native app with no dependency on Moodle.</b></li>
+    <li><b>All course, video, and quiz configurations are managed through our Admin Platform.</b></li>
+  </ul>
+</div>
 </section>
 </article>
 
