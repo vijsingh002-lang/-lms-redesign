@@ -4,7 +4,7 @@ Clickable designs for the Altametrics training (LMS) module, sized for 1920×108
 
 | Page | What it shows |
 | --- | --- |
-| [index.html](index.html) | Start page – opens all three prototypes (self-contained) |
+| [index.html](index.html) | Start page (self-contained): Functional Flow Guide, then Admin, Web and Mobile prototypes |
 | [web.html](web.html) | Web learner app: My courses, course sections, video player with auto-advance, section quizzes |
 | [mobile.html](mobile.html) | Mobile learner app: Training Videos in the app menu, this app's course first, Other Courses, Evaluation, fullscreen video |
 | [admin.html](admin.html) | Admin app: course list, curriculum (sections, videos, quizzes), 3-step quiz builder, learner preview |
