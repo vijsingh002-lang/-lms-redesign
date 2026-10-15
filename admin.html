@@ -1,0 +1,2063 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HubWorks Admin – Learning setup (1920×1080)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+.ad{font-family:"Instrument Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#121826;background:#F3F5F8;min-height:100vh;font-size:14px;line-height:1.45;position:relative}
+.ad *{box-sizing:border-box}
+.ad button,.ad input,.ad select,.ad textarea{font-family:inherit;font-size:inherit;color:inherit}
+.ad :focus-visible{outline:2px solid #1F4FD1;outline-offset:2px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.top{display:flex;align-items:center;gap:12px;background:#0F1E36;color:#E6EBF3;padding:0 16px;min-height:56px}
+.logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#2D9CF0,#7C3AED);display:flex;align-items:center;justify-content:center}
+.brand{font-weight:700;font-size:17px;letter-spacing:.01em}
+.logout{margin-left:auto;display:flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#E6EBF3;border-radius:9px;padding:7px 12px;cursor:pointer;min-height:36px}
+.logout:hover{background:rgba(255,255,255,.08)}
+.shell{display:flex;min-height:calc(100vh - 56px)}
+.rail{width:72px;flex:none;background:#0F1E36;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 0}
+.railbtn{width:48px;height:48px;border-radius:10px;border:0;background:transparent;color:#AEB9CC;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.railbtn:hover{background:rgba(255,255,255,.08);color:#fff}
+.railbtn.on{background:linear-gradient(135deg,#2D6BF0,#7C3AED);color:#fff;box-shadow:0 4px 12px rgba(124,58,237,.35)}
+.main{flex:1;min-width:0;padding:24px 28px 0;display:flex;flex-direction:column}
+.wrap{max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.crumbs{display:flex;align-items:center;gap:6px;font-size:13px;color:#556070;flex-wrap:wrap}
+.phead{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.h1{font-size:26px;font-weight:700;margin:0;letter-spacing:-.01em}
+.sub{color:#556070;margin:4px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:9px;font-weight:600;padding:9px 16px;min-height:40px;cursor:pointer;border:1px solid transparent;white-space:nowrap}
+.btn.p{background:#1F4FD1;color:#fff}.btn.p:hover{background:#1A43B3}
+.btn.s{background:#fff;color:#121826;border-color:#D3D9E2}.btn.s:hover{background:#F3F5F8}
+.btn.g{background:transparent;color:#1F4FD1}.btn.g:hover{background:#EAF0FD}
+.btn.d{background:#B42318;color:#fff}.btn.d:hover{background:#9B1C12}
+.btn.sm{min-height:34px;padding:6px 12px;font-size:13.5px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.layout{display:grid;grid-template-columns:290px minmax(0,1fr);gap:18px;align-items:start}
+.panel{background:#fff;border:1px solid #E1E5EC;border-radius:14px;overflow:hidden}
+.ph{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-bottom:1px solid #E1E5EC}
+.h2{font-size:15px;font-weight:600;margin:0}
+.muted{color:#556070;font-size:13px}
+.clist{list-style:none;margin:0;padding:6px}
+.citem{width:100%;display:flex;gap:12px;align-items:center;padding:10px;border:0;border-radius:10px;background:transparent;text-align:left;cursor:pointer}
+.citem:hover{background:#F3F5F8}
+.citem.on{background:#EEF3FE;box-shadow:inset 3px 0 0 #1F4FD1}
+.mono{width:38px;height:38px;border-radius:10px;color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.dist{display:flex;height:5px;border-radius:4px;overflow:hidden;background:#EEF1F5;margin-top:6px;gap:2px}
+.dist i{display:block;height:100%}
+.chead{display:flex;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid #E1E5EC;flex-wrap:wrap}
+.ltabs{display:flex;gap:4px 20px;flex-wrap:wrap;padding:0 20px;border-bottom:1px solid #E1E5EC}
+.ltab{border:0;background:transparent;padding:12px 2px;font-weight:600;color:#556070;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:8px}
+.ltab:hover{color:#121826}
+.ltab .n{font-size:12px;border-radius:20px;padding:1px 8px;font-weight:600}
+.ltab .dot{width:9px;height:9px;border-radius:50%}
+.note{display:flex;gap:10px;align-items:flex-start;background:#FFF4E5;border:1px solid #F3D3A6;color:#6B3A00;border-radius:10px;padding:10px 12px;margin:16px 20px 0;font-size:13.5px}
+.tbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 20px}
+.search{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #D3D9E2;border-radius:9px;padding:0 10px;min-height:38px;width:280px;max-width:100%}
+.search:focus-within{border-color:#1F4FD1;box-shadow:0 0 0 3px rgba(31,79,209,.15)}
+.search input{border:0;outline:0;flex:1;min-width:0;background:transparent;padding:8px 0}
+.bulk{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#EEF3FE;border:1px solid #C9D7FA;border-radius:10px;padding:6px 8px 6px 12px;width:100%}
+.bulk b{font-weight:600;color:#1F4FD1;margin-right:4px}
+.sel{border:1px solid #D3D9E2;border-radius:9px;padding:7px 10px;background:#fff;min-height:34px;cursor:pointer;font-size:13.5px}
+.tscroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th{text-align:left;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#556070;padding:10px 12px;background:#F7F9FC;border-top:1px solid #E1E5EC;border-bottom:1px solid #E1E5EC;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid #EDF0F4;vertical-align:middle}
+tr:hover td{background:#FAFBFD}
+tr.chk td{background:#F5F8FE}
+.cb{width:17px;height:17px;accent-color:#1F4FD1;cursor:pointer;margin:0}
+.ord{display:flex;align-items:center;gap:4px}
+.ordn{width:26px;height:26px;border-radius:7px;background:#EEF1F5;font-weight:600;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+.ib{width:30px;height:30px;border-radius:7px;border:0;background:transparent;color:#556070;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.ib:hover{background:#EEF1F5;color:#121826}
+.ib:disabled{opacity:.3;cursor:not-allowed;background:transparent}
+.ib.del:hover{background:#FDECEA;color:#B42318}
+.vname{font-weight:500}
+.url{display:inline-flex;align-items:center;gap:6px;color:#1F4FD1;text-decoration:none;font-size:13px;max-width:380px}
+.url span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.url:hover{text-decoration:underline}
+.switch{width:40px;height:22px;border-radius:12px;background:#C6CEDA;position:relative;border:0;cursor:pointer;flex:none;padding:0}
+.switch i{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s ease;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.switch.on{background:#16A34A}
+.switch.on i{left:21px}
+.empty{padding:44px 20px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.overlay{position:fixed;inset:0;background:rgba(15,30,54,.5);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;overflow:auto}
+.modal{background:#fff;border-radius:16px;width:100%;max-width:880px;box-shadow:0 24px 60px rgba(15,30,54,.3);display:flex;flex-direction:column}
+.mh{display:flex;align-items:flex-start;gap:12px;padding:18px 22px;border-bottom:1px solid #E1E5EC}
+.mb{padding:20px 22px;display:flex;flex-direction:column;gap:18px}
+.mf{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:14px 22px;border-top:1px solid #E1E5EC;background:#F7F9FC;border-radius:0 0 16px 16px;flex-wrap:wrap}
+.fgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:16px}
+.fl{display:flex;flex-direction:column;gap:6px;min-width:0}
+.lbl{font-size:13px;font-weight:600}
+.req{color:#B42318}
+.inp{border:1px solid #D3D9E2;border-radius:9px;padding:9px 11px;min-height:40px;background:#fff;width:100%}
+.inp:focus{outline:0;border-color:#1F4FD1;box-shadow:0 0 0 3px rgba(31,79,209,.15)}
+.inp.bad{border-color:#B42318;box-shadow:0 0 0 3px rgba(180,35,24,.1)}
+.ferr{font-size:12.5px;color:#B42318}
+.lvseg{display:flex;gap:8px;flex-wrap:wrap}
+.lvopt{flex:1;min-width:120px;display:flex;align-items:center;gap:8px;justify-content:center;border:1.5px solid;border-radius:10px;padding:8px 12px;font-weight:600;cursor:pointer;min-height:40px;background:#fff}
+.modeseg{display:inline-flex;gap:4px;background:#EEF1F5;padding:4px;border-radius:10px;align-self:flex-start}
+.modeb{border:0;background:transparent;padding:7px 12px;border-radius:7px;font-weight:600;color:#3D4757;cursor:pointer}
+.modeb.on{background:#fff;color:#121826;box-shadow:0 1px 2px rgba(15,30,54,.12)}
+.rows{display:flex;flex-direction:column;gap:10px}
+.rowh,.vrow{display:grid;grid-template-columns:30px minmax(0,1fr) minmax(0,1.4fr) 92px 56px 36px;gap:10px;align-items:start}
+.seqin{width:64px;border:1px solid #D3D9E2;border-radius:8px;padding:5px 8px;min-height:32px;text-align:center;font-weight:600;background:#fff}
+.seqin:focus{outline:0;border-color:#1F4FD1;box-shadow:0 0 0 3px rgba(31,79,209,.15)}
+.inp.num{text-align:center}
+.rowh{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#556070;padding:0 2px}
+.rnum{width:28px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:600;color:#556070;font-size:13px}
+.errsum{display:flex;gap:8px;align-items:center;color:#9B1C12;background:#FDECEA;border-radius:9px;padding:10px 12px;font-size:13.5px;font-weight:500}
+.okmsg{display:flex;gap:8px;align-items:center;color:#11643C;background:#E7F5EE;border-radius:9px;padding:10px 12px;font-size:13.5px;font-weight:500}
+.hint{font-size:12.5px;color:#556070}
+textarea.inp{min-height:180px;resize:vertical;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.6}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#121826;color:#fff;padding:12px 16px;border-radius:10px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:60;font-weight:500}
+.confirm{max-width:460px}
+@media (max-width:980px){.layout{grid-template-columns:1fr}}
+@media (max-width:720px){.vrow .seqf{max-width:120px}.rail{display:none}.main{padding:18px 14px 40px}.fgrid{grid-template-columns:1fr}.rowh{display:none}.vrow{grid-template-columns:1fr 36px;border:1px solid #E1E5EC;border-radius:10px;padding:10px}.vrow .rnum{display:none}.search{width:100%}}
+@media (prefers-reduced-motion:reduce){.switch i{transition:none}}
+
+
+.panel{background:#fff;border:1px solid #E1E5EC;border-radius:14px}
+.ph{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-bottom:1px solid #E1E5EC}
+.h2{font-size:16px;font-weight:600;margin:0}
+.search{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #D3D9E2;border-radius:9px;padding:0 10px;min-height:38px}
+.search:focus-within{border-color:#1F4FD1;box-shadow:0 0 0 3px rgba(31,79,209,.15)}
+.search input{border:0;outline:0;flex:1;min-width:0;background:transparent;padding:8px 0}
+.alist{list-style:none;margin:0;padding:6px}
+.aitem{width:100%;display:flex;flex-direction:column;gap:4px;padding:11px 12px;border:0;border-radius:10px;background:transparent;text-align:left;cursor:pointer}
+.aitem:hover{background:#F3F5F8}
+.aitem.on{background:#EEF3FE;box-shadow:inset 3px 0 0 #1F4FD1}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;border:1px solid #E1E5EC;background:#fff;color:#3D4757}
+.chip.green{background:#E7F5EE;color:#11643C;border-color:#BFE3CF}
+.chip.amber{background:#FFF4E5;color:#8A4B00;border-color:#F3D3A6}
+.chip.grey{background:#EEF1F5;color:#556070;border-color:#E1E5EC}
+.chip.blue{background:#EAF0FD;color:#1F4FD1;border-color:#C9D7FA}
+.card{background:#fff;border:1px solid #E1E5EC;border-radius:14px}
+.ch{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid #EDF0F4}
+.cbody{padding:18px 20px;display:flex;flex-direction:column;gap:16px}
+.icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:none}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.fl{display:flex;flex-direction:column;gap:6px;min-width:0}
+.lbl{font-size:13px;font-weight:600}
+.req{color:#B42318}
+.help{font-size:12.5px;color:#556070}
+.inp{border:1px solid #D3D9E2;border-radius:9px;padding:9px 11px;min-height:40px;background:#fff;width:100%}
+.inp:focus{outline:0;border-color:#1F4FD1;box-shadow:0 0 0 3px rgba(31,79,209,.15)}
+.inp:disabled{background:#F3F5F8;color:#8D9AB0}
+.inp.bad{border-color:#B42318;box-shadow:0 0 0 3px rgba(180,35,24,.1)}
+textarea.inp{resize:vertical;min-height:76px}
+.ferr{font-size:12.5px;color:#B42318}
+.suffix{position:relative}
+.suffix .inp{padding-right:44px}
+.suffix span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#556070;font-size:13px;pointer-events:none}
+.rule{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid #E1E5EC;border-radius:12px;background:#FAFBFD}
+.seg{display:inline-flex;gap:4px;background:#EEF1F5;padding:3px;border-radius:9px;align-self:flex-start}
+.segb{border:0;background:transparent;padding:6px 11px;border-radius:7px;font-weight:600;font-size:13px;color:#3D4757;cursor:pointer}
+.segb.on{background:#fff;color:#121826;box-shadow:0 1px 2px rgba(15,30,54,.12)}
+.tg{display:flex;gap:12px;align-items:flex-start;padding:12px 0}
+.tg+.tg{border-top:1px solid #EDF0F4}
+.ib{width:32px;height:32px;border-radius:8px;border:0;background:transparent;color:#556070;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
+.ib:hover{background:#EEF1F5;color:#121826}
+.ib:disabled{opacity:.3;cursor:not-allowed;background:transparent}
+.ib.del:hover{background:#FDECEA;color:#B42318}
+.ib.on{background:#EAF0FD;color:#1F4FD1}
+.qcard{background:#fff;border:1px solid #E1E5EC;border-radius:14px;overflow:hidden}
+.qcard.warn{border-color:#F3D3A6}
+.qcard.off{opacity:.75}
+.qhead{display:flex;align-items:center;gap:10px;padding:12px 14px 12px 16px;flex-wrap:wrap}
+.qnum{width:30px;height:30px;border-radius:50%;background:#1F4FD1;color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none}
+.qtoggle{flex:1;min-width:220px;border:0;background:transparent;text-align:left;cursor:pointer;padding:4px 0;display:flex;flex-direction:column}
+.qtoggle .t{font-weight:600;font-size:14.5px}
+.qbody{border-top:1px solid #EDF0F4;padding:16px;display:flex;flex-direction:column;gap:14px;background:#FCFDFE}
+.qmeta{display:grid;grid-template-columns:minmax(0,1fr) 120px auto;gap:14px;align-items:end}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:grid;grid-template-columns:34px 26px minmax(0,1fr) auto;gap:8px;align-items:center;padding:6px 8px;border:1px solid #E1E5EC;border-radius:10px;background:#fff}
+.opt.right{border-color:#86CFA0;background:#F1FAF4}
+.mark{width:28px;height:28px;border-radius:50%;border:2px solid #AEB8C7;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;color:transparent;padding:0}
+.mark.sq{border-radius:7px}
+.mark:hover{border-color:#16A34A}
+.mark.on{background:#16A34A;border-color:#16A34A;color:#fff}
+.letter{width:26px;height:26px;border-radius:7px;background:#EEF1F5;font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center;color:#3D4757}
+.opt .inp{min-height:36px;padding:7px 10px;border-color:transparent;background:transparent}
+.opt .inp:hover{border-color:#D3D9E2;background:#fff}
+.opt .inp:focus{background:#fff}
+.oact{display:flex;align-items:center;gap:2px}
+.media{grid-column:3/5}
+.issues{display:flex;gap:8px;align-items:flex-start;background:#FFF4E5;border:1px solid #F3D3A6;color:#6B3A00;border-radius:10px;padding:10px 12px;font-size:13.5px}
+.issues ul{margin:0;padding-left:18px}
+.savebar{position:sticky;bottom:0;margin:8px -28px 0;padding:12px 28px;background:rgba(255,255,255,.96);border-top:1px solid #E1E5EC;display:flex;align-items:center;gap:12px;flex-wrap:wrap;z-index:5;backdrop-filter:blur(6px)}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:#fff;border:1px solid #E1E5EC;border-radius:14px;overflow:hidden}
+.stepb{display:flex;align-items:center;gap:12px;padding:14px 16px;border:0;background:#fff;text-align:left;cursor:pointer;border-bottom:3px solid transparent;min-height:68px}
+.stepb+.stepb{border-left:1px solid #EDF0F4}
+.stepb:hover{background:#F7F9FC}
+.stepb.on{background:#F5F8FE;border-bottom-color:#1F4FD1}
+.sdot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex:none}
+.stt{display:block;font-weight:600;font-size:15px}
+.sts{display:block;font-size:12.5px;color:#556070;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stepnav{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:1px solid #E1E5EC;border-radius:14px;padding:12px 16px}
+.qws{display:grid;grid-template-columns:290px minmax(0,1fr);gap:16px;align-items:start}
+.qnav{list-style:none;margin:0;padding:6px;max-height:560px;overflow:auto}
+.qn{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:9px;border:0;background:transparent;width:100%;text-align:left;cursor:pointer}
+.qn:hover{background:#F3F5F8}
+.qn.on{background:#EEF3FE;box-shadow:inset 3px 0 0 #1F4FD1}
+.qnt{display:block;font-weight:500;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qfoot{display:flex;justify-content:space-between;gap:10px;padding:12px 20px;border-top:1px solid #EDF0F4;flex-wrap:wrap}
+.card.warn{border-color:#F3D3A6}
+@media (max-width:900px){.qws{grid-template-columns:1fr}.qnav{max-height:220px}}
+@media (max-width:720px){.sts{display:none}.stepb{padding:12px 10px;gap:8px}}
+.qempty{padding:40px 20px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;border:1px dashed #C6CEDA;border-radius:14px;background:#fff}
+@media (max-width:1100px){.layout{grid-template-columns:1fr}}
+@media (max-width:720px){.rail{display:none}.main{padding:18px 14px 0}.g2{grid-template-columns:1fr}.qmeta{grid-template-columns:1fr 1fr}.savebar{margin:8px -14px 0;padding:12px 14px}.opt{grid-template-columns:34px minmax(0,1fr) auto}.opt .letter{display:none}.media{grid-column:2/4}}
+@media (prefers-reduced-motion:reduce){.switch i{transition:none}}
+
+.side{width:236px;flex:none;background:#0F1E36;padding:18px 12px;display:flex;flex-direction:column;gap:4px}
+.sidehd{color:#8592AA;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px 8px}
+.sidebtn{display:flex;align-items:center;gap:11px;width:100%;padding:11px 12px;border:0;border-radius:10px;background:transparent;color:#C9D2E1;font-weight:600;cursor:pointer;text-align:left;min-height:44px}
+.sidebtn:hover{background:rgba(255,255,255,.07);color:#fff}
+.sidebtn.on{background:linear-gradient(135deg,#2D6BF0,#7C3AED);color:#fff;box-shadow:0 4px 12px rgba(124,58,237,.35)}
+.sidebtn .cnt{margin-left:auto;font-size:12px;background:rgba(255,255,255,.14);padding:1px 8px;border-radius:20px}
+.sidetip{margin-top:auto;color:#8592AA;font-size:12.5px;padding:12px;border-top:1px solid rgba(255,255,255,.08);line-height:1.5}
+.vidpad{padding-bottom:48px}
+.asgcell{display:inline-flex;align-items:center;gap:6px;border:1px solid #C9D7FA;background:#EEF3FE;color:#1F4FD1;border-radius:20px;padding:4px 10px;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap}
+.asgcell:hover{background:#E0E9FD}
+.asgcell.add{background:#fff;border-style:dashed;border-color:#AEB8C7;color:#3D4757}
+.asgcell.add:hover{border-color:#1F4FD1;color:#1F4FD1}
+@media (max-width:860px){.shell{flex-direction:column}.side{width:100%;flex-direction:row;overflow-x:auto;padding:8px;gap:6px}.sidehd,.sidetip{display:none}.sidebtn{width:auto;white-space:nowrap}}
+
+.filters{display:flex;gap:14px;flex-wrap:wrap;padding:16px;align-items:flex-end;border-bottom:1px solid #EDF0F4}
+table.clt{min-width:820px}
+.clt td{padding:14px 12px}
+.ctitle{border:0;background:transparent;padding:0;font-weight:600;font-size:15px;color:#1F4FD1;cursor:pointer;text-align:left}
+.ctitle:hover{text-decoration:underline}
+.tfoot{padding:12px 16px;color:#556070;font-size:13px}
+.crumbbtn{border:0;background:transparent;color:#1F4FD1;padding:2px 4px;cursor:pointer;font-weight:500;border-radius:4px;font-size:13px}
+.crumbbtn:hover{text-decoration:underline}
+.mhead{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 20px}
+.mtabs{display:flex;gap:4px 24px;flex-wrap:wrap;padding:0 20px;border-top:1px solid #EDF0F4}
+.mtab{display:flex;align-items:center;gap:8px;border:0;background:transparent;padding:13px 2px;font-weight:600;color:#556070;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+.mtab:hover{color:#121826}
+.mtab.on{color:#1F4FD1;border-bottom-color:#1F4FD1}
+.ctool{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #C9D7FA;color:#1F4FD1;background:#fff;border-radius:22px;padding:7px 15px;font-weight:600;cursor:pointer;min-height:38px}
+.pill:hover{background:#EEF3FE}
+.pill.on{background:#1F4FD1;color:#fff;border-color:#1F4FD1}
+.sec{background:#EEF2F7;border:1px solid #E1E5EC;border-radius:14px;padding:6px 14px 14px;max-width:1000px;width:100%;margin:0 auto}
+.sech{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 0}
+.sectog{flex:1;min-width:220px;display:flex;align-items:center;gap:10px;border:0;background:transparent;text-align:left;cursor:pointer;padding:6px 0;font-size:15px;flex-wrap:wrap}
+.secl{color:#556070;font-weight:500}
+.secb{display:flex;flex-direction:column;gap:8px}
+.item{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #E1E5EC;border-radius:10px;padding:10px 12px;flex-wrap:wrap}
+.item:hover{border-color:#C6CEDA}
+.item .iic{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:none}
+.item .inm{flex:1;min-width:220px}
+.item .url{font-size:12.5px;max-width:420px}
+.item.quiz{border-color:#DCC2F5;background:#FCF9FF}
+.secempty{background:#fff;border:1px dashed #C6CEDA;border-radius:10px;padding:16px;text-align:center;color:#556070;font-size:13.5px}
+.sidebtn .cnt{margin-left:auto}
+.cltwrap{overflow:visible}
+.kebab{width:36px;height:36px;border-radius:50%;border:1px solid #C9D7FA;background:#fff;color:#1F4FD1;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.kebab:hover,.kebab.on{background:#EEF3FE;border-color:#1F4FD1}
+.menubg{position:fixed;inset:0;z-index:20}
+.menu{position:absolute;right:12px;top:calc(100% - 8px);z-index:30;background:#fff;border:1px solid #E1E5EC;border-radius:12px;box-shadow:0 12px 32px rgba(15,30,54,.16);padding:6px;min-width:270px;text-align:left}
+.menu.up{top:auto;bottom:calc(100% - 8px)}
+.mi{display:flex;align-items:flex-start;gap:10px;width:100%;border:0;background:transparent;border-radius:8px;padding:9px 10px;cursor:pointer;text-align:left;color:#121826}
+.mi svg{margin-top:2px;flex:none;color:#556070}
+.mi:hover,.mi:focus-visible{background:#F3F5F8}
+.mi b{display:block;font-weight:600;font-size:14px}
+.mis{display:block;font-size:12.5px;color:#556070}
+.mi.danger b,.mi.danger svg{color:#B42318}
+.mi.danger:hover{background:#FDECEA}
+.msep{height:1px;background:#EDF0F4;margin:4px 6px}
+.pvov{padding:24px 16px;align-items:flex-start}
+.pvwrap{background:#F3F5F8;border-radius:16px;width:100%;max-width:1080px;overflow:hidden;box-shadow:0 24px 60px rgba(15,30,54,.35);display:flex;flex-direction:column}
+.pvbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:linear-gradient(115deg,#1E3A8A,#4F46E5 60%,#8B3FD9);color:#fff;padding:12px 16px;font-size:13.5px}
+.pvbtn{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.3)}
+.pvbtn:hover{background:rgba(255,255,255,.24)}
+.pvbody{padding:22px;display:flex;flex-direction:column;gap:16px}
+.pvhero{background:#fff;border:1px solid #E1E5EC;border-radius:14px;padding:20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.pvsec{background:#fff;border:1px solid #E1E5EC;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.pvsh{display:flex;gap:14px;align-items:center}
+.pvnum{width:38px;height:38px;border-radius:50%;background:#EAF0FD;color:#1F4FD1;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.pvlist{list-style:none;margin:0;padding:0;border:1px solid #EDF0F4;border-radius:10px;overflow:hidden}
+.pvlist:empty{display:none}
+.pvrow{display:flex;align-items:center;gap:12px;padding:11px 14px}
+.pvrow+.pvrow{border-top:1px solid #EDF0F4}
+.pvrow .num{width:28px;height:28px;border-radius:50%;background:#EEF1F5;color:#3D4757;font-weight:600;font-size:12.5px;display:flex;align-items:center;justify-content:center;flex:none}
+.pvquiz{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#F5F8FE;border:1px solid #C9D7FA;border-radius:12px;padding:12px 14px}
+@media (max-width:900px){.cltwrap{overflow-x:auto;padding-bottom:180px;margin-bottom:-180px}}
+@media (max-width:720px){.item .seqin{width:52px}}
+
+</style>
+
+<style>
+html,body{margin:0;min-width:1280px}
+.wrap{max-width:1600px !important;width:100%}
+.sec{max-width:1400px !important}
+.overlay{position:fixed}
+</style>
+</head>
+<body>
+<div id="dc-root"></div>
+<script type="text/x-template" id="dc-src"><div class="ad">
+<header class="top">
+  <div class="logo" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c3 2 9 2 12 0v-5"></path></svg></div>
+  <span class="brand">HubWorks</span>
+  <span class="muted" style="color:#AEB9CC;margin-left:6px">Admin</span>
+  <button class="logout"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v9M6.3 7.3a8 8 0 1 0 11.4 0"></path></svg>Log out</button>
+</header>
+
+<div class="shell">
+<nav class="side" aria-label="Learning setup">
+  <div class="sidehd">Learning setup</div>
+  <button class="sidebtn on" aria-current="page" onClick="{{goList}}">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"></path><path d="M9 7h6"></path></svg>
+    Courses
+    <span class="cnt">{{navCount}}</span>
+  </button>
+  <div class="sidetip">Course → Sections → Videos and a quiz. Open a course and use Curriculum to build it.</div>
+</nav>
+
+<main class="main">
+<sc-if value="{{isList}}" hint-placeholder-val="{{ true }}">
+<div class="wrap vidpad">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <span>Sales Commission Management</span><span aria-hidden="true">/</span>
+    <span aria-current="page" style="color:#121826;font-weight:500">Courses</span>
+  </nav>
+  <div style="display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap">
+    <div style="flex:1;min-width:260px">
+      <h1 class="h1">Courses</h1>
+      <p class="sub">Build each course from sections. Every section holds its videos and quizzes.</p>
+    </div>
+    <button class="btn p" onClick="{{newCourse}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+      New course
+    </button>
+  </div>
+
+  <section class="panel" aria-labelledby="cl-h" style="overflow:visible">
+    <div class="ph"><h2 class="h2" id="cl-h" style="text-transform:uppercase;letter-spacing:.04em;font-size:13px;color:#3D4757">Course list</h2></div>
+    <div class="filters">
+      <div class="fl" style="flex:1;min-width:220px">
+        <label class="lbl" for="cl-q">Search</label>
+        <div class="search" style="width:100%">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#556070" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <input id="cl-q" type="search" placeholder="Course name" value="{{lq}}" onChange="{{onLq}}">
+        </div>
+      </div>
+      <div class="fl" style="width:200px">
+        <label class="lbl" for="cl-st">Status</label>
+        <select id="cl-st" class="inp" value="{{lstatus}}" onChange="{{onLstatus}}">
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </div>
+    </div>
+    <sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}"><div class="menubg" onClick="{{closeMenu}}" aria-hidden="true"></div></sc-if>
+    <sc-if value="{{hasCourses}}" hint-placeholder-val="{{ true }}">
+    <div class="cltwrap">
+      <table class="clt">
+        <thead>
+          <tr>
+            <th style="width:48px">#</th>
+            <th>Course</th>
+            <th>Sections and videos</th>
+            <th>Quizzes</th>
+            <th>Status</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{courseRows}}" as="c" hint-placeholder-count="3">
+          <tr>
+            <td class="muted">{{c.n}}</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span class="mono" style="background:{{c.hue}}" aria-hidden="true">{{c.mono}}</span>
+                <span>
+                  <button class="ctitle" onClick="{{c.open}}">{{c.name}}</button>
+                  <span class="muted" style="display:block">{{c.sub}}</span>
+                </span>
+              </div>
+            </td>
+            <td class="muted"><span style="display:block">Sections: <b style="color:#121826">{{c.secN}}</b></span><span style="display:block">Videos: <b style="color:#121826">{{c.vidN}}</b></span></td>
+            <td class="muted">Quizzes: <b style="color:#121826">{{c.quizN}}</b></td>
+            <td><span class="chip {{c.stCls}}">{{c.status}}</span></td>
+            <td style="text-align:right;position:relative">
+              <button class="kebab {{c.kebabCls}}" aria-label="Actions for {{c.name}}" aria-haspopup="menu" aria-expanded="{{c.menuExp}}" title="Actions" onClick="{{c.toggleMenu}}">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="12" cy="19" r="2"></circle></svg>
+              </button>
+              <sc-if value="{{c.menuOpen}}" hint-placeholder-val="{{ false }}">
+                <div class="menu {{c.menuDir}}" role="menu" aria-label="Actions for {{c.name}}" onKeyDown="{{c.menuKey}}">
+                  <button class="mi" role="menuitem" onClick="{{c.edit}}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4Z"></path><path d="m13.5 6.5 4 4"></path></svg>
+                    <span><b>Edit this course</b><span class="mis">Sections, videos and quizzes</span></span>
+                  </button>
+                  <button class="mi" role="menuitem" onClick="{{c.preview}}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span><b>View course on frontend</b><span class="mis">See it the way learners will</span></span>
+                  </button>
+                  <div class="msep" role="separator"></div>
+                  <button class="mi danger" role="menuitem" onClick="{{c.del}}">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg>
+                    <span><b>Delete course</b><span class="mis">Removes its sections, videos and quizzes</span></span>
+                  </button>
+                </div>
+              </sc-if>
+            </td>
+          </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    </sc-if>
+    <sc-if value="{{noCourses}}" hint-placeholder-val="{{ false }}">
+      <div class="empty"><div style="font-weight:600;font-size:16px">No courses match your filters</div><div class="muted">Try another name or set Status to All.</div></div>
+    </sc-if>
+    <div class="tfoot">{{listFoot}}</div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{isCourse}}" hint-placeholder-val="{{ false }}">
+<div class="wrap vidpad">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <button class="crumbbtn" onClick="{{goList}}">Courses</button><span aria-hidden="true">/</span>
+    <span aria-current="page" style="color:#121826;font-weight:500">{{cm.name}}</span>
+  </nav>
+
+  <section class="panel">
+    <div class="mhead">
+      <span class="mono" style="background:{{cm.hue}};width:52px;height:52px;font-size:18px" aria-hidden="true">{{cm.mono}}</span>
+      <div style="flex:1;min-width:220px">
+        <div class="muted" style="text-transform:uppercase;letter-spacing:.05em;font-size:12px;font-weight:600">Course manager</div>
+        <h1 style="margin:2px 0 0;font-size:22px;font-weight:700">{{cm.name}}</h1>
+        <div class="muted">{{cm.meta}}</div>
+      </div>
+      <span class="chip {{cm.stCls}}">{{cm.status}}</span>
+      <button class="btn s sm" onClick="{{cm.preview}}">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        View on frontend
+      </button>
+      <button class="btn s sm" onClick="{{goList}}">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg>
+        Back to course list
+      </button>
+    </div>
+    <div class="mtabs" role="tablist" aria-label="Course manager">
+      <button class="mtab {{cm.currCls}}" role="tab" aria-selected="{{cm.currSel}}" onClick="{{cm.toCurr}}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"></path></svg>
+        Curriculum
+      </button>
+      <button class="mtab {{cm.basicCls}}" role="tab" aria-selected="{{cm.basicSel}}" onClick="{{cm.toBasic}}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5M12 8h.01"></path></svg>
+        Basic info
+      </button>
+    </div>
+  </section>
+
+  <sc-if value="{{isCurr}}" hint-placeholder-val="{{ true }}">
+    <div class="ctool">
+      <button class="pill" onClick="{{addSection}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Add section</button>
+      <button class="pill" onClick="{{addVideosTop}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Add videos</button>
+      <button class="pill" onClick="{{addQuizTop}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>Add quiz</button>
+      <button class="pill {{sortCls}}" aria-pressed="{{sortPressed}}" onClick="{{toggleSort}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>{{sortLabel}}</button>
+    </div>
+
+    <sc-if value="{{sortMode}}" hint-placeholder-val="{{ false }}">
+      <div class="note" style="margin:0 auto;max-width:1000px;width:100%;background:#EEF3FE;border-color:#C9D7FA;color:#1F3A8A">Use the arrows next to each section to change the order learners see. Click <b>Done sorting</b> when finished.</div>
+    </sc-if>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{sections}}" as="sec" hint-placeholder-count="3">
+      <section class="sec" aria-label="Section {{sec.n}}: {{sec.name}}">
+        <div class="sech">
+          <sc-if value="{{sortMode}}" hint-placeholder-val="{{ false }}">
+            <span style="display:flex;gap:2px">
+              <button class="ib" aria-label="Move section {{sec.n}} up" disabled="{{sec.first}}" onClick="{{sec.up}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 15 6-6 6 6"></path></svg></button>
+              <button class="ib" aria-label="Move section {{sec.n}} down" disabled="{{sec.last}}" onClick="{{sec.down}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"></path></svg></button>
+            </span>
+          </sc-if>
+          <button class="sectog" aria-expanded="{{sec.exp}}" onClick="{{sec.toggle}}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#556070" stroke-width="2.2" style="transform:{{sec.chev}};flex:none" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+            <span><span class="secl">Section {{sec.n}}:</span> <b>{{sec.name}}</b></span>
+            <span class="muted">{{sec.meta}}</span>
+          </button>
+          <span style="display:flex;gap:4px;align-items:center;flex-wrap:wrap">
+            <button class="btn g sm" onClick="{{sec.addVideo}}">+ Video</button>
+            <button class="btn g sm" onClick="{{sec.addQuiz}}" style="color:#7E22CE">+ Quiz</button>
+            <button class="ib" aria-label="Rename section {{sec.n}}" title="Rename" onClick="{{sec.rename}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4Z"></path></svg></button>
+            <button class="ib del" aria-label="Delete section {{sec.n}}" title="Delete" onClick="{{sec.del}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button>
+          </span>
+        </div>
+        <sc-if value="{{sec.open}}" hint-placeholder-val="{{ true }}">
+        <div class="secb">
+          <sc-for list="{{sec.videos}}" as="r" hint-placeholder-count="2">
+          <div class="item">
+            <span class="iic" style="background:#EAF0FD;color:#1F4FD1" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span>
+            <span class="inm">
+              <span style="display:block"><span class="muted">Video {{r.n}}:</span> <b style="font-weight:600">{{r.name}}</b></span>
+              <a class="url" href="{{r.url}}" target="_blank" rel="noopener" title="{{r.url}}"><span>{{r.short}}</span></a>
+            </span>
+            <label class="sr" for="{{r.sid}}">Sequence for {{r.name}}</label>
+            <input id="{{r.sid}}" class="seqin" type="number" min="1" title="Sequence" value="{{r.seqVal}}" onChange="{{r.onSeq}}" onBlur="{{r.commitSeq}}" onKeyDown="{{r.seqKey}}">
+            <button class="ib" aria-label="Move {{r.name}} up" disabled="{{r.first}}" onClick="{{r.up}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 15 6-6 6 6"></path></svg></button>
+            <button class="ib" aria-label="Move {{r.name}} down" disabled="{{r.last}}" onClick="{{r.down}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"></path></svg></button>
+            <button class="switch {{r.swCls}}" role="switch" aria-checked="{{r.activeStr}}" aria-label="{{r.name}} active" title="{{r.activeLabel}}" onClick="{{r.toggle}}"><i></i></button>
+            <button class="ib" aria-label="Edit {{r.name}}" title="Edit" onClick="{{r.edit}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4Z"></path></svg></button>
+            <button class="ib del" aria-label="Delete {{r.name}}" title="Delete" onClick="{{r.del}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button>
+          </div>
+          </sc-for>
+          <sc-for list="{{sec.quizzes}}" as="z" hint-placeholder-count="1">
+          <div class="item quiz">
+            <span class="iic" style="background:#F1E6FD;color:#7E22CE" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 11l2 2 4-4"></path></svg></span>
+            <span class="inm">
+              <span style="display:block"><span class="muted">Quiz:</span> <b style="font-weight:600">{{z.name}}</b></span>
+              <span class="muted">{{z.meta}}</span>
+            </span>
+            <sc-if value="{{z.required}}" hint-placeholder-val="{{ true }}"><span class="chip amber">Required</span></sc-if>
+            <span class="chip {{z.stCls}}">{{z.status}}</span>
+            <button class="btn s sm" onClick="{{z.open}}">Edit quiz</button>
+            <button class="ib del" aria-label="Delete quiz {{z.name}}" title="Delete" onClick="{{z.del}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button>
+          </div>
+          </sc-for>
+          <sc-if value="{{sec.empty}}" hint-placeholder-val="{{ false }}">
+            <div class="secempty">This section is empty. Add videos for learners to watch, then a quiz to check what they learned.</div>
+          </sc-if>
+        </div>
+        </sc-if>
+      </section>
+      </sc-for>
+      <sc-if value="{{noSections}}" hint-placeholder-val="{{ false }}">
+        <div class="empty" style="max-width:1000px;margin:0 auto;width:100%;border:1px dashed #C6CEDA;border-radius:14px;background:#fff">
+          <div style="font-weight:600;font-size:16px">Start with a section</div>
+          <div class="muted">Sections group related videos, like Report or Settings. Each section can have its own quiz.</div>
+          <button class="btn p" onClick="{{addSection}}" style="margin-top:6px">Add section</button>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{isBasic}}" hint-placeholder-val="{{ false }}">
+    <section class="panel" style="max-width:720px">
+      <div class="ph"><h2 class="h2">Basic info</h2><span class="muted">Changes save automatically</span></div>
+      <div style="padding:18px 20px;display:flex;flex-direction:column;gap:16px">
+        <div class="fl">
+          <label class="lbl" for="b-name">Course name <span class="req" aria-hidden="true">*</span></label>
+          <input id="b-name" class="inp {{basic.nameCls}}" value="{{basic.name}}" onChange="{{basic.onName}}">
+          <sc-if value="{{basic.nameErr}}" hint-placeholder-val="{{ false }}"><span class="ferr">Enter a course name.</span></sc-if>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <button class="switch {{basic.actCls}}" role="switch" aria-checked="{{basic.actStr}}" aria-labelledby="b-act" onClick="{{basic.flip}}"><i></i></button>
+          <div><div class="lbl" id="b-act">Active</div><div class="hint">Learners can see this course in their course list.</div></div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{isQuiz}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <button class="crumbbtn" onClick="{{goList}}">Courses</button><span aria-hidden="true">/</span>
+    <button class="crumbbtn" onClick="{{backToCourse}}">{{cm.name}}</button><span aria-hidden="true">/</span>
+    <span aria-current="page" style="color:#121826;font-weight:500">Quiz</span>
+  </nav>
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <button class="btn s sm" onClick="{{backToCourse}}">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg>
+      Back to curriculum
+    </button>
+    <div style="flex:1;min-width:240px">
+      <h2 id="b-title" style="margin:0;font-size:22px;font-weight:700">{{d.titleText}}</h2>
+      <div class="muted">{{d.videoLabel}}</div>
+    </div>
+    <button class="btn s sm" style="color:#B42318" onClick="{{askDelete}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg>
+      Delete quiz
+    </button>
+  </div>
+      <div class="steps" role="tablist" aria-label="Quiz setup steps">
+        <sc-for list="{{steps}}" as="st" hint-placeholder-count="3">
+          <button class="stepb {{st.cls}}" role="tab" aria-selected="{{st.sel}}" aria-controls="step-panel" onClick="{{st.go}}">
+            <span class="sdot" style="background:{{st.dotBg}};color:{{st.dotFg}}">
+              <sc-if value="{{st.done}}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></sc-if>
+              <sc-if value="{{st.warn}}" hint-placeholder-val="{{ false }}">!</sc-if>
+              <sc-if value="{{st.plain}}" hint-placeholder-val="{{ true }}">{{st.n}}</sc-if>
+            </span>
+            <span style="min-width:0">
+              <span class="stt">{{st.title}}</span>
+              <span class="sts">{{st.sub}}</span>
+            </span>
+          </button>
+        </sc-for>
+      </div>
+
+      <div id="step-panel" role="tabpanel" aria-label="{{stepName}}" style="display:flex;flex-direction:column;gap:18px">
+      <!-- step 1 -->
+      <sc-if value="{{isStep1}}" hint-placeholder-val="{{ true }}">
+      <!-- 1. details -->
+      <div class="card">
+        <div class="ch">
+          <span class="icon" style="background:#EAF0FD;color:#1F4FD1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"></path></svg></span>
+          <div><h3 class="h2">Details</h3><div class="muted">Which section this quiz belongs to and what learners see.</div></div>
+        </div>
+        <div class="cbody">
+          <div class="g2">
+            <div class="fl">
+              <label class="lbl" for="f-video">Section <span class="req" aria-hidden="true">*</span></label>
+              <select id="f-video" class="inp {{d.videoCls}}" value="{{d.videoId}}" onChange="{{onVideo}}">
+                <option value="">Choose a section…</option>
+                <sc-for list="{{videoGroups}}" as="g" hint-placeholder-count="3">
+                  <optgroup label="{{g.label}}">
+                    <sc-for list="{{g.videos}}" as="v" hint-placeholder-count="2">
+                      <option value="{{v.id}}">{{v.name}}</option>
+                    </sc-for>
+                  </optgroup>
+                </sc-for>
+              </select>
+              <sc-if value="{{d.videoErr}}" hint-placeholder-val="{{ false }}"><span class="ferr">Choose the section this quiz belongs to.</span></sc-if>
+              <span class="help">Learners take the quiz after this section's videos.</span>
+            </div>
+            <div class="fl">
+              <label class="lbl" for="f-name">Quiz name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" class="inp {{d.nameCls}}" placeholder="e.g. How To Add Employee" value="{{d.name}}" onChange="{{onName}}">
+              <sc-if value="{{d.nameErr}}" hint-placeholder-val="{{ false }}"><span class="ferr">Enter a name for the quiz.</span></sc-if>
+            </div>
+            <div class="fl">
+              <label class="lbl" for="f-type">Quiz type</label>
+              <input id="f-type" class="inp" placeholder="e.g. Quiz" value="{{d.type}}" onChange="{{onType}}">
+            </div>
+            <div class="fl">
+              <label class="lbl" for="f-seq">Order in the section</label>
+              <input id="f-seq" class="inp" type="number" min="1" value="{{d.seq}}" onChange="{{onSeq}}">
+              <span class="help">Only matters when a section has more than one quiz.</span>
+            </div>
+          </div>
+          <div class="fl">
+            <label class="lbl" for="f-desc">Description</label>
+            <textarea id="f-desc" class="inp" placeholder="Tell learners what this quiz covers (optional)" value="{{d.desc}}" onChange="{{onDesc}}"></textarea>
+          </div>
+        </div>
+      </div>
+
+      </sc-if>
+
+      <!-- step 2 -->
+      <sc-if value="{{isStep2}}" hint-placeholder-val="{{ false }}">
+      <div class="g2" style="align-items:start">
+        <div class="card">
+          <div class="ch">
+            <span class="icon" style="background:#FFF1E8;color:#C2410C"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+            <div><h3 class="h2">Rules</h3><div class="muted">Passing, attempts and timing.</div></div>
+          </div>
+          <div class="cbody" style="gap:12px">
+            <div class="rule">
+              <label class="lbl" for="f-pass">Passing score</label>
+              <div class="suffix" style="max-width:160px"><input id="f-pass" class="inp {{d.passCls}}" type="number" min="1" max="100" value="{{d.pass}}" onChange="{{onPass}}"><span>%</span></div>
+              <sc-if value="{{d.passErr}}" hint-placeholder-val="{{ false }}"><span class="ferr">Enter a number from 1 to 100.</span></sc-if>
+            </div>
+            <sc-for list="{{rules}}" as="r" hint-placeholder-count="3">
+            <div class="rule">
+              <span class="lbl" id="{{r.lid}}">{{r.label}}</span>
+              <div class="seg" role="radiogroup" aria-labelledby="{{r.lid}}">
+                <button class="segb {{r.offCls}}" role="radio" aria-checked="{{r.offSel}}" onClick="{{r.setOff}}">{{r.offText}}</button>
+                <button class="segb {{r.onCls}}" role="radio" aria-checked="{{r.onSel}}" onClick="{{r.setOn}}">{{r.onText}}</button>
+              </div>
+              <sc-if value="{{r.showVal}}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                  <label class="sr" for="{{r.iid}}">{{r.label}} value</label>
+                  <div class="suffix" style="width:150px"><input id="{{r.iid}}" class="inp {{r.cls}}" type="number" min="1" value="{{r.val}}" onChange="{{r.onVal}}"><span>{{r.unit}}</span></div>
+                </div>
+                <sc-if value="{{r.err}}" hint-placeholder-val="{{ false }}"><span class="ferr">{{r.errText}}</span></sc-if>
+              </sc-if>
+              <span class="help">{{r.help}}</span>
+            </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ch">
+            <span class="icon" style="background:#F6EEFE;color:#7E22CE"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="17" r="2"></circle></svg></span>
+            <div><h3 class="h2">Learner experience</h3><div class="muted">How the quiz behaves for learners.</div></div>
+          </div>
+          <div class="cbody" style="gap:0;padding-top:6px;padding-bottom:6px">
+            <sc-for list="{{toggles}}" as="t" hint-placeholder-count="6">
+            <div class="tg">
+              <button class="switch {{t.cls}}" role="switch" aria-checked="{{t.str}}" aria-labelledby="{{t.lid}}" aria-describedby="{{t.did}}" onClick="{{t.flip}}"><i></i></button>
+              <div>
+                <div class="lbl" id="{{t.lid}}">{{t.label}}</div>
+                <div class="help" id="{{t.did}}">{{t.desc}}</div>
+              </div>
+            </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      </sc-if>
+
+      <!-- step 3 -->
+      <sc-if value="{{isStep3}}" hint-placeholder-val="{{ false }}">
+      <sc-if value="{{hasQs}}" hint-placeholder-val="{{ true }}">
+      <div class="qws">
+        <aside class="card" aria-labelledby="qnav-h">
+          <div class="ch" style="padding:14px 16px">
+            <div style="flex:1"><h3 class="h2" id="qnav-h">Questions</h3><div class="muted">{{qSummary}}</div></div>
+          </div>
+          <ol class="qnav">
+            <sc-for list="{{qs}}" as="q" hint-placeholder-count="6">
+            <li>
+              <button class="qn {{q.navCls}}" aria-current="{{q.selStr}}" onClick="{{q.pick}}">
+                <span class="qnum" style="width:26px;height:26px;font-size:12px;background:{{q.numBg}}">{{q.n}}</span>
+                <span style="flex:1;min-width:0">
+                  <span class="qnt">{{q.title}}</span>
+                  <span class="muted" style="display:block;font-size:12px">{{q.navSub}}</span>
+                </span>
+                <sc-if value="{{q.hasIssue}}" hint-placeholder-val="{{ false }}"><span class="dot" style="background:#E9A23B" title="Needs attention"></span></sc-if>
+              </button>
+            </li>
+            </sc-for>
+          </ol>
+          <div style="padding:10px 12px;border-top:1px solid #EDF0F4">
+            <button class="btn s sm" style="width:100%" onClick="{{addQ}}">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+              Add question
+            </button>
+          </div>
+        </aside>
+
+        <section class="card {{qe.cls}}" aria-labelledby="qe-h">
+          <div class="ch" style="flex-wrap:wrap">
+            <span class="qnum" style="background:{{qe.numBg}}">{{qe.n}}</span>
+            <div style="flex:1;min-width:180px">
+              <h3 class="h2" id="qe-h">Question {{qe.n}} of {{qCount}}</h3>
+              <div class="muted">{{qe.summary}}</div>
+            </div>
+            <span style="display:flex;gap:2px">
+              <button class="ib" aria-label="Move question up" title="Move up" disabled="{{qe.first}}" onClick="{{qe.up}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 15 6-6 6 6"></path></svg></button>
+              <button class="ib" aria-label="Move question down" title="Move down" disabled="{{qe.last}}" onClick="{{qe.down}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"></path></svg></button>
+              <button class="ib" aria-label="Duplicate question" title="Duplicate" onClick="{{qe.dup}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg></button>
+              <button class="ib del" aria-label="Delete question" title="Delete" onClick="{{qe.del}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path></svg></button>
+            </span>
+          </div>
+          <div class="cbody">
+            <div class="fl">
+              <label class="lbl" for="{{qe.tid}}">Question <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="{{qe.tid}}" class="inp" style="min-height:60px" placeholder="Type the question learners will answer" value="{{qe.text}}" onChange="{{qe.onText}}"></textarea>
+            </div>
+            <div class="qmeta">
+              <div class="fl">
+                <label class="lbl" for="{{qe.yid}}">Answer type</label>
+                <select id="{{qe.yid}}" class="inp" value="{{qe.type}}" onChange="{{qe.onType}}">
+                  <option value="single">One correct answer</option>
+                  <option value="multi">More than one correct answer</option>
+                </select>
+              </div>
+              <div class="fl">
+                <label class="lbl" for="{{qe.pid}}">Points</label>
+                <input id="{{qe.pid}}" class="inp" type="number" min="1" value="{{qe.points}}" onChange="{{qe.onPoints}}">
+              </div>
+              <div class="fl" style="flex-direction:row;align-items:center;gap:10px;height:40px">
+                <button class="switch {{qe.actCls}}" role="switch" aria-checked="{{qe.actStr}}" aria-label="Question active" onClick="{{qe.flipActive}}"><i></i></button>
+                <span class="lbl" aria-hidden="true">Active</span>
+              </div>
+            </div>
+
+            <div class="fl" style="gap:8px">
+              <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+                <span class="lbl">Answer options</span>
+                <span class="help">{{qe.markHelp}}</span>
+              </div>
+              <div class="opts" role="group" aria-label="Answer options">
+                <sc-for list="{{qe.opts}}" as="o" hint-placeholder-count="4">
+                <div class="opt {{o.cls}}">
+                  <button class="mark {{o.markCls}}" role="{{o.role}}" aria-checked="{{o.correctStr}}" aria-label="{{o.markLabel}}" title="{{o.markLabel}}" onClick="{{o.mark}}">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+                  </button>
+                  <span class="letter" aria-hidden="true">{{o.letter}}</span>
+                  <div>
+                    <label class="sr" for="{{o.id}}">Option {{o.letter}} text</label>
+                    <input id="{{o.id}}" class="inp" placeholder="Type an answer option" value="{{o.text}}" onChange="{{o.onText}}">
+                  </div>
+                  <div class="oact">
+                    <sc-if value="{{o.correct}}" hint-placeholder-val="{{ false }}"><span class="chip green" style="margin-right:4px">Correct</span></sc-if>
+                    <button class="ib {{o.mediaCls}}" aria-label="Add image or video link to option {{o.letter}}" title="Image or video link" aria-expanded="{{o.mediaExp}}" onClick="{{o.toggleMedia}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="1.6"></circle><path d="m21 16-5-5-9 8"></path></svg></button>
+                    <button class="switch {{o.actCls}}" role="switch" aria-checked="{{o.actStr}}" aria-label="Option {{o.letter}} active" title="Active" onClick="{{o.flipActive}}" style="margin:0 4px"><i></i></button>
+                    <button class="ib" aria-label="Move option {{o.letter}} up" disabled="{{o.first}}" onClick="{{o.up}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 15 6-6 6 6"></path></svg></button>
+                    <button class="ib" aria-label="Move option {{o.letter}} down" disabled="{{o.last}}" onClick="{{o.down}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"></path></svg></button>
+                    <button class="ib del" aria-label="Remove option {{o.letter}}" onClick="{{o.del}}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+                  </div>
+                  <sc-if value="{{o.showMedia}}" hint-placeholder-val="{{ false }}">
+                    <div class="media">
+                      <label class="sr" for="{{o.mid}}">Option {{o.letter}} image or video URL</label>
+                      <input id="{{o.mid}}" class="inp" style="border-color:#D3D9E2;background:#fff" placeholder="Image or video URL (optional)" value="{{o.media}}" onChange="{{o.onMedia}}">
+                    </div>
+                  </sc-if>
+                </div>
+                </sc-for>
+              </div>
+              <button class="btn g sm" style="align-self:flex-start;padding-left:6px" onClick="{{qe.addOpt}}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+                Add option
+              </button>
+            </div>
+
+            <sc-if value="{{qe.hasIssue}}" hint-placeholder-val="{{ false }}">
+              <div class="issues" role="status">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+                <ul><sc-for list="{{qe.issues}}" as="m" hint-placeholder-count="1"><li>{{m.text}}</li></sc-for></ul>
+              </div>
+            </sc-if>
+          </div>
+          <div class="qfoot">
+            <button class="btn s sm" disabled="{{qe.first}}" onClick="{{qe.prevQ}}">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 18-6-6 6-6"></path></svg>
+              Previous question
+            </button>
+            <sc-if value="{{qe.notLast}}" hint-placeholder-val="{{ true }}">
+              <button class="btn s sm" onClick="{{qe.nextQ}}">
+                Next question
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 18 6-6-6-6"></path></svg>
+              </button>
+            </sc-if>
+            <sc-if value="{{qe.last}}" hint-placeholder-val="{{ false }}">
+              <button class="btn s sm" onClick="{{addQ}}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+                Add another question
+              </button>
+            </sc-if>
+          </div>
+        </section>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{noQs}}" hint-placeholder-val="{{ false }}">
+        <div class="qempty">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8D9AB0" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.4M12 17h.01"></path></svg>
+          <div style="font-weight:600;font-size:16px">No questions yet</div>
+          <div class="muted">Add the first question. Each one starts with four answer options.</div>
+          <button class="btn p" onClick="{{addQ}}" style="margin-top:6px">Add question</button>
+        </div>
+      </sc-if>
+      </sc-if>
+      </div>
+
+      <div class="stepnav">
+        <button class="btn s" onClick="{{prevStep}}" disabled="{{isStep1}}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg>
+          Back
+        </button>
+        <span class="muted">Step {{step}} of 3</span>
+        <sc-if value="{{notStep3}}" hint-placeholder-val="{{ true }}">
+          <button class="btn p" onClick="{{nextStep}}">
+            {{nextLabel}}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+          </button>
+        </sc-if>
+        <sc-if value="{{isStep3}}" hint-placeholder-val="{{ false }}">
+          <button class="btn p" onClick="{{save}}" disabled="{{bar.clean}}">Save quiz</button>
+        </sc-if>
+      </div>
+</div>
+
+<div class="savebar" role="region" aria-label="Save changes">
+  <span style="display:flex;align-items:center;gap:8px;font-weight:600">
+    <span class="dot" style="background:{{bar.dot}}" aria-hidden="true"></span>{{bar.state}}
+  </span>
+  <span class="muted" style="color:{{bar.issueColor}}">{{bar.issues}}</span>
+  <span style="margin-left:auto;display:flex;gap:10px">
+    <button class="btn s" onClick="{{discard}}" disabled="{{bar.clean}}">Discard changes</button>
+    <button class="btn p" onClick="{{save}}" disabled="{{bar.clean}}">Save quiz</button>
+  </span>
+</div>
+</sc-if>
+</main>
+</div>
+
+<sc-if value="{{isCourse}}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{hasModal}}" hint-placeholder-val="{{ false }}">
+<div class="overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-h">
+    <div class="mh">
+      <div style="flex:1">
+        <h2 id="m-h" style="margin:0;font-size:19px;font-weight:700">{{m.title}}</h2>
+        <div class="muted">{{m.sub}}</div>
+      </div>
+      <button class="ib" aria-label="Close" onClick="{{closeModal}}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+    </div>
+
+    <div class="mb">
+      <div class="fl" style="max-width:420px">
+        <label class="lbl" for="m-sec">Section <span class="req" aria-hidden="true">*</span></label>
+        <select id="m-sec" class="inp" value="{{m.section}}" onChange="{{m.onSection}}">
+          <option value="">Choose a section…</option>
+          <sc-for list="{{m.sections}}" as="o" hint-placeholder-count="3">
+            <option value="{{o.id}}">{{o.name}}</option>
+          </sc-for>
+        </select>
+        <sc-if value="{{m.levelErr}}" hint-placeholder-val="{{ false }}"><span class="ferr" role="alert">Choose a section.</span></sc-if>
+      </div>
+
+      <sc-if value="{{m.isAdd}}" hint-placeholder-val="{{ true }}">
+        <div class="modeseg" role="tablist" aria-label="How to add videos">
+          <button class="modeb {{m.rowsCls}}" role="tab" aria-selected="{{m.rowsSel}}" onClick="{{m.toRows}}">Add one by one</button>
+          <button class="modeb {{m.pasteCls}}" role="tab" aria-selected="{{m.pasteSel}}" onClick="{{m.toPaste}}">Paste a list</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{m.showRows}}" hint-placeholder-val="{{ true }}">
+        <div class="rows">
+          <sc-if value="{{m.hasErr}}" hint-placeholder-val="{{ false }}">
+            <div class="errsum" role="alert">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+              {{m.errText}}
+            </div>
+          </sc-if>
+          <sc-if value="{{m.hasOk}}" hint-placeholder-val="{{ false }}">
+            <div class="okmsg" role="status">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+              {{m.ok}}
+            </div>
+          </sc-if>
+          <div class="rowh" aria-hidden="true">
+            <span>#</span><span>Video name <span class="req">*</span></span><span>Video URL <span class="req">*</span></span><span>Sequence</span><span>Active</span><span></span>
+          </div>
+          <sc-for list="{{m.rows}}" as="r" hint-placeholder-count="2">
+          <div class="vrow">
+            <span class="rnum">{{r.n}}</span>
+            <div class="fl">
+              <label class="sr" for="{{r.nid}}">Video {{r.n}} name</label>
+              <input id="{{r.nid}}" class="inp {{r.nCls}}" placeholder="e.g. Swap Shift" value="{{r.name}}" onChange="{{r.onName}}">
+              <sc-if value="{{r.hasNErr}}" hint-placeholder-val="{{ false }}"><span class="ferr">{{r.errName}}</span></sc-if>
+            </div>
+            <div class="fl">
+              <label class="sr" for="{{r.uid}}">Video {{r.n}} URL</label>
+              <input id="{{r.uid}}" class="inp {{r.uCls}}" type="url" placeholder="https://…/video.mp4" value="{{r.url}}" onChange="{{r.onUrl}}">
+              <sc-if value="{{r.hasUErr}}" hint-placeholder-val="{{ false }}"><span class="ferr">{{r.errUrl}}</span></sc-if>
+            </div>
+            <div class="fl seqf">
+              <label class="sr" for="{{r.qid}}">Video {{r.n}} sequence</label>
+              <input id="{{r.qid}}" class="inp num {{r.qCls}}" type="number" min="1" inputmode="numeric" placeholder="{{r.seqPh}}" value="{{r.seq}}" onChange="{{r.onSeq}}">
+              <sc-if value="{{r.hasQErr}}" hint-placeholder-val="{{ false }}"><span class="ferr">{{r.errSeq}}</span></sc-if>
+            </div>
+            <div style="display:flex;align-items:center;height:40px;gap:8px">
+              <button class="switch {{r.swCls}}" role="switch" aria-checked="{{r.activeStr}}" aria-label="Video {{r.n}} active" onClick="{{r.toggle}}"><i></i></button>
+            </div>
+            <div style="display:flex;align-items:center;height:40px">
+              <button class="ib del" aria-label="Remove video {{r.n}}" disabled="{{r.only}}" onClick="{{r.remove}}"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+            </div>
+          </div>
+          </sc-for>
+          <sc-if value="{{m.isAdd}}" hint-placeholder-val="{{ true }}">
+            <button class="btn g" style="align-self:flex-start;padding-left:6px" onClick="{{m.addRow}}">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+              Add another video
+            </button>
+          </sc-if>
+          <div class="hint">{{m.hint}}</div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{m.showPaste}}" hint-placeholder-val="{{ false }}">
+        <div class="fl">
+          <label class="lbl" for="m-paste">Paste your videos, one per line</label>
+          <span class="hint">Put the video name first, then its URL. Copying two columns from Excel works too.</span>
+          <textarea id="m-paste" class="inp" style="min-height:180px" value="{{m.paste}}" onChange="{{m.onPaste}}" placeholder="Swap Shift, https://example.com/videos/SwapShift.mp4
+Time Off Request, https://example.com/videos/TimeOff.mp4"></textarea>
+          <sc-if value="{{m.pasteErr}}" hint-placeholder-val="{{ false }}"><span class="ferr" role="alert">Paste at least one line to continue.</span></sc-if>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <button class="btn p" onClick="{{m.convert}}">Review {{m.pasteCount}}</button>
+            <span class="hint">You can check and fix each video before adding.</span>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <div class="mf">
+      <span class="muted" style="margin-right:auto">{{m.footNote}}</span>
+      <button class="btn s" onClick="{{closeModal}}">Cancel</button>
+      <sc-if value="{{m.showRows}}" hint-placeholder-val="{{ true }}">
+        <button class="btn p" onClick="{{m.save}}">{{m.cta}}</button>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{hasSecModal}}" hint-placeholder-val="{{ false }}">
+<div class="overlay" style="align-items:center">
+  <div class="modal confirm" role="dialog" aria-modal="true" aria-labelledby="sm-h">
+    <div class="mb">
+      <h2 id="sm-h" style="margin:0;font-size:18px;font-weight:700">{{sm.title}}</h2>
+      <div class="fl">
+        <label class="lbl" for="sm-name">Section name <span class="req" aria-hidden="true">*</span></label>
+        <input id="sm-name" class="inp {{sm.cls}}" placeholder="e.g. Report" value="{{sm.name}}" onChange="{{sm.onName}}" onKeyDown="{{sm.key}}">
+        <sc-if value="{{sm.err}}" hint-placeholder-val="{{ false }}"><span class="ferr">Enter a section name.</span></sc-if>
+        <span class="hint">Learners see it as "Section {{sm.n}}: {{sm.preview}}".</span>
+      </div>
+    </div>
+    <div class="mf">
+      <button class="btn s" onClick="{{sm.cancel}}">Cancel</button>
+      <button class="btn p" onClick="{{sm.save}}">{{sm.cta}}</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{hasCourseModal}}" hint-placeholder-val="{{ false }}">
+<div class="overlay" style="align-items:center">
+  <div class="modal confirm" role="dialog" aria-modal="true" aria-labelledby="nc-h">
+    <div class="mb">
+      <h2 id="nc-h" style="margin:0;font-size:18px;font-weight:700">New course</h2>
+      <div class="fl">
+        <label class="lbl" for="nc-name">Course name <span class="req" aria-hidden="true">*</span></label>
+        <input id="nc-name" class="inp {{nc.cls}}" placeholder="e.g. Inventory" value="{{nc.name}}" onChange="{{nc.onName}}" onKeyDown="{{nc.key}}">
+        <sc-if value="{{nc.err}}" hint-placeholder-val="{{ false }}"><span class="ferr">Enter a course name.</span></sc-if>
+        <span class="hint">You'll add sections, videos and quizzes next.</span>
+      </div>
+    </div>
+    <div class="mf">
+      <button class="btn s" onClick="{{nc.cancel}}">Cancel</button>
+      <button class="btn p" onClick="{{nc.save}}">Create course</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+</sc-if>
+<sc-if value="{{isList}}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{hasCourseModal}}" hint-placeholder-val="{{ false }}">
+<div class="overlay" style="align-items:center">
+  <div class="modal confirm" role="dialog" aria-modal="true" aria-labelledby="nc-h">
+    <div class="mb">
+      <h2 id="nc-h" style="margin:0;font-size:18px;font-weight:700">New course</h2>
+      <div class="fl">
+        <label class="lbl" for="nc-name">Course name <span class="req" aria-hidden="true">*</span></label>
+        <input id="nc-name" class="inp {{nc.cls}}" placeholder="e.g. Inventory" value="{{nc.name}}" onChange="{{nc.onName}}" onKeyDown="{{nc.key}}">
+        <sc-if value="{{nc.err}}" hint-placeholder-val="{{ false }}"><span class="ferr">Enter a course name.</span></sc-if>
+        <span class="hint">You'll add sections, videos and quizzes next.</span>
+      </div>
+    </div>
+    <div class="mf">
+      <button class="btn s" onClick="{{nc.cancel}}">Cancel</button>
+      <button class="btn p" onClick="{{nc.save}}">Create course</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+</sc-if>
+<sc-if value="{{hasPreview}}" hint-placeholder-val="{{ false }}">
+<div class="overlay pvov">
+  <div class="pvwrap" role="dialog" aria-modal="true" aria-labelledby="pv-h" onKeyDown="{{pvKey}}">
+    <div class="pvbar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      <span style="flex:1;min-width:200px"><b>Learner preview</b> <span style="opacity:.8">· This is how learners see this course. Inactive videos and quizzes are hidden.</span></span>
+      <sc-if value="{{pv.canEdit}}" hint-placeholder-val="{{ true }}"><button class="btn sm pvbtn" onClick="{{pv.edit}}">Edit this course</button></sc-if>
+      <button class="btn sm pvbtn" onClick="{{closePreview}}" aria-label="Close preview">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+        Close
+      </button>
+    </div>
+    <div class="pvbody">
+      <sc-if value="{{pv.inactive}}" hint-placeholder-val="{{ false }}">
+        <div class="note" style="margin:0">This course is <b>inactive</b>, so learners can't see it yet. Turn it on in Basic info.</div>
+      </sc-if>
+      <section class="pvhero">
+        <span class="mono" style="background:{{pv.hue}};width:72px;height:72px;font-size:26px;border-radius:16px" aria-hidden="true">{{pv.mono}}</span>
+        <div style="flex:1;min-width:220px">
+          <h2 id="pv-h" style="margin:0;font-size:24px;font-weight:700">{{pv.name}}</h2>
+          <div class="muted" style="margin-top:4px">{{pv.meta}}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;min-width:240px">
+          <div class="muted" style="display:flex;justify-content:space-between"><span>Course progress</span><b style="color:#121826">0%</b></div>
+          <div style="height:6px;background:#E7EBF1;border-radius:6px"></div>
+          <span class="btn p" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+            Start course
+          </span>
+        </div>
+      </section>
+
+      <sc-for list="{{pv.sections}}" as="ps" hint-placeholder-count="3">
+      <section class="pvsec" aria-label="Section {{ps.n}}: {{ps.name}}">
+        <div class="pvsh">
+          <span class="pvnum" aria-hidden="true">{{ps.n}}</span>
+          <div style="flex:1;min-width:0">
+            <div class="lvlabel" style="padding:0">Section {{ps.n}}</div>
+            <h3 style="margin:0;font-size:17px;font-weight:700">{{ps.name}}</h3>
+            <div class="muted">{{ps.meta}}</div>
+          </div>
+        </div>
+        <ol class="pvlist">
+          <sc-for list="{{ps.videos}}" as="pvv" hint-placeholder-count="2">
+          <li class="pvrow">
+            <span class="num" aria-hidden="true">{{pvv.n}}</span>
+            <span style="flex:1;min-width:0"><span style="display:block;font-weight:500">{{pvv.name}}</span><span class="muted" style="font-size:12.5px">Not started</span></span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1F4FD1" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+          </li>
+          </sc-for>
+        </ol>
+        <sc-for list="{{ps.quizzes}}" as="pq" hint-placeholder-count="1">
+        <div class="pvquiz">
+          <span class="iic" style="width:40px;height:40px;border-radius:10px;background:#fff;color:#1F4FD1;display:flex;align-items:center;justify-content:center;flex:none" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"></path></svg></span>
+          <span style="flex:1;min-width:200px">
+            <span style="display:block;font-weight:600">Section quiz: {{pq.name}}</span>
+            <span class="muted">{{pq.meta}}</span>
+            <span class="muted" style="display:block;font-size:12.5px">{{pq.unlock}}</span>
+          </span>
+          <sc-if value="{{pq.required}}" hint-placeholder-val="{{ true }}"><span class="chip amber">Required</span></sc-if>
+          <span class="btn p sm" aria-hidden="true">Take quiz</span>
+        </div>
+        </sc-for>
+        <sc-if value="{{ps.empty}}" hint-placeholder-val="{{ false }}">
+          <div class="muted" style="padding:6px 4px 2px">Nothing in this section yet.</div>
+        </sc-if>
+      </section>
+      </sc-for>
+      <sc-if value="{{pv.noSections}}" hint-placeholder-val="{{ false }}">
+        <div class="empty" style="background:#fff;border-radius:14px;border:1px dashed #C6CEDA"><div style="font-weight:600">No content yet</div><div class="muted">Learners will see an empty course until you add a section with videos.</div></div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{hasConfirm}}" hint-placeholder-val="{{ false }}">
+<div class="overlay" style="align-items:center">
+  <div class="modal confirm" role="alertdialog" aria-modal="true" aria-labelledby="c-h" aria-describedby="c-d">
+    <div style="padding:20px 22px;display:flex;flex-direction:column;gap:8px">
+      <h2 id="c-h" style="margin:0;font-size:18px;font-weight:700">{{cf.title}}</h2>
+      <p id="c-d" class="muted" style="margin:0;font-size:14px">{{cf.body}}</p>
+    </div>
+    <div class="mf">
+      <button class="btn s" onClick="{{cf.cancel}}">Cancel</button>
+      <button class="btn {{cf.cls}}" onClick="{{cf.ok}}">{{cf.cta}}</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{ false }}">
+  <div class="toast" role="status">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>
+    {{toast}}
+  </div>
+</sc-if>
+</div></script>
+<script>
+/* Minimal standalone runtime for the exported prototypes (templates + logic class). */
+(function () {
+  var TABLE_TAGS = /<(\/?)(table|thead|tbody|tfoot|tr|td|th|select|option|optgroup)(?=[\s>\/])/gi;
+  var HOLE = /\{\{\s*([^}]*?)\s*\}\}/g;
+  var BOOL_ATTRS = { disabled: 1, checked: 1, selected: 1, hidden: 1, readonly: 1, required: 1, open: 1 };
+  function lookup(expr, scopes) {
+    expr = expr.trim();
+    if (expr === 'true') return true;
+    if (expr === 'false') return false;
+    if (/^-?\d+(\.\d+)?$/.test(expr)) return Number(expr);
+    var parts = expr.split('.');
+    for (var i = scopes.length - 1; i >= 0; i--) {
+      var sc = scopes[i];
+      if (sc && Object.prototype.hasOwnProperty.call(sc, parts[0])) {
+        var v = sc[parts[0]];
+        for (var j = 1; j < parts.length; j++) { if (v == null) return undefined; v = v[parts[j]]; }
+        return v;
+      }
+    }
+    return undefined;
+  }
+  function interp(str, scopes) {
+    return str.replace(HOLE, function (_, e) { var v = lookup(e, scopes); return v == null ? '' : String(v); });
+  }
+  function single(str) { var m = /^\s*\{\{\s*([^}]*?)\s*\}\}\s*$/.exec(str); return m ? m[1] : null; }
+  function eventName(attr, el) {
+    var n = attr.slice(2).toLowerCase();
+    if (n === 'change') {
+      var tag = el.localName, type = (el.getAttribute('type') || '').toLowerCase();
+      if (tag === 'textarea' || (tag === 'input' && type !== 'checkbox' && type !== 'radio')) return 'input';
+      return 'change';
+    }
+    return n;
+  }
+  function build(node, scopes, out) {
+    if (node.nodeType === 3) { out.push(document.createTextNode(node.data.indexOf('{{') > -1 ? interp(node.data, scopes) : node.data)); return; }
+    if (node.nodeType !== 1) return;
+    var tag = node.localName;
+    if (tag === 'sc-if') {
+      var e = single(node.getAttribute('value') || '');
+      if (e != null && lookup(e, scopes)) { for (var c = node.firstChild; c; c = c.nextSibling) build(c, scopes, out); }
+      return;
+    }
+    if (tag === 'sc-for') {
+      var le = single(node.getAttribute('list') || ''), as = node.getAttribute('as') || 'item';
+      var list = le != null ? lookup(le, scopes) : null;
+      (list || []).forEach(function (item, idx) {
+        var s = {}; s[as] = item; s.$index = idx;
+        var ns = scopes.concat([s]);
+        for (var c2 = node.firstChild; c2; c2 = c2.nextSibling) build(c2, ns, out);
+      });
+      return;
+    }
+    var el;
+    if (tag.indexOf('dc-') === 0) el = document.createElement(tag.slice(3));
+    else el = document.importNode(node, false);
+    // reset attributes from the template
+    var attrs = Array.prototype.slice.call(node.attributes);
+    if (tag.indexOf('dc-') !== 0) attrs.forEach(function (a) { el.removeAttribute(a.name); });
+    el.__h = {};
+    attrs.forEach(function (a) {
+      var name = a.name, val = a.value;
+      if (name.indexOf('hint-') === 0) return;
+      if (name.indexOf('on') === 0 && val.indexOf('{{') > -1) {
+        var fe = single(val); var fn = fe != null ? lookup(fe, scopes) : null;
+        if (typeof fn === 'function') el.__h[eventName(name, el)] = fn;
+        return;
+      }
+      if (val.indexOf('{{') < 0) { el.setAttribute(name, val); return; }
+      var se = single(val);
+      if (se != null) {
+        var v = lookup(se, scopes);
+        var realTag = el.localName;
+        if (name === 'value' && (realTag === 'input' || realTag === 'textarea' || realTag === 'select')) { el.__value = v == null ? '' : String(v); return; }
+        if (name === 'checked') { el.__checked = !!v; if (v) el.setAttribute('checked', ''); return; }
+        if (BOOL_ATTRS[name]) { if (v === true) el.setAttribute(name, ''); else if (v && v !== 'false') el.setAttribute(name, ''); return; }
+        if (v == null || v === false) { if (name.indexOf('aria-') === 0 && v === false) el.setAttribute(name, 'false'); return; }
+        el.setAttribute(name, String(v));
+        return;
+      }
+      el.setAttribute(name, interp(val, scopes));
+    });
+    var kids = [];
+    for (var c3 = node.firstChild; c3; c3 = c3.nextSibling) build(c3, scopes, kids);
+    kids.forEach(function (k) { el.appendChild(k); });
+    out.push(el);
+  }
+  function bind(el) {
+    if (!el.__bound) el.__bound = {};
+    Object.keys(el.__h || {}).forEach(function (evt) {
+      if (el.__bound[evt]) return;
+      el.__bound[evt] = true;
+      el.addEventListener(evt, function (e) { var f = el.__h && el.__h[evt]; if (f) f(e); });
+    });
+  }
+  function applyProps(el, src) {
+    if ('__value' in src) { if (el.value !== src.__value) el.value = src.__value; }
+    if ('__checked' in src) el.checked = src.__checked;
+  }
+  function morph(o, n) {
+    if (o.nodeType !== n.nodeType || o.nodeName !== n.nodeName || o.namespaceURI !== n.namespaceURI) {
+      o.parentNode.replaceChild(n, o); bindTree(n); return;
+    }
+    if (o.nodeType === 3) { if (o.data !== n.data) o.data = n.data; return; }
+    if (o.nodeType !== 1) return;
+    var oa = o.attributes, na = n.attributes, i;
+    for (i = oa.length - 1; i >= 0; i--) { if (!n.hasAttribute(oa[i].name)) o.removeAttribute(oa[i].name); }
+    for (i = 0; i < na.length; i++) { if (o.getAttribute(na[i].name) !== na[i].value) o.setAttribute(na[i].name, na[i].value); }
+    o.__h = n.__h; bind(o);
+    morphChildren(o, n);
+    applyProps(o, n);
+  }
+  function morphChildren(o, n) {
+    var oc = Array.prototype.slice.call(o.childNodes), nc = Array.prototype.slice.call(n.childNodes);
+    for (var i = 0; i < nc.length; i++) {
+      if (i < oc.length) morph(oc[i], nc[i]);
+      else { o.appendChild(nc[i]); bindTree(nc[i]); }
+    }
+    for (var j = nc.length; j < oc.length; j++) o.removeChild(oc[j]);
+  }
+  function bindTree(el) {
+    if (el.nodeType !== 1) return;
+    bind(el);
+    for (var c = el.firstChild; c; c = c.nextSibling) bindTree(c);
+    applyProps(el, el);
+  }
+  window.DCLogic = function DCLogic(props) { this.props = props || {}; this.state = {}; };
+  window.DCLogic.prototype.setState = function (patch) {
+    Object.assign(this.state, typeof patch === 'function' ? patch(this.state) : patch);
+    var self = this;
+    if (!self.__pending) { self.__pending = true; Promise.resolve().then(function () { self.__pending = false; self.__render(); }); }
+  };
+  window.DC = {
+    mount: function (Comp, root, source) {
+      var html = source.replace(TABLE_TAGS, '<$1dc-$2');
+      var doc = new DOMParser().parseFromString('<!doctype html><html><body>' + html + '</body></html>', 'text/html');
+      var tpl = doc.body;
+      var comp = new Comp({});
+      comp.__render = function () {
+        var vals = comp.renderVals() || {};
+        var out = [];
+        for (var c = tpl.firstChild; c; c = c.nextSibling) build(c, [vals], out);
+        var wrap = document.createElement('div');
+        out.forEach(function (x) { wrap.appendChild(x); });
+        if (!root.__mounted) { root.__mounted = true; while (wrap.firstChild) { var k = wrap.firstChild; root.appendChild(k); bindTree(k); } return; }
+        morphChildren(root, wrap);
+      };
+      comp.__render();
+      if (comp.componentDidMount) comp.componentDidMount();
+      return comp;
+    }
+  };
+})();
+
+</script>
+<script>
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.uid = 1000;
+    var n = 0, self = this;
+    var mk = function (name, url, sec, seq) { n++; return { id: 'v' + n, name: name, url: url, active: true, level: sec, seq: seq }; };
+    var sb = 'https://altametricslist.com/alta-growth/hwmanager/helpcenter/assets/videos/en/Plum-Schedules/Web/';
+    var sa = 'https://aglearning.[domain]/[video-file].mp4';
+    var courses = [
+      { id: 'sales', name: 'Sales app', mono: 'SA', hue: '#B45309', active: true,
+        sections: [{ id: 's1', name: 'Employees' }, { id: 's2', name: 'Positions' }],
+        videos: [mk('Employee module video', sa, 's1', 1), mk('Position assign video', sa, 's2', 1)] },
+      { id: 'plum', name: 'Plum POS', mono: 'PP', hue: '#7E2A8C', active: true,
+        sections: [{ id: 's3', name: 'Menu' }],
+        videos: [mk('Add Menu Item', 'https://altametricslist.com/[path]/[video-file].mp4', 's3', 1)] },
+      { id: 'sched', name: 'Schedules', mono: 'S', hue: '#0F766E', active: true,
+        sections: [{ id: 's4', name: 'Getting started' }, { id: 's5', name: 'Scheduling shifts' }, { id: 's6', name: 'Report' }, { id: 's7', name: 'Settings' }],
+        videos: [
+          mk('Overview of the Dashboard', sb + '[video-file].mp4', 's4', 1),
+          mk('My Schedule', sb + '[video-file].mp4', 's4', 2),
+          mk('How do I schedule an employee for a Custom Shift?', sb + '[video-file].mp4', 's5', 1),
+          mk('How to Use the Unassigned Shift Feature', sb + '[video-file].mp4', 's5', 2),
+          mk('How do I schedule an employee for a Standard Shift', sb + '[video-file].mp4', 's5', 3),
+          mk('Swap Shift', sb + '[video-file].mp4', 's5', 4),
+          mk('Time Off Request', sb + 'TimeOffRequest_plum.mp4', 's5', 5),
+          mk('Schedules: Week Level Footer Statistics', sb + '[video-file].mp4', 's6', 1),
+          mk('Schedules: Day Level Footer Statistics', sb + '[video-file].mp4', 's6', 2),
+          mk('How to Use the Schedule Report', sb + 'ScheduleReports.mp4', 's6', 3),
+          mk('User Type Hierarchy', sb + '[video-file].mp4', 's7', 1)
+        ] }
+    ];
+    var opt = function (text, correct) { return { id: self.id('o'), text: text, media: '', correct: !!correct, active: true, showMedia: false }; };
+    var ph = function () { return [opt('[Option 1]', true), opt('[Option 2]'), opt('[Option 3]'), opt('[Option 4]')]; };
+    var qn = function (text, opts) { return { id: self.id('q'), text: text, type: 'single', points: '1', active: true, open: false, options: opts || ph() }; };
+    var base = { type: '', desc: '', seq: '1', pass: '70', attemptsOn: false, attemptsN: '3', timeOn: false, timeN: '10', unlockOn: false, unlockN: '80',
+      active: true, required: true, shuffleQ: false, shuffleO: false, showAns: true, allowSkip: false };
+    var saved = [
+      Object.assign({}, base, { id: 'a1', videoId: 'sales:s1', name: 'How To Add Employee', questions: [
+        qn('What is the primary purpose of the Employee Module?', [opt('Manage employee information', true), opt('Manage company hardware'), opt('Create marketing campaigns'), opt('Manage customer invoices')]),
+        qn('Which information is commonly stored in an employee profile?'),
+        qn('What should an administrator do when an employee leaves the organization?'),
+        qn('What is the purpose of assigning a role to an employee?'),
+        qn('Which action allows an administrator to find a specific employee quickly?'),
+        qn('Why is employee information important to keep up to date?'),
+        qn('What does employee status typically indicate?'),
+        qn('Who should generally have permission to modify sensitive employee information?'),
+        qn('What is the purpose of an Employee Export feature?'),
+        qn("What should you do if an employee's information is incorrect?")
+      ] }),
+      Object.assign({}, base, { id: 'a2', videoId: 'sales:s2', name: 'How To Assign Position', questions: [] })
+    ];
+    this.state = { view: 'list', cid: 'sched', mtab: 'curr', lq: '', lstatus: 'all', sortMode: false, collapsed: {},
+      courses: courses, modal: null, confirm: null, secModal: null, courseModal: null, seqDraft: {}, toast: '', checked: {}, q: '',
+      saved: saved, selId: null, draft: null, aq: '', tried: false, aconfirm: null, step: 1, qSel: 0 };
+  }
+  LV() {
+    return [
+      { k: 'b', name: 'Beginner', c: '#15803D', t: '#E9F7EE', s: '#B7E1C3' },
+      { k: 'i', name: 'Intermediate', c: '#C2410C', t: '#FFF1E8', s: '#F8C9A8' },
+      { k: 'a', name: 'Advanced', c: '#7E22CE', t: '#F6EEFE', s: '#DCC2F5' }
+    ];
+  }
+  lvName(k) { var m = { b: 'Beginner', i: 'Intermediate', a: 'Advanced' }; return m[k] || ''; }
+  byLevel(c, k) { return c.videos.filter(function (v) { return v.level === k; }).sort(function (a, b) { return a.seq - b.seq; }); }
+  maxSeq(c, k) { return this.byLevel(c, k).reduce(function (m, v) { return Math.max(m, v.seq); }, 0); }
+  renumber(courses, cid, lv) {
+    var c = courses.filter(function (x) { return x.id === cid; })[0];
+    var map = {}; this.byLevel(c, lv).forEach(function (v, i) { map[v.id] = i + 1; });
+    return this.mapCourse(courses, cid, function (vids) { return vids.map(function (v) { return map[v.id] && v.seq !== map[v.id] ? Object.assign({}, v, { seq: map[v.id] }) : v; }); });
+  }
+  // put items into a level's ordered list: items with a requested position are inserted there, others go to the end
+  place(courses, cid, lv, items) {
+    var c = courses.filter(function (x) { return x.id === cid; })[0];
+    var ids = {}; items.forEach(function (it) { ids[it.v.id] = 1; });
+    var arr = this.byLevel(c, lv).filter(function (v) { return !ids[v.id]; });
+    var fixed = items.filter(function (it) { return it.pos; }).sort(function (a, b) { return a.pos - b.pos; });
+    var rest = items.filter(function (it) { return !it.pos; });
+    fixed.forEach(function (it) { arr.splice(Math.min(it.pos - 1, arr.length), 0, it.v); });
+    rest.forEach(function (it) { arr.push(it.v); });
+    var map = {}; arr.forEach(function (v, i) { map[v.id] = i + 1; });
+    var placed = {}; items.forEach(function (it) { placed[it.v.id] = it.v; });
+    return this.mapCourse(courses, cid, function (vids) {
+      var out = vids.filter(function (v) { return !placed[v.id]; }).concat(items.map(function (it) { return it.v; }));
+      return out.map(function (v) { return map[v.id] ? Object.assign({}, v, { level: lv, seq: map[v.id] }) : v; });
+    });
+  }
+  mapCourse(courses, cid, fn) { return courses.map(function (c) { return c.id === cid ? Object.assign({}, c, { videos: fn(c.videos, c) }) : c; }); }
+  flash(msg) {
+    var self = this;
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(function () { self.setState({ toast: '' }); }, 3200);
+  }
+  short(u) { return u.length > 56 ? u.slice(0, 34) + '…' + u.slice(-18) : u; }
+  blankRow() { this.uid++; return { key: 'r' + this.uid, name: '', url: '', seq: '', active: true, errName: '', errUrl: '', errSeq: '' }; }
+  openModal(mode, cid, level, rows, editId) {
+    this.setState({ modal: { mode: mode, cid: cid, level: level, rows: rows, input: 'rows', paste: '', editId: editId || null, errText: '', ok: '', levelErr: false, pasteErr: false } });
+  }
+  setM(patch) { this.setState({ modal: Object.assign({}, this.state.modal, patch) }); }
+  parse(text) {
+    var self = this;
+    return text.split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean).map(function (l) {
+      var i = l.search(/https?:\/\//i);
+      var r = self.blankRow();
+      if (i >= 0) { r.name = l.slice(0, i).replace(/[\s,|;\t-]+$/, '').trim(); r.url = l.slice(i).trim(); }
+      else { r.name = l.replace(/[\s,|;\t-]+$/, ''); }
+      return r;
+    });
+  }
+  save() {
+    var self = this, s = this.state, m = s.modal;
+    var rows = m.rows.filter(function (r) { return r.name.trim() || r.url.trim(); });
+    if (!rows.length) rows = [m.rows[0]];
+    var errs = 0;
+    rows = rows.map(function (r) {
+      var en = r.name.trim() ? '' : 'Enter a video name.';
+      var u = r.url.trim();
+      var eu = !u ? 'Enter the video URL.' : (/^https?:\/\/\S+$/i.test(u) ? '' : 'Use a full URL starting with http:// or https://');
+      var sq = String(r.seq == null ? '' : r.seq).trim();
+      var es = sq && !/^[1-9]\d*$/.test(sq) ? 'Use a whole number, 1 or more.' : '';
+      if (en) errs++; if (eu) errs++; if (es) errs++;
+      return Object.assign({}, r, { errName: en, errUrl: eu, errSeq: es });
+    });
+    var levelErr = !m.level;
+    if (errs || levelErr) {
+      this.setM({ rows: rows, levelErr: levelErr, ok: '', errText: errs ? 'Fix ' + errs + (errs === 1 ? ' field' : ' fields') + ' to continue.' : 'Choose a section to continue.' });
+      return;
+    }
+    var courses = s.courses;
+    var target = courses.filter(function (c) { return c.id === m.cid; })[0];
+    var lv = m.level;
+    if (m.mode === 'add') {
+      var items = rows.map(function (r) { self.uid++; return { pos: parseInt(r.seq, 10) || 0, v: { id: 'v' + self.uid, name: r.name.trim(), url: r.url.trim(), active: r.active, level: lv, seq: 0 } }; });
+      courses = this.place(courses, m.cid, lv, items);
+      this.setState({ courses: courses, modal: null, sel: m.cid, tab: lv, checked: {}, q: '' });
+      var cl = Object.assign({}, s.collapsed || {}); cl[lv] = false; this.setState({ collapsed: cl });
+      this.flash(items.length + (items.length === 1 ? ' video' : ' videos') + ' added to ' + this.secName(m.cid, lv));
+    } else {
+      var r0 = rows[0], vid = m.editId, orig = null, origC = null;
+      courses.forEach(function (c) { c.videos.forEach(function (v) { if (v.id === vid) { orig = v; origC = c.id; } }); });
+      var moved = origC !== m.cid || orig.level !== lv;
+      var upd = Object.assign({}, orig, { name: r0.name.trim(), url: r0.url.trim(), active: r0.active });
+      var pos = parseInt(r0.seq, 10) || (moved ? 0 : orig.seq);
+      courses = this.mapCourse(courses, origC, function (vids) { return vids.filter(function (v) { return v.id !== vid; }); });
+      if (moved) courses = this.renumber(courses, origC, orig.level);
+      courses = this.place(courses, m.cid, lv, [{ pos: pos, v: upd }]);
+      this.setState({ courses: courses, modal: null, sel: m.cid, tab: lv, checked: {} });
+      this.flash('Changes saved to ' + upd.name);
+    }
+  }
+  id(p) { this.uid++; return p + this.uid; }
+  clone(x) { return JSON.parse(JSON.stringify(x)); }
+  videos() {
+    var c = this.course();
+    return [{ label: c.name, videos: c.sections.map(function (x, i) { return { id: c.id + ':' + x.id, name: 'Section ' + (i + 1) + ': ' + x.name }; }) }];
+  }
+  videoLabel(key) {
+    if (!key) return '';
+    var p = key.split(':'), c = this.course(p[0]);
+    var n = this.secName(p[0], p[1]);
+    return c && n ? c.name + ' · ' + n : '';
+  }
+  blankQ() {
+    var self = this;
+    var o = function () { return { id: self.id('o'), text: '', media: '', correct: false, active: true, showMedia: false }; };
+    return { id: this.id('q'), text: '', type: 'single', points: '1', active: true, open: true, options: [o(), o(), o(), o()] };
+  }
+  intOk(v, min, max) { var s = String(v).trim(); if (!/^\d+$/.test(s)) return false; var n = +s; return n >= min && (max == null || n <= max); }
+  qIssues(q) {
+    var out = [];
+    var filled = q.options.filter(function (o) { return o.text.trim(); });
+    if (!q.text.trim()) out.push('Add the question text.');
+    if (filled.length < 2) out.push('Add at least 2 answer options.');
+    if (filled.length && !filled.some(function (o) { return o.correct; })) out.push('Mark the correct answer (click the circle next to it).');
+    if (q.type === 'single' && filled.filter(function (o) { return o.correct; }).length > 1) out.push('Only one answer can be correct. Switch to "More than one correct answer" or unmark the extras.');
+    if (q.options.some(function (o) { return !o.text.trim(); }) && filled.length >= 2) out.push('Remove empty options or fill them in.');
+    if (!this.intOk(q.points, 1)) out.push('Points must be a whole number, 1 or more.');
+    return out;
+  }
+  aErrors(d) {
+    return {
+      video: !d.videoId, name: !d.name.trim(), pass: !this.intOk(d.pass, 1, 100),
+      attempts: d.attemptsOn && !this.intOk(d.attemptsN, 1), time: d.timeOn && !this.intOk(d.timeN, 1), unlock: false
+    };
+  }
+  savedOf(id) { return this.state.saved.filter(function (a) { return a.id === id; })[0]; }
+  isDirty() { var s = this.state, sv = this.savedOf(s.selId); return !sv || JSON.stringify(sv) !== JSON.stringify(s.draft); }
+  load(id) { var a = this.savedOf(id); this.setState({ selId: id, draft: this.clone(a), tried: false, aconfirm: null, step: 1, qSel: 0 }); }
+  makeNew(vid) {
+    var d = { id: this.id('a'), videoId: vid || '', name: '', type: '', desc: '', seq: '1', pass: '70', attemptsOn: false, attemptsN: '3', timeOn: false, timeN: '10', unlockOn: false, unlockN: '80',
+      active: true, required: true, shuffleQ: false, shuffleO: false, showAns: true, allowSkip: false, questions: [this.blankQ()] };
+    this.setState({ selId: d.id, draft: d, tried: false, aconfirm: null, step: 1, qSel: 0 });
+  }
+  asgVals() {
+    var self = this, s = this.state, d = s.draft;
+    var set = function (patch) { self.setState({ draft: Object.assign({}, self.state.draft, patch) }); };
+    var setQs = function (qs) { set({ questions: qs }); };
+    var updQ = function (qi, patch) { var qs = self.state.draft.questions.slice(); qs[qi] = Object.assign({}, qs[qi], patch); setQs(qs); };
+    var updO = function (qi, oi, patch) { var q = self.state.draft.questions[qi]; var os = q.options.slice(); os[oi] = Object.assign({}, os[oi], patch); updQ(qi, { options: os }); };
+    var setQsSel = function (qsArr, sel) { self.setState({ draft: Object.assign({}, self.state.draft, { questions: qsArr }), qSel: sel }); };
+    var qSel = Math.max(0, Math.min(s.qSel || 0, d.questions.length - 1));
+    var swap = function (arr, i, j) { var a = arr.slice(); var t = a[i]; a[i] = a[j]; a[j] = t; return a; };
+    var dirty = this.isDirty();
+    var er = this.aErrors(d), tried = s.tried;
+
+    // list
+    var isNew = !this.savedOf(s.selId);
+    var listSrc = s.saved.map(function (a) { return a.id === s.selId ? d : a; });
+    if (isNew) listSrc = [d].concat(listSrc);
+    var q = s.aq.trim().toLowerCase();
+    var items = listSrc.filter(function (a) { return !q || (a.name + ' ' + self.videoLabel(a.videoId)).toLowerCase().indexOf(q) > -1; }).map(function (a) {
+      var on = a.id === s.selId, n = a.questions.length;
+      return { name: a.name.trim() || 'New quiz', video: self.videoLabel(a.videoId) || 'No video chosen yet', cls: on ? 'on' : '', cur: on ? 'true' : 'false',
+        dirty: on && dirty, qCount: n + (n === 1 ? ' question' : ' questions'), required: a.required,
+        status: a.active ? 'Active' : 'Inactive', stCls: a.active ? 'green' : 'grey',
+        pick: function () {
+          if (a.id === self.state.selId) return;
+          if (self.isDirty()) self.setState({ aconfirm: { kind: 'switch', target: a.id } }); else self.load(a.id);
+        } };
+    });
+
+    // rules
+    var ruleDefs = [
+      { k: 'attempts', label: 'Attempts allowed', offText: 'Unlimited', onText: 'Limit attempts', unit: 'tries', help: 'How many times a learner can take this assignment.', errText: 'Enter 1 or more attempts.' },
+      { k: 'time', label: 'Time limit', offText: 'No time limit', onText: 'Set a time limit', unit: 'min', help: 'Learners must finish within this time once they start.', errText: 'Enter 1 or more minutes.' },
+      { k: 'unlock', label: 'When it unlocks', offText: 'Any time', onText: 'After the section videos', unit: '', noVal: true, help: 'Choose whether learners must finish the section\'s videos before they can start the quiz.', errText: '' }
+    ];
+    var rules = ruleDefs.map(function (r) {
+      var on = d[r.k + 'On'];
+      var bad = tried && er[r.k];
+      var p1 = {}, p2 = {};
+      p1[r.k + 'On'] = false; p2[r.k + 'On'] = true;
+      return { label: r.label, lid: 'r-' + r.k, iid: 'ri-' + r.k, offText: r.offText, onText: r.onText, unit: r.unit, help: r.help, errText: r.errText,
+        on: on, showVal: on && !r.noVal, offCls: on ? '' : 'on', onCls: on ? 'on' : '', offSel: on ? 'false' : 'true', onSel: on ? 'true' : 'false',
+        setOff: function () { set(p1); }, setOn: function () { set(p2); },
+        val: d[r.k + 'N'], cls: bad ? 'bad' : '', err: !!bad,
+        onVal: function (e) { var p = {}; p[r.k + 'N'] = e.target.value; set(p); } };
+    });
+
+    // toggles
+    var tDefs = [
+      { k: 'active', label: 'Active', desc: 'Learners can see and take this assignment.' },
+      { k: 'required', label: 'Required', desc: 'Learners must pass it to complete this part of the training.' },
+      { k: 'shuffleQ', label: 'Shuffle questions', desc: 'Show questions in a different order on each attempt.' },
+      { k: 'shuffleO', label: 'Shuffle answer options', desc: 'Mix up the order of the answer options.' },
+      { k: 'showAns', label: 'Show correct answers after submitting', desc: 'Learners see which answers were right once they submit.' },
+      { k: 'allowSkip', label: 'Allow skipping questions', desc: 'Learners can move on without answering and come back later.' }
+    ];
+    var toggles = tDefs.map(function (t) {
+      var v = !!d[t.k];
+      return { label: t.label, desc: t.desc, lid: 't-' + t.k, did: 'td-' + t.k, cls: v ? 'on' : '', str: v ? 'true' : 'false',
+        flip: function () { var p = {}; p[t.k] = !self.state.draft[t.k]; set(p); } };
+    });
+
+    // questions
+    var issueTotal = 0;
+    var qs = d.questions.map(function (qq, qi) {
+      var iss = self.qIssues(qq);
+      issueTotal += iss.length ? 1 : 0;
+      var filled = qq.options.filter(function (o) { return o.text.trim(); });
+      var right = filled.filter(function (o) { return o.correct; }).map(function (o) { return o.text.trim(); });
+      var multi = qq.type === 'multi';
+      return {
+        n: qi + 1, bid: 'qb-' + qq.id, tid: 'qt-' + qq.id, yid: 'qy-' + qq.id, pid: 'qp-' + qq.id,
+        title: qq.text.trim() || 'Untitled question',
+        summary: filled.length + (filled.length === 1 ? ' option' : ' options') + ' · ' + (right.length ? 'Correct: ' + right.join(', ') : 'No correct answer marked') + ' · ' + (qq.points || '0') + (qq.points === '1' ? ' point' : ' points'),
+        cls: (iss.length ? 'warn ' : '') + (qq.active ? '' : 'off'), numBg: iss.length ? '#C2410C' : '#1F4FD1',
+        hasIssue: iss.length > 0, issues: iss.map(function (t) { return { text: t }; }), inactive: !qq.active,
+        open: qq.open, exp: qq.open ? 'true' : 'false', chev: qq.open ? 'rotate(180deg)' : 'none',
+        toggle: function () { updQ(qi, { open: !qq.open }); },
+        first: qi === 0, last: qi === d.questions.length - 1,
+        up: function () { setQsSel(swap(d.questions, qi, qi - 1), qi - 1); }, down: function () { setQsSel(swap(d.questions, qi, qi + 1), qi + 1); },
+        navCls: qi === qSel ? 'on' : '', selStr: qi === qSel ? 'true' : 'false',
+        pick: function () { self.setState({ qSel: qi }); },
+        navSub: (iss.length ? 'Needs attention' : filled.length + ' options · ' + (qq.points || '0') + ' pt') + (qq.active ? '' : ' · inactive'),
+        notLast: qi < d.questions.length - 1,
+        prevQ: function () { self.setState({ qSel: Math.max(0, qi - 1) }); },
+        nextQ: function () { self.setState({ qSel: Math.min(d.questions.length - 1, qi + 1) }); },
+        dup: function () {
+          var c = self.clone(qq); c.id = self.id('q'); c.open = true; c.options.forEach(function (o) { o.id = self.id('o'); });
+          var a = d.questions.slice(); a.splice(qi + 1, 0, c); setQsSel(a, qi + 1); self.flash('Question ' + (qi + 1) + ' duplicated');
+        },
+        del: function () { self.setState({ aconfirm: { kind: 'delQ', qi: qi } }); },
+        text: qq.text, onText: function (e) { updQ(qi, { text: e.target.value }); },
+        type: qq.type, onType: function (e) {
+          var t = e.target.value, os = qq.options;
+          if (t === 'single') { var seen = false; os = os.map(function (o) { if (o.correct && !seen) { seen = true; return o; } return o.correct ? Object.assign({}, o, { correct: false }) : o; }); }
+          updQ(qi, { type: t, options: os });
+        },
+        points: qq.points, onPoints: function (e) { updQ(qi, { points: e.target.value }); },
+        actCls: qq.active ? 'on' : '', actStr: qq.active ? 'true' : 'false', flipActive: function () { updQ(qi, { active: !qq.active }); },
+        markHelp: multi ? 'Tick every correct answer.' : 'Click the circle next to the correct answer.',
+        opts: qq.options.map(function (o, oi) {
+          return {
+            id: 'ot-' + o.id, mid: 'om-' + o.id, letter: String.fromCharCode(65 + oi), text: o.text, media: o.media,
+            cls: o.correct ? 'right' : '', correct: o.correct, correctStr: o.correct ? 'true' : 'false',
+            role: multi ? 'checkbox' : 'radio', markCls: (o.correct ? 'on ' : '') + (multi ? 'sq' : ''),
+            markLabel: (o.correct ? 'Correct answer: ' : 'Mark as correct: ') + (o.text.trim() || 'option ' + String.fromCharCode(65 + oi)),
+            mark: function () {
+              var os = qq.options.map(function (x, xi) {
+                if (multi) return xi === oi ? Object.assign({}, x, { correct: !x.correct }) : x;
+                return Object.assign({}, x, { correct: xi === oi });
+              });
+              updQ(qi, { options: os });
+            },
+            onText: function (e) { updO(qi, oi, { text: e.target.value }); },
+            onMedia: function (e) { updO(qi, oi, { media: e.target.value }); },
+            showMedia: o.showMedia || !!o.media, mediaExp: o.showMedia || o.media ? 'true' : 'false', mediaCls: o.media ? 'on' : '',
+            toggleMedia: function () { updO(qi, oi, { showMedia: !(o.showMedia || o.media) }); },
+            actCls: o.active ? 'on' : '', actStr: o.active ? 'true' : 'false', flipActive: function () { updO(qi, oi, { active: !o.active }); },
+            first: oi === 0, last: oi === qq.options.length - 1,
+            up: function () { updQ(qi, { options: swap(qq.options, oi, oi - 1) }); },
+            down: function () { updQ(qi, { options: swap(qq.options, oi, oi + 1) }); },
+            del: function () { var os = qq.options.slice(); os.splice(oi, 1); updQ(qi, { options: os }); }
+          };
+        }),
+        addOpt: function () { updQ(qi, { options: qq.options.concat([{ id: self.id('o'), text: '', media: '', correct: false, active: true, showMedia: false }]) }); }
+      };
+    });
+    var pts = d.questions.reduce(function (t, x) { return t + (x.active ? (parseInt(x.points, 10) || 0) : 0); }, 0);
+    var nq = d.questions.length;
+    var anyOpen = d.questions.some(function (x) { return x.open; });
+    var fieldErrs = ['video', 'name', 'pass', 'attempts', 'time', 'unlock'].filter(function (k) { return er[k]; }).length;
+    var totalIssues = issueTotal + fieldErrs;
+
+    var cf = {};
+    if (s.aconfirm) {
+      var c = s.aconfirm;
+      if (c.kind === 'switch') cf = { title: 'Discard unsaved changes?', body: 'You have changes to "' + (d.name.trim() || 'New quiz') + '" that haven\'t been saved.', cta: 'Discard and continue', cls: 'd', ok: function () { self.load(c.target); } };
+      if (c.kind === 'new') cf = { title: 'Discard unsaved changes?', body: 'Your changes to "' + (d.name.trim() || 'New quiz') + '" will be lost.', cta: 'Discard and start new', cls: 'd', ok: function () { self.makeNew(c.video); } };
+      if (c.kind === 'delQ') cf = { title: 'Delete question ' + (c.qi + 1) + '?', body: 'The question and its answer options will be removed when you save.', cta: 'Delete question', cls: 'd', ok: function () { var a = d.questions.slice(); a.splice(c.qi, 1); self.setState({ aconfirm: null, qSel: Math.max(0, Math.min(c.qi, a.length - 1)), draft: Object.assign({}, d, { questions: a }) }); } };
+      if (c.kind === 'delA') cf = { title: 'Delete "' + (d.name.trim() || 'New quiz') + '"?', body: 'Learners will no longer see this quiz, and its questions and answers will be removed. To hide it for now, turn off Active instead.', cta: 'Delete quiz', cls: 'd',
+        ok: function () {
+          self.setState({ saved: s.saved.filter(function (a) { return a.id !== s.selId; }), selId: null, draft: null, view: 'course', aconfirm: null });
+          self.flash('Quiz deleted');
+        } };
+      if (c.kind === 'leave') cf = { title: 'Discard unsaved changes?', body: 'Your changes to "' + (d.name.trim() || 'New quiz') + '" haven\'t been saved.', cta: 'Discard and go back', cls: 'd', ok: function () { self.setState({ view: 'course', aconfirm: null, selId: null, draft: null }); } };
+      if (c.kind === 'leaveList') cf = { title: 'Discard unsaved changes?', body: 'Your changes to "' + (d.name.trim() || 'New quiz') + '" haven\'t been saved.', cta: 'Discard and go back', cls: 'd', ok: function () { self.setState({ view: 'list', aconfirm: null, selId: null, draft: null }); } };
+      cf.cancel = function () { self.setState({ aconfirm: null }); };
+    }
+
+    var s1Bad = er.video || er.name, s2Bad = er.pass || er.attempts || er.time || er.unlock, s3Bad = issueTotal > 0 || nq === 0;
+    var step = s.step || 1;
+    var ruleText = function (on, n, unit, offText) { return on ? n + ' ' + unit : offText; };
+    var stepDefs = [
+      { n: 1, title: 'Details', sub: d.videoId ? this.secName(d.videoId.split(':')[0], d.videoId.split(':')[1]) : 'Section and name', bad: s1Bad },
+      { n: 2, title: 'Settings', sub: 'Pass ' + (d.pass || '–') + '% · ' + ruleText(d.attemptsOn, d.attemptsN, 'attempts', 'Unlimited attempts'), bad: s2Bad },
+      { n: 3, title: 'Questions & answers', sub: nq ? nq + (nq === 1 ? ' question' : ' questions') + (issueTotal ? ' · ' + issueTotal + ' to fix' : ' · ' + pts + ' points') : 'No questions yet', bad: s3Bad }
+    ];
+    var steps = stepDefs.map(function (x) {
+      var on = x.n === step;
+      var warn = x.bad && (tried || x.n < step);
+      var done = !x.bad && !on;
+      return { n: x.n, title: x.title, sub: x.sub, cls: on ? 'on' : '', sel: on ? 'true' : 'false',
+        warn: warn, done: done && !warn, plain: !warn && !(done && !warn),
+        dotBg: warn ? '#FFF1E8' : done ? '#16A34A' : on ? '#1F4FD1' : '#EEF1F5', dotFg: warn ? '#C2410C' : done || on ? '#fff' : '#3D4757',
+        go: function () { self.setState({ step: x.n }); } };
+    });
+    var qe = qs[qSel] || {};
+    return {
+      steps: steps, step: step, isStep1: step === 1, isStep2: step === 2, isStep3: step === 3, notStep3: step !== 3,
+      stepName: stepDefs[step - 1].title,
+      nextLabel: step === 1 ? 'Next: Settings' : 'Next: Questions & answers',
+      prevStep: function () { self.setState({ step: Math.max(1, step - 1) }); },
+      nextStep: function () {
+        var bad = step === 1 ? s1Bad : s2Bad;
+        if (bad) { self.setState({ tried: true }); self.flash('Complete the highlighted fields to continue'); return; }
+        self.setState({ step: step + 1 });
+      },
+      qe: qe, qCount: nq,
+      newAssignment: function () { if (self.isDirty()) self.setState({ aconfirm: { kind: 'new' } }); else self.makeNew(); },
+      q: s.aq, onQ: function (e) { self.setState({ aq: e.target.value }); },
+      items: items, noItems: items.length === 0, listCount: listSrc.length,
+      d: {
+        titleText: d.name.trim() || 'New quiz',
+        videoLabel: d.videoId ? this.videoLabel(d.videoId) : 'Not in a section yet',
+        videoId: d.videoId, videoCls: tried && er.video ? 'bad' : '', videoErr: tried && er.video,
+        name: d.name, nameCls: tried && er.name ? 'bad' : '', nameErr: tried && er.name,
+        type: d.type, seq: d.seq, desc: d.desc,
+        pass: d.pass, passCls: tried && er.pass ? 'bad' : '', passErr: tried && er.pass
+      },
+      videoGroups: this.videos(),
+      onVideo: function (e) { set({ videoId: e.target.value }); },
+      onName: function (e) { set({ name: e.target.value }); },
+      onType: function (e) { set({ type: e.target.value }); },
+      onSeq: function (e) { set({ seq: e.target.value }); },
+      onDesc: function (e) { set({ desc: e.target.value }); },
+      onPass: function (e) { set({ pass: e.target.value }); },
+      rules: rules, toggles: toggles,
+      qs: qs, hasQs: nq > 0, noQs: nq === 0,
+      qSummary: nq ? nq + (nq === 1 ? ' question' : ' questions') + ' · ' + pts + ' points total' + (issueTotal ? ' · ' + issueTotal + ' need attention' : '') : 'Add questions learners answer after the video.',
+      toggleAllLabel: anyOpen ? 'Collapse all' : 'Expand all',
+      toggleAllQ: function () { setQs(d.questions.map(function (x) { return Object.assign({}, x, { open: !anyOpen }); })); },
+      addQ: function () { setQsSel(d.questions.concat([self.blankQ()]), d.questions.length); },
+      bar: {
+        clean: !dirty,
+        state: dirty ? 'Unsaved changes' : 'All changes saved',
+        dot: dirty ? '#E9A23B' : '#16A34A',
+        issues: totalIssues ? totalIssues + (totalIssues === 1 ? ' item needs' : ' items need') + ' attention before saving' : (nq ? 'Ready to save' : ''),
+        issueColor: totalIssues ? '#8A4B00' : '#556070'
+      },
+      discard: function () { var sv = self.savedOf(s.selId); if (sv) self.load(s.selId); else self.setState({ view: 'course', selId: null, draft: null }); },
+      save: function () {
+        var cur = self.state.draft;
+        var bad = self.aErrors(cur), badQ = cur.questions.some(function (x) { return self.qIssues(x).length; });
+        var anyBad = Object.keys(bad).some(function (k) { return bad[k]; }) || badQ;
+        var noQ = cur.questions.length === 0;
+        if (anyBad || noQ) {
+          var st = bad.video || bad.name ? 1 : (bad.pass || bad.attempts || bad.time || bad.unlock) ? 2 : 3;
+          var firstBad = 0;
+          cur.questions.some(function (x, i) { if (self.qIssues(x).length) { firstBad = i; return true; } return false; });
+          self.setState({ tried: true, step: st, qSel: firstBad });
+          self.flash(noQ && !anyBad ? 'Add at least one question before saving' : 'Fix the highlighted items, then save again');
+          return;
+        }
+        var exists = !!self.savedOf(cur.id);
+        var saved = exists ? self.state.saved.map(function (a) { return a.id === cur.id ? self.clone(cur) : a; }) : [self.clone(cur)].concat(self.state.saved);
+        self.setState({ saved: saved, tried: false });
+        self.flash('Quiz "' + cur.name.trim() + '" saved to ' + self.secName(cur.videoId.split(':')[0], cur.videoId.split(':')[1]));
+      },
+      askDelete: function () { if (self.savedOf(s.selId)) self.setState({ aconfirm: { kind: 'delA' } }); else self.setState({ view: 'course', selId: null, draft: null }); },
+      hasConfirm: !!s.aconfirm, cf: cf,
+      hasToast: !!s.toast, toast: s.toast
+    };
+  }
+  course(cid) { return this.state.courses.filter(function (c) { return c.id === (cid || this.state.cid); }, this)[0]; }
+  secIndex(c, sid) { for (var i = 0; i < c.sections.length; i++) if (c.sections[i].id === sid) return i; return -1; }
+  secName(cid, sid) { var c = this.course(cid); if (!c) return ''; var i = this.secIndex(c, sid); return i < 0 ? '' : 'Section ' + (i + 1) + ': ' + c.sections[i].name; }
+  quizzesOf(cid, sid) { var key = cid + ':' + sid; return this.state.saved.filter(function (a) { return a.videoId === key; }).sort(function (a, b) { return (+a.seq || 0) - (+b.seq || 0); }); }
+  mapSections(courses, cid, fn) { return courses.map(function (c) { return c.id === cid ? Object.assign({}, c, { sections: fn(c.sections) }) : c; }); }
+  openQuiz(id) { this.load(id); this.setState({ view: 'quiz' }); }
+  newQuiz(key) { this.makeNew(key || ''); this.setState({ view: 'quiz' }); }
+  listVals() {
+    var self = this, s = this.state;
+    var q = s.lq.trim().toLowerCase();
+    var list = s.courses.filter(function (c) {
+      if (q && c.name.toLowerCase().indexOf(q) < 0) return false;
+      if (s.lstatus === 'active' && !c.active) return false;
+      if (s.lstatus === 'inactive' && c.active) return false;
+      return true;
+    });
+    var rows = list.map(function (c, i) {
+      var quizN = s.saved.filter(function (a) { return a.videoId.split(':')[0] === c.id; }).length;
+      return { n: i + 1, name: c.name, mono: c.mono, hue: c.hue,
+        sub: c.sections.length ? c.sections.map(function (x) { return x.name; }).slice(0, 3).join(' · ') + (c.sections.length > 3 ? ' · …' : '') : 'No sections yet',
+        secN: c.sections.length, vidN: c.videos.length, quizN: quizN,
+        status: c.active ? 'Active' : 'Inactive', stCls: c.active ? 'green' : 'grey',
+        open: function () { self.setState({ view: 'course', cid: c.id, mtab: 'curr', sortMode: false }); },
+        menuOpen: s.menuFor === c.id, menuExp: s.menuFor === c.id ? 'true' : 'false', kebabCls: s.menuFor === c.id ? 'on' : '',
+        menuDir: list.length > 2 && i >= list.length - 2 ? 'up' : '',
+        toggleMenu: function () { self.setState({ menuFor: self.state.menuFor === c.id ? null : c.id }); },
+        menuKey: function (e) { if (e.key === 'Escape') self.setState({ menuFor: null }); },
+        edit: function () { self.setState({ menuFor: null, view: 'course', cid: c.id, mtab: 'curr', sortMode: false }); },
+        preview: function () { self.setState({ menuFor: null, preview: c.id }); },
+        del: function () { self.setState({ menuFor: null, confirm: { kind: 'delCourse', id: c.id } }); } };
+    });
+    var cf = {};
+    if (s.confirm && s.confirm.kind === 'delCourse') {
+      var dc = s.courses.filter(function (x) { return x.id === s.confirm.id; })[0];
+      var dq = s.saved.filter(function (a) { return a.videoId.split(':')[0] === dc.id; }).length;
+      cf = { cls: 'd', title: 'Delete "' + dc.name + '"?',
+        body: 'This removes its ' + dc.sections.length + (dc.sections.length === 1 ? ' section, ' : ' sections, ') + dc.videos.length + (dc.videos.length === 1 ? ' video' : ' videos') + ' and ' + dq + (dq === 1 ? ' quiz' : ' quizzes') + '. Learners lose access right away. This can\'t be undone. To hide it for now, set it to inactive in Basic info instead.',
+        cta: 'Delete course',
+        cancel: function () { self.setState({ confirm: null }); },
+        ok: function () {
+          self.setState({ courses: self.state.courses.filter(function (x) { return x.id !== dc.id; }), saved: self.state.saved.filter(function (a) { return a.videoId.split(':')[0] !== dc.id; }), confirm: null });
+          self.flash('"' + dc.name + '" deleted');
+        } };
+    }
+    return {
+      lq: s.lq, onLq: function (e) { self.setState({ lq: e.target.value }); },
+      lstatus: s.lstatus, onLstatus: function (e) { self.setState({ lstatus: e.target.value }); },
+      courseRows: rows, hasCourses: rows.length > 0, noCourses: rows.length === 0,
+      listFoot: rows.length ? 'Showing 1 to ' + rows.length + ' of ' + rows.length + (rows.length === 1 ? ' course' : ' courses') : 'Showing 0 courses',
+      menuOpen: !!s.menuFor, closeMenu: function () { self.setState({ menuFor: null }); },
+      hasConfirm: !!(s.confirm && s.confirm.kind === 'delCourse'), cf: cf,
+      newCourse: function () { self.setState({ courseModal: { name: '', tried: false } }); },
+      hasCourseModal: !!s.courseModal,
+      nc: s.courseModal ? {
+        name: s.courseModal.name, err: s.courseModal.tried && !s.courseModal.name.trim(), cls: s.courseModal.tried && !s.courseModal.name.trim() ? 'bad' : '',
+        onName: function (e) { self.setState({ courseModal: { name: e.target.value, tried: false } }); },
+        key: function (e) { if (e.key === 'Enter') self.createCourse(); if (e.key === 'Escape') self.setState({ courseModal: null }); },
+        cancel: function () { self.setState({ courseModal: null }); },
+        save: function () { self.createCourse(); }
+      } : {}
+    };
+  }
+  createCourse() {
+    var s = this.state, name = s.courseModal.name.trim();
+    if (!name) { this.setState({ courseModal: { name: s.courseModal.name, tried: true } }); return; }
+    var hues = ['#1D4ED8', '#BE185D', '#4D7C0F', '#0E7490', '#9333EA'];
+    var mono = name.split(/\s+/).map(function (w) { return w.charAt(0); }).join('').slice(0, 2).toUpperCase();
+    var c = { id: this.id('c'), name: name, mono: mono, hue: hues[s.courses.length % hues.length], active: true, sections: [], videos: [] };
+    this.setState({ courses: s.courses.concat([c]), courseModal: null, view: 'course', cid: c.id, mtab: 'curr' });
+    this.flash('"' + name + '" created. Add its first section.');
+  }
+  headVals() {
+    var self = this, s = this.state, c = this.course();
+    var quizN = s.saved.filter(function (a) { return a.videoId.split(':')[0] === c.id; }).length;
+    return {
+      cm: { name: c.name, mono: c.mono, hue: c.hue, status: c.active ? 'Active' : 'Inactive', stCls: c.active ? 'green' : 'grey',
+        meta: c.sections.length + (c.sections.length === 1 ? ' section' : ' sections') + ' · ' + c.videos.length + (c.videos.length === 1 ? ' video' : ' videos') + ' · ' + quizN + (quizN === 1 ? ' quiz' : ' quizzes'),
+        currCls: s.mtab === 'curr' ? 'on' : '', basicCls: s.mtab === 'basic' ? 'on' : '',
+        currSel: s.mtab === 'curr' ? 'true' : 'false', basicSel: s.mtab === 'basic' ? 'true' : 'false',
+        toCurr: function () { self.setState({ mtab: 'curr' }); }, toBasic: function () { self.setState({ mtab: 'basic' }); },
+        preview: function () { self.setState({ preview: c.id }); } },
+      backToCourse: function () { if (self.state.draft && self.isDirty()) self.setState({ aconfirm: { kind: 'leave' } }); else self.setState({ view: 'course' }); }
+    };
+  }
+  courseVals() {
+    var self = this, s = this.state, c = this.course(), cid = c.id;
+    var collapsed = s.collapsed || {}, drafts = s.seqDraft || {};
+    var setCourses = function (cs) { self.setState({ courses: cs }); };
+    var commit = function (v) {
+      var st = self.state, d = Object.assign({}, st.seqDraft || {});
+      if (d[v.id] === undefined) return;
+      var n = parseInt(d[v.id], 10);
+      delete d[v.id];
+      if (!n || n < 1 || n === v.seq) { self.setState({ seqDraft: d }); return; }
+      var cs = self.place(st.courses, cid, v.level, [{ pos: n, v: v }]);
+      self.setState({ seqDraft: d, courses: cs });
+      var np = cs.filter(function (x) { return x.id === cid; })[0].videos.filter(function (x) { return x.id === v.id; })[0].seq;
+      self.flash('"' + v.name + '" is now video ' + np + ' in ' + c.sections[self.secIndex(c, v.level)].name);
+    };
+    var sections = c.sections.map(function (sec, si) {
+      var vids = self.byLevel(c, sec.id);
+      var qz = self.quizzesOf(cid, sec.id);
+      var open = !collapsed[sec.id];
+      var swapS = function (j) { var a = c.sections.slice(); var t = a[si]; a[si] = a[j]; a[j] = t; setCourses(self.mapSections(s.courses, cid, function () { return a; })); };
+      return {
+        n: si + 1, name: sec.name, first: si === 0, last: si === c.sections.length - 1,
+        meta: vids.length + (vids.length === 1 ? ' video' : ' videos') + ' · ' + qz.length + (qz.length === 1 ? ' quiz' : ' quizzes'),
+        open: open, exp: open ? 'true' : 'false', chev: open ? 'rotate(90deg)' : 'none',
+        toggle: function () { var m = Object.assign({}, collapsed); m[sec.id] = open; self.setState({ collapsed: m }); },
+        up: function () { swapS(si - 1); }, down: function () { swapS(si + 1); },
+        addVideo: function () { self.openModal('add', cid, sec.id, [self.blankRow(), self.blankRow(), self.blankRow()]); },
+        addQuiz: function () { self.newQuiz(cid + ':' + sec.id); },
+        rename: function () { self.setState({ secModal: { mode: 'edit', sid: sec.id, name: sec.name, tried: false } }); },
+        del: function () { self.setState({ confirm: { kind: 'delSec', sid: sec.id } }); },
+        empty: vids.length === 0 && qz.length === 0,
+        videos: vids.map(function (v, i) {
+          return {
+            n: i + 1, name: v.name, url: v.url, short: self.short(v.url),
+            sid: 'seq-' + v.id, seqVal: drafts[v.id] !== undefined ? drafts[v.id] : String(v.seq),
+            onSeq: function (e) { var d = Object.assign({}, drafts); d[v.id] = e.target.value; self.setState({ seqDraft: d }); },
+            commitSeq: function () { commit(v); },
+            seqKey: function (e) { if (e.key === 'Enter') commit(v); },
+            first: i === 0, last: i === vids.length - 1,
+            up: function () { setCourses(self.place(s.courses, cid, sec.id, [{ pos: i, v: v }])); },
+            down: function () { setCourses(self.place(s.courses, cid, sec.id, [{ pos: i + 2, v: v }])); },
+            swCls: v.active ? 'on' : '', activeStr: v.active ? 'true' : 'false', activeLabel: v.active ? 'Active' : 'Inactive',
+            toggle: function () { setCourses(self.mapCourse(s.courses, cid, function (vs) { return vs.map(function (x) { return x.id === v.id ? Object.assign({}, x, { active: !x.active }) : x; }); })); },
+            edit: function () { var r = self.blankRow(); r.name = v.name; r.url = v.url; r.active = v.active; r.seq = String(v.seq); self.openModal('edit', cid, v.level, [r], v.id); },
+            del: function () { self.setState({ confirm: { kind: 'delVid', ids: [v.id], sid: sec.id, name: v.name } }); }
+          };
+        }),
+        quizzes: qz.map(function (a) {
+          var nq = a.questions.length;
+          return { name: a.name, meta: nq + (nq === 1 ? ' question' : ' questions') + ' · Pass ' + a.pass + '%' + (a.attemptsOn ? ' · ' + a.attemptsN + ' attempts' : ''),
+            required: a.required, status: a.active ? 'Active' : 'Inactive', stCls: a.active ? 'green' : 'grey',
+            open: function () { self.openQuiz(a.id); },
+            del: function () { self.setState({ confirm: { kind: 'delQuiz', id: a.id, name: a.name } }); } };
+        })
+      };
+    });
+    var firstSec = c.sections[0];
+
+    // video modal
+    var m = s.modal, mv = { rows: [], sections: [] };
+    if (m) {
+      var mc = c;
+      var isAdd = m.mode === 'add';
+      var filled = m.rows.filter(function (r) { return r.name.trim() || r.url.trim(); }).length || 1;
+      var pasteCount = this.parse(m.paste).length;
+      mv = {
+        title: isAdd ? 'Add videos' : 'Edit video',
+        sub: isAdd ? 'Choose the section, then add as many videos as you need.' : 'Change the details, or move this video to another section.',
+        isAdd: isAdd, section: m.level,
+        sections: c.sections.map(function (x, i) { return { id: x.id, name: 'Section ' + (i + 1) + ': ' + x.name }; }),
+        onSection: function (e) { self.setM({ level: e.target.value, levelErr: false }); },
+        levelErr: m.levelErr,
+        rowsCls: m.input === 'rows' ? 'on' : '', pasteCls: m.input === 'paste' ? 'on' : '',
+        rowsSel: m.input === 'rows' ? 'true' : 'false', pasteSel: m.input === 'paste' ? 'true' : 'false',
+        toRows: function () { self.setM({ input: 'rows' }); }, toPaste: function () { self.setM({ input: 'paste', ok: '' }); },
+        showRows: m.input === 'rows', showPaste: m.input === 'paste',
+        hasErr: !!m.errText, errText: m.errText, hasOk: !!m.ok, ok: m.ok,
+        rows: m.rows.map(function (r, i) {
+          var upd = function (patch) { var rs = m.rows.slice(); rs[i] = Object.assign({}, r, patch); self.setM({ rows: rs }); };
+          var lvCount = mc && m.level && m.level !== 'u' ? self.byLevel(mc, m.level).length : 0;
+          return {
+            n: i + 1, nid: 'mn-' + r.key, uid: 'mu-' + r.key, name: r.name, url: r.url,
+            nCls: r.errName ? 'bad' : '', uCls: r.errUrl ? 'bad' : '',
+            hasNErr: !!r.errName, errName: r.errName, hasUErr: !!r.errUrl, errUrl: r.errUrl,
+            onName: function (e) { upd({ name: e.target.value, errName: '' }); },
+            onUrl: function (e) { upd({ url: e.target.value, errUrl: '' }); },
+            qid: 'mq-' + r.key, seq: r.seq, seqPh: isAdd ? String(lvCount + i + 1) : '',
+            qCls: r.errSeq ? 'bad' : '', hasQErr: !!r.errSeq, errSeq: r.errSeq,
+            onSeq: function (e) { upd({ seq: e.target.value, errSeq: '' }); },
+            swCls: r.active ? 'on' : '', activeStr: r.active ? 'true' : 'false',
+            toggle: function () { upd({ active: !r.active }); },
+            only: m.rows.length === 1 || !isAdd,
+            remove: function () { var rs = m.rows.slice(); rs.splice(i, 1); self.setM({ rows: rs }); }
+          };
+        }),
+        addRow: function () { self.setM({ rows: m.rows.concat([self.blankRow()]) }); },
+        hint: isAdd ? 'Leave Sequence empty to add to the end of ' + (self.secName(m.cid, m.level) || 'the chosen section') + '. Enter a number to insert at that position; videos below move down by one.' : 'Sequence sets where learners see this video in the section (1 is first). Other videos shift to make room.',
+        paste: m.paste, onPaste: function (e) { self.setM({ paste: e.target.value, pasteErr: false }); },
+        pasteErr: m.pasteErr, pasteCount: pasteCount === 1 ? '1 video' : pasteCount + ' videos',
+        convert: function () {
+          var parsed = self.parse(m.paste);
+          if (!parsed.length) { self.setM({ pasteErr: true }); return; }
+          var keep = m.rows.filter(function (r) { return r.name.trim() || r.url.trim(); });
+          self.setM({ rows: keep.concat(parsed), input: 'rows', paste: '', errText: '', ok: parsed.length + (parsed.length === 1 ? ' video' : ' videos') + ' ready to review.' });
+        },
+        footNote: isAdd ? filled + (filled === 1 ? ' video' : ' videos') + ' to add' : '',
+        cta: isAdd ? 'Add ' + filled + (filled === 1 ? ' video' : ' videos') : 'Save changes',
+        save: function () { self.save(); }
+      };
+    }
+
+    // section modal
+    var sm = {};
+    if (s.secModal) {
+      var x = s.secModal, bad = x.tried && !x.name.trim();
+      var saveSec = function () {
+        var cur = self.state.secModal;
+        if (!cur.name.trim()) { self.setState({ secModal: Object.assign({}, cur, { tried: true }) }); return; }
+        var cs;
+        if (cur.mode === 'add') {
+          var ns = { id: self.id('s'), name: cur.name.trim() };
+          cs = self.mapSections(self.state.courses, cid, function (ss) { return ss.concat([ns]); });
+          self.setState({ courses: cs, secModal: null });
+          self.flash('Section ' + (c.sections.length + 1) + ': ' + ns.name + ' added');
+        } else {
+          cs = self.mapSections(self.state.courses, cid, function (ss) { return ss.map(function (y) { return y.id === cur.sid ? Object.assign({}, y, { name: cur.name.trim() }) : y; }); });
+          self.setState({ courses: cs, secModal: null });
+          self.flash('Section renamed');
+        }
+      };
+      sm = { title: x.mode === 'add' ? 'Add section' : 'Rename section', cta: x.mode === 'add' ? 'Add section' : 'Save name',
+        n: x.mode === 'add' ? c.sections.length + 1 : self.secIndex(c, x.sid) + 1, preview: x.name.trim() || '…',
+        name: x.name, err: bad, cls: bad ? 'bad' : '',
+        onName: function (e) { self.setState({ secModal: Object.assign({}, self.state.secModal, { name: e.target.value, tried: false }) }); },
+        key: function (e) { if (e.key === 'Enter') saveSec(); if (e.key === 'Escape') self.setState({ secModal: null }); },
+        cancel: function () { self.setState({ secModal: null }); }, save: saveSec };
+    }
+
+    // confirm
+    var cf = {};
+    if (s.confirm) {
+      var k = s.confirm;
+      cf = { cls: 'd', cancel: function () { self.setState({ confirm: null }); } };
+      if (k.kind === 'delVid') {
+        cf.title = 'Delete "' + k.name + '"?';
+        cf.body = 'Learners will no longer see this video. This can\'t be undone. To hide it for now, switch it to inactive instead.';
+        cf.cta = 'Delete video';
+        cf.ok = function () {
+          var cs = self.mapCourse(self.state.courses, cid, function (vs) { return vs.filter(function (v) { return k.ids.indexOf(v.id) < 0; }); });
+          cs = self.renumber(cs, cid, k.sid);
+          self.setState({ courses: cs, confirm: null }); self.flash('Video deleted');
+        };
+      }
+      if (k.kind === 'delSec') {
+        var si2 = self.secIndex(c, k.sid), vN = self.byLevel(c, k.sid).length, qN = self.quizzesOf(cid, k.sid).length;
+        cf.title = 'Delete Section ' + (si2 + 1) + ': ' + c.sections[si2].name + '?';
+        cf.body = 'This also deletes its ' + vN + (vN === 1 ? ' video' : ' videos') + ' and ' + qN + (qN === 1 ? ' quiz' : ' quizzes') + '. This can\'t be undone.';
+        cf.cta = 'Delete section';
+        cf.ok = function () {
+          var key = cid + ':' + k.sid;
+          var cs = self.mapSections(self.state.courses, cid, function (ss) { return ss.filter(function (y) { return y.id !== k.sid; }); });
+          cs = self.mapCourse(cs, cid, function (vs) { return vs.filter(function (v) { return v.level !== k.sid; }); });
+          self.setState({ courses: cs, saved: self.state.saved.filter(function (a) { return a.videoId !== key; }), confirm: null });
+          self.flash('Section deleted');
+        };
+      }
+      if (k.kind === 'delQuiz') {
+        cf.title = 'Delete quiz "' + k.name + '"?';
+        cf.body = 'Its questions and answers will be removed. To hide it for now, open the quiz and turn off Active instead.';
+        cf.cta = 'Delete quiz';
+        cf.ok = function () { self.setState({ saved: self.state.saved.filter(function (a) { return a.id !== k.id; }), confirm: null }); self.flash('Quiz deleted'); };
+      }
+    }
+    var basicBad = !c.name.trim();
+    return {
+      isCurr: s.mtab === 'curr', isBasic: s.mtab === 'basic',
+      sections: sections, noSections: sections.length === 0,
+      sortMode: s.sortMode, sortCls: s.sortMode ? 'on' : '', sortPressed: s.sortMode ? 'true' : 'false', sortLabel: s.sortMode ? 'Done sorting' : 'Sort sections',
+      toggleSort: function () { self.setState({ sortMode: !s.sortMode }); },
+      addSection: function () { self.setState({ secModal: { mode: 'add', name: '', tried: false } }); },
+      addVideosTop: function () {
+        if (!firstSec) { self.flash('Add a section first'); self.setState({ secModal: { mode: 'add', name: '', tried: false } }); return; }
+        self.openModal('add', cid, firstSec.id, [self.blankRow(), self.blankRow(), self.blankRow()]);
+      },
+      addQuizTop: function () {
+        if (!firstSec) { self.flash('Add a section first'); self.setState({ secModal: { mode: 'add', name: '', tried: false } }); return; }
+        self.newQuiz('');
+      },
+      hasModal: !!m, m: mv, closeModal: function () { self.setState({ modal: null }); },
+      hasSecModal: !!s.secModal, sm: sm,
+      hasConfirm: !!s.confirm, cf: cf,
+      basic: { name: c.name, nameErr: basicBad, nameCls: basicBad ? 'bad' : '',
+        onName: function (e) { var v = e.target.value; setCourses(self.state.courses.map(function (y) { return y.id === cid ? Object.assign({}, y, { name: v }) : y; })); },
+        actCls: c.active ? 'on' : '', actStr: c.active ? 'true' : 'false',
+        flip: function () { setCourses(self.state.courses.map(function (y) { return y.id === cid ? Object.assign({}, y, { active: !y.active }) : y; })); self.flash(c.active ? 'Course set to inactive' : 'Course set to active'); } }
+    };
+  }
+  previewVals() {
+    var self = this, s = this.state;
+    var c = s.preview ? this.course(s.preview) : null;
+    if (!c) return { sections: [] };
+    var tv = 0, tq = 0;
+    var secs = c.sections.map(function (x, i) {
+      var vids = self.byLevel(c, x.id).filter(function (v) { return v.active; });
+      var qz = self.quizzesOf(c.id, x.id).filter(function (a) { return a.active; });
+      tv += vids.length; tq += qz.length;
+      return { n: i + 1, name: x.name,
+        meta: vids.length + (vids.length === 1 ? ' video' : ' videos') + (qz.length ? ' · ' + qz.length + (qz.length === 1 ? ' quiz' : ' quizzes') : ''),
+        videos: vids.map(function (v, j) { return { n: j + 1, name: v.name }; }),
+        quizzes: qz.map(function (a) {
+          var nq = a.questions.filter(function (q) { return q.active; }).length;
+          return { name: a.name, required: a.required,
+            meta: 'Pass mark ' + a.pass + '% · ' + nq + (nq === 1 ? ' question' : ' questions') + (a.timeOn ? ' · ' + a.timeN + ' min' : '') + (a.attemptsOn ? ' · ' + a.attemptsN + ' attempts' : ''),
+            unlock: a.unlockOn ? 'Unlocks after you finish this section\'s videos' : 'You can take it any time' };
+        }),
+        empty: !vids.length && !qz.length };
+    });
+    return { name: c.name, mono: c.mono, hue: c.hue, inactive: !c.active,
+      meta: secs.length + (secs.length === 1 ? ' section' : ' sections') + ' · ' + tv + (tv === 1 ? ' video' : ' videos') + ' · ' + tq + (tq === 1 ? ' quiz' : ' quizzes'),
+      sections: secs, noSections: secs.length === 0,
+      canEdit: s.view !== 'quiz',
+      edit: function () { self.setState({ preview: null, view: 'course', cid: c.id, mtab: 'curr' }); } };
+  }
+  renderVals() {
+    var self = this, s = this.state;
+    var mod = s.view === 'list' ? this.listVals() : s.view === 'course' ? Object.assign(this.headVals(), this.courseVals()) : Object.assign(this.headVals(), this.asgVals());
+    return Object.assign({}, mod, {
+      isList: s.view === 'list', isCourse: s.view === 'course', isQuiz: s.view === 'quiz',
+      navCount: s.courses.length,
+      hasPreview: !!s.preview && !!this.course(s.preview), pv: this.previewVals(),
+      closePreview: function () { self.setState({ preview: null }); },
+      pvKey: function (e) { if (e.key === 'Escape') self.setState({ preview: null }); },
+      goList: function () { if (s.view === 'quiz' && self.isDirty()) self.setState({ aconfirm: { kind: 'leaveList' } }); else self.setState({ view: 'list' }); },
+      hasToast: !!s.toast, toast: s.toast
+    });
+  }
+}
+
+DC.mount(Component, document.getElementById('dc-root'), document.getElementById('dc-src').textContent);
+</script>
+</body>
+</html>

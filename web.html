@@ -1,0 +1,1463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Altametrics Learning – Web (1920×1080)</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#1F4FD1}a:hover{color:#163C9E}
+.app{font-family:"Instrument Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#121826;background:#F3F5F8;min-height:100vh;font-size:14px;line-height:1.45}
+.app *{box-sizing:border-box}
+.app button,.app input{font-family:inherit;font-size:inherit;color:inherit}
+.app :focus-visible{outline:2px solid #1F4FD1;outline-offset:2px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#0F1E36;color:#E6EBF3;padding:0 16px;min-height:56px}
+.logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#2D9CF0,#7C3AED);display:flex;align-items:center;justify-content:center;flex:none}
+.topbtn{display:flex;align-items:center;gap:6px;background:transparent;border:0;color:#E6EBF3;padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:500;min-height:40px}
+.topbtn:hover{background:rgba(255,255,255,.08)}
+.topmeta{display:flex;align-items:center;gap:14px;margin-left:auto;color:#AEB9CC;font-size:13px}
+.topmeta span{display:flex;align-items:center;gap:6px}
+.avatar{width:36px;height:36px;border-radius:50%;background:#2A3A57;border:0;color:#fff;font-weight:600;cursor:pointer}
+.banner{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#FFF4E5;border-bottom:1px solid #F3D3A6;color:#6B3A00;padding:10px 20px;font-size:13.5px}
+.banner b{font-weight:600}
+.banner .bact{margin-left:auto;display:flex;gap:8px;align-items:center}
+.shell{display:flex;min-height:calc(100vh - 56px)}
+.rail{width:72px;flex:none;background:#0F1E36;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 0}
+.railbtn{width:48px;height:48px;border-radius:10px;border:0;background:transparent;color:#AEB9CC;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.railbtn:hover{background:rgba(255,255,255,.08);color:#fff}
+.railbtn.on{background:linear-gradient(135deg,#2D6BF0,#7C3AED);color:#fff;box-shadow:0 4px 12px rgba(124,58,237,.35)}
+.railgap{flex:1}
+.main{flex:1;min-width:0;padding:28px 32px 48px;background:radial-gradient(900px 320px at 100% -8%,rgba(139,63,217,.09),transparent 65%),radial-gradient(800px 320px at 0% -8%,rgba(31,79,209,.08),transparent 65%),#F3F5F8}
+.wrap{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.h1{font-size:26px;font-weight:700;letter-spacing:-.01em;margin:0}
+.sub{color:#556070;margin:4px 0 0}
+.toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #E1E5EC;padding-bottom:14px}
+.tabs{display:flex;gap:4px;background:#E7EBF1;padding:4px;border-radius:10px}
+.tab{border:0;background:transparent;padding:8px 14px;border-radius:7px;font-weight:600;color:#3D4757;cursor:pointer;display:flex;gap:8px;align-items:center;min-height:36px}
+.tab .n{font-size:12px;background:#D6DCE5;color:#3D4757;border-radius:20px;padding:1px 7px}
+.tab.on{background:linear-gradient(115deg,#1F4FD1,#6D3FE0);color:#fff;box-shadow:0 3px 10px rgba(59,79,224,.3)}
+.tab.on .n{background:rgba(255,255,255,.22);color:#fff}
+.search{margin-left:auto;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #D3D9E2;border-radius:10px;padding:0 12px;min-height:42px;width:320px;max-width:100%}
+.search:focus-within{border-color:#1F4FD1;box-shadow:0 0 0 3px rgba(31,79,209,.15)}
+.search input{border:0;outline:0;flex:1;min-width:0;background:transparent;padding:10px 0}
+.clear{border:0;background:transparent;color:#556070;cursor:pointer;padding:4px;border-radius:6px;display:flex}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.card{background:#fff;border:1px solid #E1E5EC;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card:hover{border-color:#C6CEDA;box-shadow:0 4px 14px rgba(15,30,54,.07)}
+.cover{height:132px;position:relative;display:flex;align-items:flex-end;padding:16px}
+.mono{width:60px;height:60px;border-radius:14px;color:#fff;font-weight:700;font-size:22px;display:flex;align-items:center;justify-content:center;letter-spacing:.02em}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:20px;background:#fff;color:#3D4757;border:1px solid #E1E5EC}
+.cover .chips{position:absolute;top:14px;right:14px;display:flex;gap:6px}
+.cbody{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.ctitle{border:0;background:transparent;padding:0;text-align:left;font-size:17px;font-weight:600;cursor:pointer;color:#121826}
+.ctitle:hover{color:#1F4FD1;text-decoration:underline}
+.rate{display:flex;align-items:center;gap:6px;color:#556070;font-size:13px}
+.stars{display:flex;gap:1px}
+.bar{height:6px;background:#E7EBF1;border-radius:6px;overflow:hidden;flex:1}
+.bar i{display:block;height:100%;background:#1F4FD1;border-radius:6px;min-width:0}
+.prow{display:flex;align-items:center;gap:10px;font-size:13px;color:#556070}
+.cfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:9px;font-weight:600;padding:9px 16px;min-height:40px;cursor:pointer;border:1px solid transparent;white-space:nowrap}
+.btn.p{background:#1F4FD1;color:#fff}.btn.p:hover{background:#1A43B3}
+.btn.s{background:#fff;color:#121826;border-color:#D3D9E2}.btn.s:hover{background:#F3F5F8}
+.btn.g{background:transparent;color:#1F4FD1}.btn.g:hover{background:#EAF0FD}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.empty{background:#fff;border:1px dashed #C6CEDA;border-radius:14px;padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.crumbs{display:flex;align-items:center;gap:6px;font-size:13px;color:#556070;flex-wrap:wrap}
+.crumbs button{border:0;background:transparent;color:#1F4FD1;padding:2px 4px;cursor:pointer;font-weight:500;border-radius:4px}
+.crumbs button:hover{text-decoration:underline}
+.hero{background:#fff;border:1px solid #E1E5EC;border-radius:14px;padding:22px;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.hero .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.hero .side{margin-left:auto;display:flex;flex-direction:column;gap:10px;min-width:260px}
+.panel{background:#fff;border:1px solid #E1E5EC;border-radius:14px;overflow:hidden}
+.phead{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #E1E5EC}
+.h2{font-size:16px;font-weight:600;margin:0}
+.lessons{list-style:none;margin:0;padding:0}
+.lessons li+li{border-top:1px solid #EDF0F4}
+.lrow{width:100%;display:grid;grid-template-columns:36px minmax(0,1fr) 180px;gap:14px;align-items:center;padding:14px 20px;border:0;background:#fff;text-align:left;cursor:pointer}
+.lrow:hover{background:#F7F9FC}
+.num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;background:#EEF1F5;color:#3D4757}
+.num.go{background:#1F4FD1;color:#fff}
+.ltitle{font-weight:500;font-size:14.5px}
+.lstat{font-size:12.5px;color:#556070;margin-top:2px}
+.lbar{display:flex;align-items:center;gap:10px;font-size:12.5px;color:#556070}
+.player{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+.video{position:relative;aspect-ratio:16/9;background:#0B1424;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.bigplay{width:72px;height:72px;border-radius:50%;border:0;background:rgba(255,255,255,.95);color:#0F1E36;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.vctl{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;display:flex;flex-direction:column;gap:8px;background:linear-gradient(transparent,rgba(0,0,0,.6));color:#fff;font-size:13px}
+.vtrack{height:4px;background:rgba(255,255,255,.3);border-radius:4px}
+.vtrack i{display:block;height:100%;width:3%;background:#fff;border-radius:4px}
+.vph{position:absolute;top:16px;left:16px;color:#8D9AB0;font-size:12.5px}
+.lnav{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+.plist{list-style:none;margin:0;padding:6px}
+.pitem{width:100%;display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:0;border-radius:9px;background:transparent;text-align:left;cursor:pointer}
+.pitem:hover{background:#F3F5F8}
+.pitem.cur{background:#EAF0FD}
+.pitem .num{width:26px;height:26px;font-size:12px;flex:none}
+.resume{display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:linear-gradient(115deg,#1E3A8A 0%,#3B4FE0 50%,#8B3FD9 100%);color:#fff;border-radius:18px;padding:22px 24px;position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(59,79,224,.25)}
+.resume::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.08);right:-60px;top:-120px;pointer-events:none}
+.resume::after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,182,72,.22);right:180px;bottom:-90px;pointer-events:none}
+.resume>*{position:relative;z-index:1}
+.ring{position:relative;width:104px;height:104px;flex:none}
+.ringval{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;letter-spacing:-.02em}
+.seg{display:flex;gap:3px;height:10px;max-width:480px;margin-top:6px;border-radius:6px;overflow:hidden}
+.seg i{display:block;height:100%;min-width:0}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:13px;color:#DCE3FF}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.ld{width:9px;height:9px;border-radius:50%;display:inline-block}
+.ovchips{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:4px}
+.ovchip{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;border-radius:20px;padding:5px 12px;font-size:13px;cursor:pointer;font-family:inherit;min-height:32px}
+.ovchip b{font-weight:700;color:#FFD166;margin-left:4px}
+.ovchip:hover{background:rgba(255,255,255,.22)}
+.ovchip.ghost{background:transparent;border-style:dashed}
+.ovrow{display:grid;grid-template-columns:110px minmax(0,1fr) 40px;align-items:center;gap:10px;font-size:13px;color:#DCE3FF}
+.ovname{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ovpct{text-align:right;font-weight:600;color:#fff}
+.resume .ovrow .bar{height:6px}
+.resume .mono{box-shadow:0 0 0 4px rgba(255,255,255,.08)}
+.rinfo{flex:1;min-width:220px;display:flex;flex-direction:column;gap:6px}
+.lbl2{font-size:13px;color:#DCE3FF}
+.rtitle{font-size:19px;font-weight:600;letter-spacing:-.005em}
+.resume .prow{color:#DCE3FF;max-width:420px}
+.resume .bar{background:rgba(255,255,255,.16)}
+.resume .bar i{background:linear-gradient(90deg,#FFD166,#FF9F43)}
+.btn.w{background:#fff;color:#0F1E36}.btn.w:hover{background:#E6EBF3}
+.listbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fchip{border:1px solid #D3D9E2;background:#fff;border-radius:20px;padding:6px 13px;font-weight:500;cursor:pointer;min-height:36px;display:inline-flex;gap:6px;align-items:center;color:#3D4757}
+.fchip:hover{border-color:#AEB8C7}
+.fchip.on{background:#121826;color:#fff;border-color:#121826}
+.fchip.on.f-progress{background:#1F4FD1;border-color:#1F4FD1}
+.fchip.on.f-done{background:#15803D;border-color:#15803D}
+.fchip .n{font-size:12px;opacity:.7}
+.count{font-size:13.5px;color:#556070;font-weight:500}
+.sort{display:flex;align-items:center;gap:8px;font-size:13px;color:#556070}
+.sort select{font-family:inherit;font-size:13.5px;border:1px solid #D3D9E2;border-radius:9px;padding:8px 10px;background:#fff;color:#121826;min-height:38px;cursor:pointer}
+.card{transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.card:hover{transform:translateY(-2px)}
+.cover{height:144px;overflow:hidden}
+.blob{position:absolute;border-radius:50%;opacity:.16;pointer-events:none}
+.blob.b1{width:150px;height:150px;right:-44px;top:-58px}
+.blob.b2{width:64px;height:64px;left:96px;top:18px;opacity:.1}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.stat{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #E1E5EC;border-radius:14px;padding:14px 16px}
+.sicon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.sval{font-size:22px;font-weight:700;line-height:1.1}
+.slbl{font-size:12.5px;color:#556070}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.wm{position:absolute;right:-8px;bottom:-30px;font-size:128px;font-weight:700;line-height:1;opacity:.13;letter-spacing:-.05em;pointer-events:none;user-select:none}
+.chips2{position:absolute;top:14px;left:14px;display:flex;gap:6px;flex-wrap:wrap}
+.cplay{position:absolute;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 10px rgba(15,30,54,.16)}
+.cplay:hover{background:#F3F5F8}
+.cdesc{color:#556070;font-size:13.5px;margin:0}
+.meta2{display:flex;gap:14px;align-items:center;font-size:13px;color:#556070;flex-wrap:wrap}
+.meta2 span{display:inline-flex;align-items:center;gap:5px}
+.next{font-size:13px;color:#3D4757;background:#F3F5F8;border-radius:9px;padding:9px 11px;display:flex;gap:8px;align-items:flex-start}
+.next b{font-weight:600;color:#121826}
+.chip.st-progress{background:#EAF0FD;color:#1F4FD1;border-color:#C9D7FA}
+.chip.st-done,.chip.st-enrolled{background:#E7F5EE;color:#11643C;border-color:#BFE3CF}
+@media (max-width:720px){.resume .btn{width:100%}.rtitle{font-size:17px}.listbar .sort{width:100%}.sort select{flex:1}}
+@media (prefers-reduced-motion:reduce){.card:hover{transform:none}}
+.asg{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 20px}
+.asg+.asg{border-top:1px solid #EDF0F4}
+.aicon{width:44px;height:44px;border-radius:10px;background:#EAF0FD;color:#1F4FD1;display:flex;align-items:center;justify-content:center;flex:none}
+.ainfo{flex:1;min-width:200px;display:flex;flex-direction:column;gap:6px}
+.atitle{font-weight:600;font-size:15px}
+.chip.st-req{background:#FFF4E5;color:#8A4B00;border-color:#F3D3A6}
+.chip.st-fail{background:#FDECEA;color:#9B1C12;border-color:#F5C2BC}
+.qwrap{max-width:840px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.qhead{background:#fff;border:1px solid #E1E5EC;border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:18px}
+.qdots{display:flex;gap:8px;flex-wrap:wrap}
+.qdot{width:38px;height:38px;border-radius:50%;border:1px solid #D3D9E2;background:#fff;font-weight:600;cursor:pointer;color:#3D4757}
+.qdot:hover{border-color:#AEB8C7}
+.qdot.done{background:#E3EBFD;border-color:#C9D7FA;color:#1F4FD1}
+.qdot.cur{border:2px solid #1F4FD1;color:#1F4FD1}
+.qcard{background:#fff;border:1px solid #E1E5EC;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.qcard fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.qcard legend{font-size:19px;font-weight:600;line-height:1.35;margin-bottom:14px;padding:0}
+.opt{display:flex;align-items:center;gap:12px;border:1px solid #D3D9E2;border-radius:10px;padding:12px 14px;cursor:pointer;min-height:52px;background:#fff}
+.opt:hover{border-color:#AEB8C7;background:#F7F9FC}
+.opt.sel{border-color:#1F4FD1;background:#EEF3FE;box-shadow:0 0 0 1px #1F4FD1}
+.opt input{width:18px;height:18px;accent-color:#1F4FD1;margin:0;flex:none}
+.letter{width:26px;height:26px;border-radius:7px;background:#EEF1F5;font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center;flex:none;color:#3D4757}
+.opt.sel .letter{background:#1F4FD1;color:#fff}
+.qerr{display:flex;gap:8px;align-items:center;color:#9B1C12;background:#FDECEA;border-radius:9px;padding:10px 12px;font-size:13.5px;font-weight:500}
+.qfoot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid #EDF0F4;padding-top:16px}
+.result{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.ricon{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+.rv{display:flex;gap:12px;padding:14px 0;align-items:flex-start}
+.rv+.rv{border-top:1px solid #EDF0F4}
+.rmark{width:26px;height:26px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center}
+@media (max-width:720px){.asg .btn{width:100%}.qcard{padding:18px}.qfoot .btn{flex:1}}
+.pside{display:flex;flex-direction:column;gap:16px;min-width:0}
+.sasg{padding:16px 20px;display:flex;flex-direction:column;gap:14px}
+.sasg+.sasg{border-top:1px solid #EDF0F4}
+.sstat{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:#556070;background:#F7F9FC;border-radius:9px;padding:8px 10px}
+.rtabs{display:flex;gap:4px 22px;flex-wrap:wrap;border-bottom:1px solid #E1E5EC}
+.rtab{border:0;background:transparent;padding:10px 2px 12px;font-weight:600;font-size:15px;color:#556070;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;display:flex;gap:8px;align-items:center}
+.rtab:hover{color:#121826}
+.rtab .n{font-size:12px;background:#E7EBF1;color:#3D4757;border-radius:20px;padding:1px 7px}
+.rtab.on{color:#121826;border-bottom-color:#1F4FD1}
+.rtab.on .n{background:#E3EBFD;color:#1F4FD1}
+.lvhead{width:100%;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 20px;border:0;background:#fff;text-align:left;cursor:pointer;font-family:inherit;color:inherit}
+.lvhead:hover{background:#F7F9FC}
+.lvname{font-size:16px;font-weight:600}
+.lvmeta{font-size:13px;color:#556070;font-weight:400}
+.lvbody{border-top:1px solid #E1E5EC}
+.lvasg{background:#FAFBFD;border-top:1px solid #E1E5EC}
+.lvlabel{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#556070;padding:14px 20px 2px}
+.lvempty{padding:36px 20px;color:#556070;font-size:13.5px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;border-top:1px solid #EDF0F4}
+.pathhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap;margin-bottom:12px}
+.path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:step}
+.step{position:relative;display:flex;flex-direction:column;gap:8px;min-height:230px;text-align:left;background:#fff;border:1px solid #E1E5EC;border-radius:14px;padding:16px;cursor:pointer;font-family:inherit;color:inherit;min-height:170px;transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease}
+.step:hover{border-color:#AEB8C7;transform:translateY(-1px)}
+.step.on{border-width:2px;padding:15px;box-shadow:0 10px 24px rgba(15,30,54,.10)}
+.stepband{position:absolute;left:-1px;right:-1px;top:-1px;height:6px;border-radius:14px 14px 0 0}
+.step:not(:last-child)::after{content:"";position:absolute;top:31px;right:-17px;width:16px;height:2px;background:#C6CEDA}
+.steprow{display:flex;align-items:center;gap:10px}
+.stepdot{width:30px;height:30px;border-radius:50%;background:#EEF1F5;color:#3D4757;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none}
+.stepname{font-size:18px;font-weight:700}
+.stepdesc{font-size:13.5px;color:#3D4757}
+.stepbadge{position:absolute;top:16px;right:48px;color:#fff;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.01em}
+.stepfoot{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:4px}
+.stepcta{display:inline-flex;align-items:center;gap:4px;color:#fff;font-weight:600;font-size:13.5px;padding:7px 12px;border-radius:9px}
+.step:hover .stepcta{filter:brightness(1.08)}
+.lvswitchrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.lvswitch{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.lvpill{display:inline-flex;align-items:center;gap:8px;border:1.5px solid;border-radius:22px;padding:7px 14px;font-weight:600;cursor:pointer;min-height:38px;font-family:inherit}
+.lvpill:hover{filter:brightness(.97)}
+.pdot{width:8px;height:8px;border-radius:50%}
+@media (max-width:720px){.lvswitch{margin-left:0;width:100%}.lvpill{flex:1;justify-content:center}}
+.listflash{animation:lflash 1.4s ease}
+@keyframes lflash{0%,30%{background:#FFF4D6;box-shadow:0 0 0 4px #FFE7A3}100%{background:transparent;box-shadow:none}}
+@media (prefers-reduced-motion:reduce){.listflash{animation:none}}
+.acc{background:#fff;border:1px solid #E1E5EC;border-left:4px solid #C9D7FA;border-radius:14px;overflow:hidden;transition:box-shadow .15s ease}
+.acc:hover{box-shadow:0 4px 14px rgba(15,30,54,.06)}
+.acc.open{box-shadow:0 8px 24px rgba(15,30,54,.08)}
+.acc{border-left-width:5px}
+.acc.prog{border-color:#C9D7FA}
+.acc.prog .acchead{background:linear-gradient(90deg,#E8EFFD 0%,#F7F9FF 55%,#FFFFFF 100%)}
+.acc.prog .secnum{box-shadow:0 0 0 4px rgba(31,79,209,.15)}
+.acc.done{border-color:#BFE3CF}
+.acc.done .acchead{background:linear-gradient(90deg,#E9F7EE 0%,#F7FCF9 55%,#FFFFFF 100%)}
+.acc.done .acctitle{color:#11643C}
+.acc.new .acchead{background:#fff}
+.acc.soon{border-style:dashed;background:#FAFBFC}
+.acc.soon .acctitle{color:#556070}
+.stchip{gap:6px}
+.stdot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.chip.st-new{background:#F3F5F8;color:#3D4757;border-color:#E1E5EC}
+.chip.st-lock{background:#F2F3F5;color:#5E6878;border-color:#E1E4E9}
+.topnav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;min-height:40px}
+.navctx{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#556070}
+.wtoast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#121826;color:#fff;padding:12px 16px;border-radius:10px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:60;font-weight:500}
+.chip.st-soon{background:#fff;color:#8D9AB0;border-color:#E1E5EC;border-style:dashed}
+.acchead{display:flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;flex-wrap:wrap}
+.acctog{flex:1;min-width:240px;display:flex;align-items:center;gap:12px;border:0;background:transparent;text-align:left;cursor:pointer;padding:12px 8px;border-radius:10px;font-family:inherit;color:inherit}
+.acctog:hover .acctitle{color:#1F4FD1}
+.accchev{flex:none;color:#556070;transition:transform .15s ease}
+.acctitle{display:block;font-size:16.5px;font-weight:700}
+.accprog{display:flex;align-items:center;gap:8px;width:150px;font-size:12.5px;color:#556070}
+.accprog .bar{flex:1}
+.accbody{border-top:1px solid #EDF0F4}
+.accbody .asgbox{margin-top:12px}
+@media (max-width:720px){.accprog{display:none}.acchead .btn{width:100%;margin:0 0 8px 8px}}
+@media (prefers-reduced-motion:reduce){.accchev,.acc{transition:none}}
+.secnum{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex:none}
+.lvtop{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 20px;border-bottom:1px solid #E1E5EC}
+.asgbox{margin:4px 16px 16px;border:1px solid #C9D7FA;background:#F5F8FE;border-radius:12px;overflow:hidden}
+@media (max-width:720px){.path{grid-template-columns:1fr;gap:10px}.step{min-height:0}.step:not(:last-child)::after{display:none}.lvtop .btn{width:100%}}
+@media (prefers-reduced-motion:reduce){.step:hover{transform:none}}
+.chev{transition:transform .15s ease;flex:none}
+.chev.open{transform:rotate(180deg)}
+@media (max-width:900px){.player{grid-template-columns:1fr}.hero .side{margin-left:0;width:100%}}
+@media (max-width:720px){
+.shell{flex-direction:column}
+.rail{width:100%;flex-direction:row;justify-content:center;padding:6px 8px;border-top:1px solid #22324F}
+.railgap{display:none}
+.main{padding:20px 16px 40px}
+.topmeta .tm{display:none}
+.search{width:100%;margin-left:0}
+.lrow{grid-template-columns:36px minmax(0,1fr)}
+.lbar{display:none}
+.banner .bact{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){.app *{transition:none!important}}
+</style>
+
+<style>
+html,body{margin:0;min-width:1280px}
+.wrap{max-width:1600px !important}
+.player{grid-template-columns:minmax(0,1fr) 400px !important}
+</style>
+</head>
+<body>
+<div id="dc-root"></div>
+<script type="text/x-template" id="dc-src"><div class="app">
+<header class="top">
+  <div class="logo" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"></path><path d="M6 12v5c3 2 9 2 12 0v-5"></path></svg>
+  </div>
+  <button class="topbtn" aria-label="Switch app, current: My App">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+    My App
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+  </button>
+  <button class="topbtn" aria-label="Location: Altametrics">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+    Altametrics
+  </button>
+  <div class="topmeta">
+    <span class="tm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.1 11.1 3.5 3.5 0 0 0 7 18Z"></path></svg>90°F</span>
+    <span class="tm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>4:15 AM · America/Los Angeles</span>
+    <button class="avatar" aria-label="Account menu">JD</button>
+  </div>
+</header>
+
+<div class="shell">
+<nav class="rail" aria-label="Main">
+  <button class="railbtn on" aria-label="Courses" aria-current="page" title="Courses" onClick="{{goCourses}}">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"></path><path d="M9 7h6"></path></svg>
+  </button>
+  <button class="railbtn" aria-label="Profile" title="Profile">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+  </button>
+  <button class="railbtn" aria-label="Documents" title="Documents">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M8 3h8l4 4v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"></path><path d="M16 3v4h4M10 13h6M10 17h4"></path></svg>
+  </button>
+  <div class="railgap"></div>
+  <button class="railbtn" aria-label="Help and support" title="Help and support">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.4M12 17h.01"></path></svg>
+  </button>
+</nav>
+
+<main class="main">
+
+<!-- ============ COURSES (All / My) ============ -->
+<sc-if value="{{isList}}" hint-placeholder-val="{{ true }}">
+<div class="wrap">
+  <div>
+    <h1 class="h1">Welcome back <span aria-hidden="true">👋</span></h1>
+    <p class="sub">Learn the Altametrics apps you use every day, one short video at a time.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="sicon" style="background:#E3EBFD;color:#1F4FD1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"></path><path d="M9 7h6"></path></svg></span>
+      <span><span class="sval" style="display:block">{{statEnrolled}}</span><span class="slbl">Enrolled courses</span></span>
+    </div>
+    <div class="stat">
+      <span class="sicon" style="background:#FFF1E8;color:#C2410C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+      <span><span class="sval" style="display:block">{{statProg}}</span><span class="slbl">In progress</span></span>
+    </div>
+    <div class="stat">
+      <span class="sicon" style="background:#E9F7EE;color:#15803D"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="m8 12.5 3 3 5-6"></path></svg></span>
+      <span><span class="sval" style="display:block">{{statDone}}</span><span class="slbl">Completed</span></span>
+    </div>
+    <div class="stat">
+      <span class="sicon" style="background:#F6EEFE;color:#7E22CE"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"></path><path d="M17 6h3v2a3 3 0 0 1-3 3M7 6H4v2a3 3 0 0 0 3 3"></path></svg></span>
+      <span><span class="sval" style="display:block">{{statPassed}}</span><span class="slbl">Quizzes passed</span></span>
+    </div>
+  </div>
+
+  <section class="resume overall" aria-labelledby="overall-h">
+    <div class="ring" role="img" aria-label="Overall course completion {{ov.pct}}">
+      <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
+        <circle cx="52" cy="52" r="44" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="10"></circle>
+        <circle cx="52" cy="52" r="44" fill="none" stroke="url(#ovgrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="{{ov.dash}} 999" transform="rotate(-90 52 52)"></circle>
+        <defs><linearGradient id="ovgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD166"></stop><stop offset="1" stop-color="#FF9F43"></stop></linearGradient></defs>
+      </svg>
+      <span class="ringval">{{ov.pct}}</span>
+    </div>
+    <div class="rinfo">
+      <h2 class="lbl2" id="overall-h" style="margin:0;font-weight:500">Overall course completion</h2>
+      <div class="rtitle">{{ov.summary}}</div>
+      <div class="seg" role="img" aria-label="{{ov.done}} completed, {{ov.prog}} in progress, {{ov.notStarted}} not started">
+        <i style="width:{{ov.wDone}};background:#4ADE80"></i>
+        <i style="width:{{ov.wProg}};background:#FFD166"></i>
+        <i style="width:{{ov.wNew}};background:rgba(255,255,255,.26)"></i>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span><b class="ld" style="background:#4ADE80"></b>{{ov.done}} completed</span>
+        <span><b class="ld" style="background:#FFD166"></b>{{ov.prog}} in progress</span>
+        <span><b class="ld" style="background:rgba(255,255,255,.5)"></b>{{ov.notStarted}} not started</span>
+      </div>
+      <sc-if value="{{ov.hasProg}}" hint-placeholder-val="{{ true }}">
+      <div class="ovchips">
+        <span class="lbl2">Pick up where you left off:</span>
+        <sc-for list="{{ov.top}}" as="o" hint-placeholder-count="2">
+          <button class="ovchip" onClick="{{o.open}}">{{o.title}} <b>{{o.pct}}</b></button>
+        </sc-for>
+        <sc-if value="{{ov.hasMore}}" hint-placeholder-val="{{ false }}">
+          <button class="ovchip ghost" onClick="{{ov.seeMore}}">+{{ov.more}} more</button>
+        </sc-if>
+      </div>
+      </sc-if>
+    </div>
+    <button class="btn w" onClick="{{ov.viewAll}}">
+      View all my courses
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+    </button>
+  </section>
+
+  <div class="toolbar">
+    <h2 class="h2 {{listFlashCls}}" id="my-courses" tabindex="-1" style="font-size:19px;margin:0;display:flex;align-items:center;gap:8px;scroll-margin-top:16px;border-radius:8px;padding:2px 6px">My courses <span class="chip">{{mineCount}}</span></h2>
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#556070" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      <label class="sr" for="course-search">Search courses</label>
+      <input id="course-search" type="search" placeholder="Search courses" value="{{query}}" onChange="{{onQuery}}">
+      <sc-if value="{{hasQuery}}" hint-placeholder-val="{{ false }}">
+        <button class="clear" aria-label="Clear search" onClick="{{clearQuery}}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+      </sc-if>
+    </div>
+  </div>
+
+  <div class="listbar">
+    <sc-if value="{{isMine}}" hint-placeholder-val="{{ false }}">
+      <div class="filters" aria-label="Filter by progress">
+        <sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+          <button class="fchip {{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.label}} <span class="n">{{f.n}}</span></button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div class="sort">
+      <label for="course-sort">Sort by</label>
+      <select id="course-sort" value="{{sortVal}}" onChange="{{onSort}}">
+        <option value="default">Recommended</option>
+        <option value="az">Title A–Z</option>
+        <option value="rating">Highest rated</option>
+        <option value="progress">Most progress</option>
+      </select>
+    </div>
+  </div>
+
+  <sc-if value="{{hasResults}}" hint-placeholder-val="{{ true }}">
+  <div class="grid">
+    <sc-for list="{{visible}}" as="c" hint-placeholder-count="3">
+    <article class="card">
+      <div class="cover" style="background:{{c.tint}}">
+        <span class="blob b1" style="background:{{c.hue}}" aria-hidden="true"></span>
+        <span class="blob b2" style="background:{{c.hue}}" aria-hidden="true"></span>
+        <span class="wm" style="color:{{c.hue}}" aria-hidden="true">{{c.mono}}</span>
+        <div class="chips2">
+          <span class="chip">{{c.level}}</span>
+          <sc-if value="{{isMine}}" hint-placeholder-val="{{ false }}">
+            <span class="chip {{c.stCls}}">{{c.statusLabel}}</span>
+          </sc-if>
+          <sc-if value="{{isAll}}" hint-placeholder-val="{{ true }}">
+            <sc-if value="{{c.enrolled}}" hint-placeholder-val="{{ true }}">
+              <span class="chip st-enrolled">Enrolled</span>
+            </sc-if>
+          </sc-if>
+        </div>
+        <div class="mono" style="background:{{c.hue}}" aria-hidden="true">{{c.mono}}</div>
+        <button class="cplay" aria-label="{{c.playLabel}}" title="{{c.playLabel}}" onClick="{{c.resume}}" style="color:{{c.hue}}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+        </button>
+      </div>
+      <div class="cbody">
+        <button class="ctitle" onClick="{{c.open}}">{{c.title}}</button>
+        <p class="cdesc">{{c.desc}}</p>
+        <div class="meta2">
+          <span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="m10 9.5 4.5 2.5-4.5 2.5z" fill="currentColor"></path></svg>
+            {{c.lessonLabel}}
+          </span>
+          <span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="{{c.starFill}}" stroke="#D08A00" stroke-width="1.8" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9Z"></path></svg>
+            {{c.rateLabel}}
+          </span>
+        </div>
+        <sc-if value="{{isMine}}" hint-placeholder-val="{{ false }}">
+          <div class="next">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#556070" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            <span>{{c.nextPrefix}} <b>{{c.nextTitle}}</b></span>
+          </div>
+          <div class="prow">
+            <div class="bar" role="progressbar" aria-label="{{c.title}} progress" aria-valuenow="{{c.progress}}" aria-valuemin="0" aria-valuemax="100"><i style="width:{{c.pct}};background:{{c.barColor}}"></i></div>
+            <span>{{c.pct}} complete</span>
+          </div>
+        </sc-if>
+        <div class="cfoot">
+          <sc-if value="{{isMine}}" hint-placeholder-val="{{ false }}">
+            <button class="btn g" onClick="{{c.open}}" style="padding-left:8px;padding-right:8px">Course details</button>
+            <button class="btn p" onClick="{{c.resume}}" style="margin-left:auto">{{c.cta}}</button>
+          </sc-if>
+          <sc-if value="{{isAll}}" hint-placeholder-val="{{ true }}">
+            <button class="btn s" onClick="{{c.open}}" style="width:100%">View course</button>
+          </sc-if>
+        </div>
+      </div>
+    </article>
+    </sc-for>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{noResults}}" hint-placeholder-val="{{ false }}">
+  <div class="empty">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8D9AB0" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+    <div style="font-size:16px;font-weight:600">{{emptyTitle}}</div>
+    <div style="color:#556070">{{emptyHint}}</div>
+    <button class="btn s" onClick="{{resetList}}">Show all courses</button>
+  </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<!-- ============ COURSE DETAIL ============ -->
+<sc-if value="{{isDetail}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="topnav">
+    <span class="navctx">My courses</span>
+    <button class="btn s" onClick="{{goCourses}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>
+      Back
+    </button>
+  </div>
+
+  <section class="hero">
+    <div class="mono" style="background:{{cur.hue}};width:72px;height:72px;font-size:26px" aria-hidden="true">{{cur.mono}}</div>
+    <div>
+      <h1 class="h1">{{cur.title}}</h1>
+      <div class="meta">
+        <span class="chip">{{cur.level}}</span>
+        <span class="rate">
+          <span class="stars" aria-hidden="true">
+            <sc-for list="{{cur.stars}}" as="s" hint-placeholder-count="5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="{{s.fill}}" stroke="#D08A00" stroke-width="1.6" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9Z"></path></svg>
+            </sc-for>
+          </span>
+          {{cur.rateLabel}}
+        </span>
+        <span class="rate">{{cur.lessonLabel}}</span>
+      </div>
+    </div>
+    <div class="side">
+      <div class="prow" style="justify-content:space-between"><span>Course progress</span><b style="color:#121826">{{cur.pct}}</b></div>
+      <div class="bar" role="progressbar" aria-label="Course progress" aria-valuenow="{{cur.progress}}" aria-valuemin="0" aria-valuemax="100" style="flex:none"><i style="width:{{cur.pct}}"></i></div>
+      <button class="btn p" onClick="{{resumeCur}}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+        {{cur.cta}}
+      </button>
+    </div>
+  </section>
+
+  <section aria-labelledby="content-sec-h" style="display:flex;flex-direction:column;gap:12px">
+    <div class="pathhead">
+      <div>
+        <h2 class="h2" id="content-sec-h" style="font-size:19px">Course content</h2>
+        <span class="lvmeta">{{cur.secSummary}}</span>
+      </div>
+      <button class="btn g sm" onClick="{{toggleAllSec}}">{{toggleAllSecLabel}}</button>
+    </div>
+    <sc-for list="{{levels}}" as="lv" hint-placeholder-count="3">
+    <section class="acc {{lv.accCls}}" style="border-left-color:{{lv.topColor}}" aria-label="Section {{lv.n}}: {{lv.name}}">
+      <div class="acchead">
+        <button class="acctog" aria-expanded="{{lv.exp}}" aria-controls="{{lv.bodyId}}" onClick="{{lv.toggle}}">
+          <svg class="accchev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="transform:{{lv.chev}}" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+          <span class="secnum" style="background:{{lv.dotBg}};color:{{lv.dotFg}}" aria-hidden="true">
+            <sc-if value="{{lv.done}}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></sc-if>
+            <sc-if value="{{lv.isProg}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg></sc-if>
+            <sc-if value="{{lv.notProg}}" hint-placeholder-val="{{ true }}">{{lv.n}}</sc-if>
+          </span>
+          <span style="flex:1;min-width:0">
+            <span class="acctitle"><span class="sr">Section {{lv.n}}: </span>{{lv.name}}</span>
+            <span class="lvmeta" style="display:block">{{lv.meta}}</span>
+          </span>
+          <sc-if value="{{lv.hasLessons}}" hint-placeholder-val="{{ true }}">
+            <span class="accprog" aria-hidden="true"><span class="bar"><i style="width:{{lv.barW}};background:{{lv.progColor}}"></i></span><span>{{lv.pct}}</span></span>
+          </sc-if>
+          <span class="chip stchip {{lv.stCls}}"><span class="stdot" style="background:{{lv.stDot}}" aria-hidden="true"></span>{{lv.status}}</span>
+        </button>
+        <sc-if value="{{lv.showCta}}" hint-placeholder-val="{{ true }}">
+          <button class="btn {{lv.ctaCls}} sm" onClick="{{lv.resume}}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+            {{lv.cta}}
+          </button>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{lv.open}}" hint-placeholder-val="{{ true }}">
+      <div class="accbody" id="{{lv.bodyId}}">
+      <sc-if value="{{lv.hasLessons}}" hint-placeholder-val="{{ true }}">
+        <ol class="lessons">
+          <sc-for list="{{lv.lessons}}" as="l" hint-placeholder-count="3">
+          <li>
+            <button class="lrow" onClick="{{l.play}}">
+              <span class="num {{l.numCls}}">{{l.n}}</span>
+              <span>
+                <span class="ltitle" style="display:block">{{l.title}}</span>
+                <span class="lstat" style="display:block">{{l.status}}</span>
+              </span>
+              <span class="lbar">
+                <span class="bar" aria-hidden="true"><i style="width:{{l.pct}};background:{{l.barColor}}"></i></span>
+                <span style="width:38px;text-align:right">{{l.pct}}</span>
+              </span>
+            </button>
+          </li>
+          </sc-for>
+        </ol>
+      </sc-if>
+
+      <sc-if value="{{lv.noLessons}}" hint-placeholder-val="{{ false }}">
+        <div class="lvempty">
+          <div style="font-weight:600;color:#121826">Videos for this section are coming soon</div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{lv.hasAsg}}" hint-placeholder-val="{{ true }}">
+        <div class="asgbox" style="background:#F5F8FE;border-color:#C9D7FA">
+          <div style="padding:14px 20px 0">
+            <div style="font-weight:600;font-size:14.5px">Section quiz</div>
+            <div class="lvmeta">Finish the videos above, then take this quiz to complete {{lv.name}}.</div>
+          </div>
+          <sc-for list="{{lv.asgs}}" as="a" hint-placeholder-count="1">
+          <div class="asg">
+            <div class="aicon" aria-hidden="true" style="background:#fff;color:#1F4FD1">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"></path></svg>
+            </div>
+            <div class="ainfo">
+              <div class="atitle">{{a.title}}</div>
+              <div class="meta2">
+                <sc-if value="{{a.required}}" hint-placeholder-val="{{ true }}"><span class="chip st-req">Required</span></sc-if>
+                <span>Pass mark {{a.pass}}</span>
+                <span>{{a.qCount}}</span>
+              </div>
+            </div>
+            <span class="chip {{a.stCls}}">{{a.statusText}}</span>
+            <button class="btn {{a.ctaCls}}" onClick="{{a.start}}">{{a.cta}}</button>
+          </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      </div>
+      </sc-if>
+    </section>
+    </sc-for>
+  </section>
+</div>
+</sc-if>
+
+<!-- ============ LESSON PLAYER ============ -->
+<sc-if value="{{isPlayer}}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="topnav">
+    <span class="navctx">{{cur.title}} · {{trackLabel}}</span>
+    <button class="btn s" onClick="{{goTrack}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>
+      Back to Course
+    </button>
+  </div>
+
+  <div class="player">
+    <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+      <div class="video">
+        <span class="vph">Video player · course video plays here</span>
+        <sc-if value="{{paused}}" hint-placeholder-val="{{ true }}">
+          <button class="bigplay" aria-label="Play video" onClick="{{togglePlay}}"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></button>
+        </sc-if>
+        <div class="vctl">
+          <div class="vtrack" aria-hidden="true"><i style="width:{{lesson.pct}}"></i></div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <button class="clear" style="color:#fff" aria-label="{{playLabel}}" onClick="{{togglePlay}}">
+              <sc-if value="{{paused}}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></sc-if>
+              <sc-if value="{{playing}}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg></sc-if>
+            </button>
+            <span>{{lesson.time}}</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h1 class="h1" style="font-size:22px">{{lesson.title}}</h1>
+        <p class="sub">Video {{lesson.n}} of {{curCount}} · {{cur.title}} · {{trackLabel}} · {{lesson.status}}</p>
+      </div>
+      <div class="lnav">
+        <button class="btn s" onClick="{{prev}}" disabled="{{noPrev}}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg>
+          Previous video
+        </button>
+        <button class="btn p" onClick="{{next}}" disabled="{{noNext}}">
+          Next video
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <aside class="pside" aria-label="Lesson sidebar">
+    <section class="panel" aria-labelledby="content-h">
+      <div class="phead" style="flex-direction:column;align-items:stretch;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span><span style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#556070">Course content</span><h2 class="h2" id="content-h">{{trackLabel}}</h2></span>
+          <span style="font-size:13px;color:#556070">{{curCount}} videos</span>
+        </div>
+        <div class="prow"><span>Overall</span><div class="bar"><i style="width:{{cur.pct}}"></i></div><b style="color:#121826">{{cur.pct}}</b></div>
+      </div>
+      <ol class="plist" style="max-height:380px;overflow:auto">
+        <sc-for list="{{curLessons}}" as="l" hint-placeholder-count="8">
+        <li>
+          <button class="pitem {{l.curCls}}" aria-current="{{l.ariaCur}}" onClick="{{l.play}}">
+            <span class="num {{l.numCls}}">{{l.n}}</span>
+            <span style="min-width:0">
+              <span style="display:block;font-weight:500">{{l.title}}</span>
+              <span class="lstat" style="display:block">{{l.status}}</span>
+            </span>
+          </button>
+        </li>
+        </sc-for>
+      </ol>
+    </section>
+
+    <sc-if value="{{hasAsg}}" hint-placeholder-val="{{ true }}">
+    <section class="panel" aria-labelledby="asg-h">
+      <div class="phead" style="flex-direction:column;align-items:stretch;gap:4px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h2 class="h2" id="asg-h">Section quiz</h2>
+          <span style="font-size:13px;color:#556070">{{asgCountLabel}}</span>
+        </div>
+        <span style="font-size:12.5px;color:#556070">For {{trackLabel}}. Take it after you finish the section's videos.</span>
+      </div>
+      <sc-for list="{{asgs}}" as="a" hint-placeholder-count="1">
+      <div class="sasg">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div class="aicon" style="width:40px;height:40px" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"></path></svg>
+          </div>
+          <div style="min-width:0;flex:1">
+            <div class="atitle">{{a.title}}</div>
+            <div class="meta2" style="margin-top:6px;gap:10px">
+              <sc-if value="{{a.required}}" hint-placeholder-val="{{ true }}"><span class="chip st-req">Required</span></sc-if>
+              <span>Pass {{a.pass}}</span>
+              <span>{{a.qCount}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="sstat"><span>Status</span><span class="chip {{a.stCls}}">{{a.statusText}}</span></div>
+        <button class="btn {{a.ctaCls}}" style="width:100%" onClick="{{a.start}}">
+          {{a.cta}}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"></path></svg>
+        </button>
+      </div>
+      </sc-for>
+    </section>
+    </sc-if>
+
+    <sc-if value="{{noAsg}}" hint-placeholder-val="{{ false }}">
+    <section class="panel" aria-labelledby="asg-none-h">
+      <div class="sasg" style="flex-direction:row;align-items:center;gap:12px">
+        <div class="aicon" style="width:40px;height:40px;background:#EEF1F5;color:#8D9AB0" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3h6v1M9 11h6M9 15h4"></path></svg>
+        </div>
+        <div>
+          <h2 class="h2" id="asg-none-h" style="font-size:14.5px">Section quiz</h2>
+          <div class="lstat">No quiz for {{trackLabel}}.</div>
+        </div>
+      </div>
+    </section>
+    </sc-if>
+    </aside>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ ASSIGNMENT ============ -->
+<sc-if value="{{isQuiz}}" hint-placeholder-val="{{ false }}">
+<div class="qwrap">
+  <div class="topnav">
+    <span class="navctx">{{cur.title}} · {{trackLabel}} · Quiz</span>
+  </div>
+
+  <section class="qhead">
+    <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
+      <div class="aicon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3h6v1M9 11l2 2 4-4M9 17h6"></path></svg>
+      </div>
+      <div style="flex:1;min-width:220px">
+        <h1 class="h1" style="font-size:22px">{{qv.title}}</h1>
+        <div class="meta2" style="margin-top:8px">
+          <sc-if value="{{qv.required}}" hint-placeholder-val="{{ true }}"><span class="chip st-req">Required</span></sc-if>
+          <span>Pass mark {{qv.pass}}</span>
+          <span>{{qv.total}} questions</span>
+        </div>
+      </div>
+      <button class="btn s" onClick="{{qv.exit}}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg>
+        {{qv.exitLabel}}
+      </button>
+    </div>
+    <sc-if value="{{qv.answering}}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="prow">
+        <div class="bar" role="progressbar" aria-label="Questions answered" aria-valuenow="{{qv.answeredNum}}" aria-valuemin="0" aria-valuemax="{{qv.total}}"><i style="width:{{qv.progressPct}}"></i></div>
+        <span>{{qv.answeredLabel}}</span>
+      </div>
+      <div class="qdots" role="group" aria-label="Jump to question">
+        <sc-for list="{{qv.dots}}" as="d" hint-placeholder-count="5">
+          <button class="qdot {{d.cls}}" aria-label="{{d.label}}" onClick="{{d.go}}">{{d.n}}</button>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+  </section>
+
+  <sc-if value="{{qv.answering}}" hint-placeholder-val="{{ true }}">
+  <section class="qcard" aria-labelledby="q-count">
+    <div id="q-count" style="font-size:13px;color:#556070;font-weight:500">Question {{qv.n}} of {{qv.total}}</div>
+    <fieldset>
+      <legend>{{qv.text}}</legend>
+      <sc-for list="{{qv.options}}" as="o" hint-placeholder-count="4">
+        <label class="opt {{o.cls}}" for="{{o.id}}">
+          <input type="radio" id="{{o.id}}" name="answer" checked="{{o.checked}}" onChange="{{o.pick}}">
+          <span class="letter" aria-hidden="true">{{o.letter}}</span>
+          <span>{{o.text}}</span>
+        </label>
+      </sc-for>
+    </fieldset>
+    <sc-if value="{{qv.error}}" hint-placeholder-val="{{ false }}">
+      <div class="qerr" role="alert">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+        Choose an answer to continue.
+      </div>
+    </sc-if>
+    <div class="qfoot">
+      <button class="btn s" onClick="{{qv.prev}}" disabled="{{qv.isFirst}}">Previous</button>
+      <sc-if value="{{qv.notLast}}" hint-placeholder-val="{{ true }}">
+        <button class="btn p" onClick="{{qv.next}}">Next question</button>
+      </sc-if>
+      <sc-if value="{{qv.isLast}}" hint-placeholder-val="{{ false }}">
+        <button class="btn p" onClick="{{qv.submit}}">Submit quiz</button>
+      </sc-if>
+    </div>
+  </section>
+  </sc-if>
+
+  <sc-if value="{{qv.submitted}}" hint-placeholder-val="{{ false }}">
+  <section class="qcard" aria-live="polite">
+    <div class="result">
+      <sc-if value="{{qv.passed}}" hint-placeholder-val="{{ true }}">
+        <div class="ricon" style="background:#E7F5EE;color:#11643C" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></div>
+      </sc-if>
+      <sc-if value="{{qv.failed}}" hint-placeholder-val="{{ false }}">
+        <div class="ricon" style="background:#FDECEA;color:#9B1C12" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 7v6M12 17h.01"></path></svg></div>
+      </sc-if>
+      <div style="flex:1;min-width:220px">
+        <h2 style="margin:0;font-size:20px;font-weight:700">{{qv.resultTitle}}</h2>
+        <p class="sub">You scored {{qv.score}} ({{qv.correct}} of {{qv.total}} correct). The pass mark is {{qv.pass}}.</p>
+      </div>
+      <div style="font-size:36px;font-weight:700;letter-spacing:-.02em;color:{{qv.scoreColor}}">{{qv.score}}</div>
+    </div>
+    <div class="qfoot" style="justify-content:flex-start">
+      <sc-if value="{{qv.failed}}" hint-placeholder-val="{{ false }}">
+        <button class="btn p" onClick="{{qv.retake}}">Retake quiz</button>
+        <button class="btn s" onClick="{{qv.watch}}">Watch the videos again</button>
+      </sc-if>
+      <sc-if value="{{qv.passed}}" hint-placeholder-val="{{ true }}">
+        <button class="btn p" onClick="{{qv.exit}}">{{qv.exitLabel}}</button>
+        <button class="btn g" onClick="{{qv.retake}}">Retake quiz</button>
+      </sc-if>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="review-h">
+    <div class="phead"><h2 class="h2" id="review-h">Your answers</h2></div>
+    <div style="padding:4px 20px">
+      <sc-for list="{{qv.review}}" as="r" hint-placeholder-count="5">
+      <div class="rv">
+        <sc-if value="{{r.ok}}" hint-placeholder-val="{{ true }}">
+          <span class="rmark" style="background:#E7F5EE;color:#11643C" role="img" aria-label="Correct"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg></span>
+        </sc-if>
+        <sc-if value="{{r.bad}}" hint-placeholder-val="{{ false }}">
+          <span class="rmark" style="background:#FDECEA;color:#9B1C12" role="img" aria-label="Incorrect"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg></span>
+        </sc-if>
+        <div style="min-width:0">
+          <div style="font-weight:600">{{r.n}}. {{r.text}}</div>
+          <div class="lstat">Your answer: {{r.yours}}</div>
+          <sc-if value="{{r.showRight}}" hint-placeholder-val="{{ false }}">
+            <div class="lstat" style="color:#11643C">Correct answer: {{r.right}}</div>
+          </sc-if>
+        </div>
+      </div>
+      </sc-for>
+    </div>
+  </section>
+  </sc-if>
+</div>
+</sc-if>
+
+</main>
+</div>
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{ false }}">
+  <div class="wtoast" role="status"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"></path></svg>{{toast}}</div>
+</sc-if>
+</div></script>
+<script>
+/* Minimal standalone runtime for the exported prototypes (templates + logic class). */
+(function () {
+  var TABLE_TAGS = /<(\/?)(table|thead|tbody|tfoot|tr|td|th|select|option|optgroup)(?=[\s>\/])/gi;
+  var HOLE = /\{\{\s*([^}]*?)\s*\}\}/g;
+  var BOOL_ATTRS = { disabled: 1, checked: 1, selected: 1, hidden: 1, readonly: 1, required: 1, open: 1 };
+  function lookup(expr, scopes) {
+    expr = expr.trim();
+    if (expr === 'true') return true;
+    if (expr === 'false') return false;
+    if (/^-?\d+(\.\d+)?$/.test(expr)) return Number(expr);
+    var parts = expr.split('.');
+    for (var i = scopes.length - 1; i >= 0; i--) {
+      var sc = scopes[i];
+      if (sc && Object.prototype.hasOwnProperty.call(sc, parts[0])) {
+        var v = sc[parts[0]];
+        for (var j = 1; j < parts.length; j++) { if (v == null) return undefined; v = v[parts[j]]; }
+        return v;
+      }
+    }
+    return undefined;
+  }
+  function interp(str, scopes) {
+    return str.replace(HOLE, function (_, e) { var v = lookup(e, scopes); return v == null ? '' : String(v); });
+  }
+  function single(str) { var m = /^\s*\{\{\s*([^}]*?)\s*\}\}\s*$/.exec(str); return m ? m[1] : null; }
+  function eventName(attr, el) {
+    var n = attr.slice(2).toLowerCase();
+    if (n === 'change') {
+      var tag = el.localName, type = (el.getAttribute('type') || '').toLowerCase();
+      if (tag === 'textarea' || (tag === 'input' && type !== 'checkbox' && type !== 'radio')) return 'input';
+      return 'change';
+    }
+    return n;
+  }
+  function build(node, scopes, out) {
+    if (node.nodeType === 3) { out.push(document.createTextNode(node.data.indexOf('{{') > -1 ? interp(node.data, scopes) : node.data)); return; }
+    if (node.nodeType !== 1) return;
+    var tag = node.localName;
+    if (tag === 'sc-if') {
+      var e = single(node.getAttribute('value') || '');
+      if (e != null && lookup(e, scopes)) { for (var c = node.firstChild; c; c = c.nextSibling) build(c, scopes, out); }
+      return;
+    }
+    if (tag === 'sc-for') {
+      var le = single(node.getAttribute('list') || ''), as = node.getAttribute('as') || 'item';
+      var list = le != null ? lookup(le, scopes) : null;
+      (list || []).forEach(function (item, idx) {
+        var s = {}; s[as] = item; s.$index = idx;
+        var ns = scopes.concat([s]);
+        for (var c2 = node.firstChild; c2; c2 = c2.nextSibling) build(c2, ns, out);
+      });
+      return;
+    }
+    var el;
+    if (tag.indexOf('dc-') === 0) el = document.createElement(tag.slice(3));
+    else el = document.importNode(node, false);
+    // reset attributes from the template
+    var attrs = Array.prototype.slice.call(node.attributes);
+    if (tag.indexOf('dc-') !== 0) attrs.forEach(function (a) { el.removeAttribute(a.name); });
+    el.__h = {};
+    attrs.forEach(function (a) {
+      var name = a.name, val = a.value;
+      if (name.indexOf('hint-') === 0) return;
+      if (name.indexOf('on') === 0 && val.indexOf('{{') > -1) {
+        var fe = single(val); var fn = fe != null ? lookup(fe, scopes) : null;
+        if (typeof fn === 'function') el.__h[eventName(name, el)] = fn;
+        return;
+      }
+      if (val.indexOf('{{') < 0) { el.setAttribute(name, val); return; }
+      var se = single(val);
+      if (se != null) {
+        var v = lookup(se, scopes);
+        var realTag = el.localName;
+        if (name === 'value' && (realTag === 'input' || realTag === 'textarea' || realTag === 'select')) { el.__value = v == null ? '' : String(v); return; }
+        if (name === 'checked') { el.__checked = !!v; if (v) el.setAttribute('checked', ''); return; }
+        if (BOOL_ATTRS[name]) { if (v === true) el.setAttribute(name, ''); else if (v && v !== 'false') el.setAttribute(name, ''); return; }
+        if (v == null || v === false) { if (name.indexOf('aria-') === 0 && v === false) el.setAttribute(name, 'false'); return; }
+        el.setAttribute(name, String(v));
+        return;
+      }
+      el.setAttribute(name, interp(val, scopes));
+    });
+    var kids = [];
+    for (var c3 = node.firstChild; c3; c3 = c3.nextSibling) build(c3, scopes, kids);
+    kids.forEach(function (k) { el.appendChild(k); });
+    out.push(el);
+  }
+  function bind(el) {
+    if (!el.__bound) el.__bound = {};
+    Object.keys(el.__h || {}).forEach(function (evt) {
+      if (el.__bound[evt]) return;
+      el.__bound[evt] = true;
+      el.addEventListener(evt, function (e) { var f = el.__h && el.__h[evt]; if (f) f(e); });
+    });
+  }
+  function applyProps(el, src) {
+    if ('__value' in src) { if (el.value !== src.__value) el.value = src.__value; }
+    if ('__checked' in src) el.checked = src.__checked;
+  }
+  function morph(o, n) {
+    if (o.nodeType !== n.nodeType || o.nodeName !== n.nodeName || o.namespaceURI !== n.namespaceURI) {
+      o.parentNode.replaceChild(n, o); bindTree(n); return;
+    }
+    if (o.nodeType === 3) { if (o.data !== n.data) o.data = n.data; return; }
+    if (o.nodeType !== 1) return;
+    var oa = o.attributes, na = n.attributes, i;
+    for (i = oa.length - 1; i >= 0; i--) { if (!n.hasAttribute(oa[i].name)) o.removeAttribute(oa[i].name); }
+    for (i = 0; i < na.length; i++) { if (o.getAttribute(na[i].name) !== na[i].value) o.setAttribute(na[i].name, na[i].value); }
+    o.__h = n.__h; bind(o);
+    morphChildren(o, n);
+    applyProps(o, n);
+  }
+  function morphChildren(o, n) {
+    var oc = Array.prototype.slice.call(o.childNodes), nc = Array.prototype.slice.call(n.childNodes);
+    for (var i = 0; i < nc.length; i++) {
+      if (i < oc.length) morph(oc[i], nc[i]);
+      else { o.appendChild(nc[i]); bindTree(nc[i]); }
+    }
+    for (var j = nc.length; j < oc.length; j++) o.removeChild(oc[j]);
+  }
+  function bindTree(el) {
+    if (el.nodeType !== 1) return;
+    bind(el);
+    for (var c = el.firstChild; c; c = c.nextSibling) bindTree(c);
+    applyProps(el, el);
+  }
+  window.DCLogic = function DCLogic(props) { this.props = props || {}; this.state = {}; };
+  window.DCLogic.prototype.setState = function (patch) {
+    Object.assign(this.state, typeof patch === 'function' ? patch(this.state) : patch);
+    var self = this;
+    if (!self.__pending) { self.__pending = true; Promise.resolve().then(function () { self.__pending = false; self.__render(); }); }
+  };
+  window.DC = {
+    mount: function (Comp, root, source) {
+      var html = source.replace(TABLE_TAGS, '<$1dc-$2');
+      var doc = new DOMParser().parseFromString('<!doctype html><html><body>' + html + '</body></html>', 'text/html');
+      var tpl = doc.body;
+      var comp = new Comp({});
+      comp.__render = function () {
+        var vals = comp.renderVals() || {};
+        var out = [];
+        for (var c = tpl.firstChild; c; c = c.nextSibling) build(c, [vals], out);
+        var wrap = document.createElement('div');
+        out.forEach(function (x) { wrap.appendChild(x); });
+        if (!root.__mounted) { root.__mounted = true; while (wrap.firstChild) { var k = wrap.firstChild; root.appendChild(k); bindTree(k); } return; }
+        morphChildren(root, wrap);
+      };
+      comp.__render();
+      if (comp.componentDidMount) comp.componentDidMount();
+      return comp;
+    }
+  };
+})();
+
+</script>
+<script>
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.state = { screen: 'list', tab: 'mine', query: '', courseId: 'sched', rl: 0, lv: 0, lesson: 0, playing: false, filter: 'progress', sort: 'default', lvSel: {} };
+  }
+  goToList(filter) {
+    var self = this;
+    this.setState({ tab: 'mine', filter: filter, query: '', listFlash: true });
+    setTimeout(function () {
+      try {
+        var el = document.getElementById('my-courses');
+        if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); el.focus({ preventScroll: true }); }
+      } catch (e) {}
+    }, 30);
+    clearTimeout(this._lf);
+    this._lf = setTimeout(function () { self.setState({ listFlash: false }); }, 1400);
+  }
+  data() {
+    var o4 = ['[Option 1]', '[Option 2]', '[Option 3]', '[Option 4]'];
+    var q = function (text, options, correct) { return { text: text, options: options || o4, correct: correct || 0 }; };
+    var addEmp = [{ id: 'emp', title: 'How To Add Employee', required: true, pass: 70, questions: [
+      q('What is the primary purpose of the Employee Module?', ['Manage employee information', 'Manage company hardware', 'Create marketing campaigns', 'Manage customer invoices'], 0),
+      q('Which information is commonly stored in an employee profile?'),
+      q('What should an administrator do when an employee leaves the organization?'),
+      q('What is the purpose of assigning a role to an employee?'),
+      q('Which action allows an administrator to find a specific employee quickly?'),
+      q('Why is employee information important to keep up to date?'),
+      q('What does employee status typically indicate?'),
+      q('Who should generally have permission to modify sensitive employee information?'),
+      q('What is the purpose of an Employee Export feature?'),
+      q("What should you do if an employee's information is incorrect?")
+    ] }];
+    var posAsg = [{ id: 'pos', title: 'How To Assign Position', required: true, pass: 70, questions: [
+      q('What does assigning a position to an employee control?', ['Which shifts and roles they can be scheduled for', 'Their pay date', 'Their login password', 'The store opening hours'], 0),
+      q('Can an employee hold more than one position?', ['No, only one position per employee', 'Yes, when each position is assigned to them', 'Only on weekends', 'Only after a time-off request'], 1),
+      q('When should you assign a position?', ['After the schedule is published', 'At the end of the pay period', 'Before scheduling the employee in that position', 'It is assigned automatically'], 2),
+      q('What happens if an employee has no position assigned?', ['They are scheduled automatically', 'The schedule cannot be saved', 'Nothing changes', 'They are not available to schedule for that position'], 3),
+      q('Who can assign positions?', ['Users whose user type allows managing employees', 'Any employee', 'Only customers', 'No one, positions are fixed'], 0)
+    ] }];
+    var v = function (title, progress, time) { var x = { title: title, progress: progress || 0 }; if (time) x.time = time; return x; };
+    var sec = function (name, lessons, assignments) { return { name: name, lessons: lessons, assignments: assignments || [] }; };
+    // One course = a list of sections; each section has its videos and its quiz.
+    var out = [
+      { id: 'sales', mono: 'SA', title: 'Sales app', desc: 'Find your way around the Sales app and its everyday tasks.', rating: 4, hue: '#B45309', tint: '#FBEEDD', progress: 100, enrolled: true, roles: [{ name: 'Sections', levels: [
+        sec('Employees', [v('Employee module video', 100)], addEmp),
+        sec('Positions', [v('Position assign video', 100, '3:10 / 3:10')], posAsg)
+      ] }] },
+      { id: 'plum', mono: 'PP', title: 'Plum POS', desc: 'Get comfortable taking orders and payments with Plum POS.', rating: 0, hue: '#7E2A8C', tint: '#F3E6F6', progress: 0, enrolled: true, roles: [{ name: 'Sections', levels: [
+        sec('Menu', [v('Add Menu Item')])
+      ] }] },
+      { id: 'sched', mono: 'S', title: 'Schedules', desc: 'Build shifts, handle swaps and time off, and read schedule statistics.', rating: 0, hue: '#2563EB', tint: '#E6EEFD', progress: 2, enrolled: true, roles: [{ name: 'Sections', levels: [
+        sec('Getting started', [v('Overview of the Dashboard', 3, '0:02 / 1:29'), v('My Schedule')]),
+        sec('Scheduling shifts', [v('How do I schedule an employee for a Custom Shift?'), v('How to Use the Unassigned Shift Feature'), v('How do I schedule an employee for a Standard Shift'), v('Swap Shift'), v('Time Off Request')], [{ id: 'shifts', title: 'Scheduling Shifts Quiz', required: true, pass: 75, questions: [
+          q('What is an unassigned shift?', ['An open shift that isn\'t given to anyone yet', 'A shift that was deleted', 'A shift without a start time', 'A shift only managers can see'], 0),
+          q('How is a custom shift different from a standard shift?', ['Custom shifts can\'t be published', 'Standard shifts use preset times; custom shifts let you set your own', 'Custom shifts are only for weekends', 'There is no difference'], 1),
+          q('An employee wants to trade a shift with a coworker. What should they use?', ['Time off request', 'Broadcast message', 'Swap shift', 'Delete the shift'], 2),
+          q('Where does an employee ask for days off?', ['Time off request', 'My Schedule settings', 'Unassigned shifts', 'Chitchat'], 0)
+        ] }]),
+        sec('Report', [v('Schedules: Week Level Footer Statistics'), v('Schedules: Day Level Footer Statistics'), v('How to Use the Schedule Report')], [{ id: 'report', title: 'Report Quiz', required: true, pass: 70, questions: [
+          q('What do the week-level footer statistics show?', ['Totals for the whole week', 'Only today\'s shifts', 'Employee birthdays', 'The app version'], 0),
+          q('When are the day-level footer statistics most useful?', ['Planning next year', 'Checking totals for a single day', 'Changing your password', 'Sending a broadcast'], 1),
+          q('What is the Schedule Report used for?', ['Ordering supplies', 'Reviewing scheduled hours and coverage', 'Adding new employees', 'Rating the app'], 1)
+        ] }]),
+        sec('Settings', [v('User Type Hierarchy')])
+      ] }] }
+    ];
+    // apply watched progress from this session; recompute course % for courses the learner has watched
+    var pr = (this.state && this.state.prog) || {};
+    out.forEach(function (c) {
+      var touched = false, sum = 0, n = 0;
+      c.roles.forEach(function (r) { r.levels.forEach(function (l, li) { l.lessons.forEach(function (x, i) {
+        var k = c.id + ':' + li + ':' + i;
+        if (pr[k] !== undefined) { x.progress = pr[k]; touched = true; }
+        sum += x.progress; n++;
+      }); }); });
+      if (touched && n) c.progress = Math.round(sum / n);
+    });
+    return out;
+  }
+  toggleWeb() {
+    var self = this, s = this.state;
+    if (s.playing) { clearInterval(this._iv); this.setState({ playing: false }); return; }
+    var c = this.data().filter(function (x) { return x.id === s.courseId; })[0];
+    var lvI = s.lv || 0, li = s.lesson || 0, lvl = c.roles[0].levels[lvI];
+    if (!lvl || !lvl.lessons[li]) return;
+    var k = c.id + ':' + lvI + ':' + li, startP = lvl.lessons[li].progress;
+    if (startP >= 100) { var o0 = Object.assign({}, s.prog || {}); o0[k] = 0; startP = 0; this.setState({ prog: o0 }); }
+    this.setState({ playing: true });
+    clearInterval(this._iv);
+    this._iv = setInterval(function () {
+      var st = self.state;
+      if (st.screen !== 'player' || st.lesson !== li || st.lv !== lvI || st.courseId !== c.id || !st.playing) { clearInterval(self._iv); return; }
+      var cur = (st.prog || {})[k]; if (cur === undefined) cur = startP;
+      var np = Math.min(100, cur + 5), o = Object.assign({}, st.prog || {}); o[k] = np;
+      self.setState({ prog: o });
+      if (np >= 100) {
+        clearInterval(self._iv);
+        if (li < lvl.lessons.length - 1) {
+          self.setState({ lesson: li + 1, playing: false });
+          self.wflash('Up next: ' + lvl.lessons[li + 1].title);
+          clearTimeout(self._auto);
+          self._auto = setTimeout(function () { var z = self.state; if (z.screen === 'player' && z.lesson === li + 1 && !z.playing) self.toggleWeb(); }, 1200);
+        } else {
+          self.setState({ playing: false });
+          self.wflash(lvl.assignments.length ? 'All videos watched. The section quiz is unlocked.' : 'Section complete');
+        }
+      }
+    }, 200);
+  }
+  wflash(m) { var self = this; this.setState({ toast: m }); clearTimeout(this._t); this._t = setTimeout(function () { self.setState({ toast: '' }); }, 2600); }
+  decorate(c) {
+    var self = this;
+    var stars = [1, 2, 3, 4, 5].map(function (i) { return { fill: i <= c.rating ? '#F5A400' : 'none' }; });
+    var total = 0, firstRole = -1, target = null, fallback = null, first = null;
+    c.roles.forEach(function (r, ri) {
+      r.levels.forEach(function (l, li) {
+        total += l.lessons.length;
+        if (l.lessons.length && firstRole < 0) firstRole = ri;
+        l.lessons.forEach(function (x, i) {
+          var pos = { ri: ri, li: li, i: i, title: x.title };
+          if (!first) first = pos;
+          if (!target && x.progress > 0 && x.progress < 100) target = pos;
+          if (!fallback && x.progress < 100) fallback = pos;
+        });
+      });
+    });
+    var go = target || fallback || first || { ri: 0, li: 0, i: 0, title: '' };
+    var done = c.progress >= 100;
+    return Object.assign({}, c, {
+      stars: stars,
+      firstRole: firstRole < 0 ? 0 : firstRole,
+      level: c.roles[0].levels.length + (c.roles[0].levels.length === 1 ? ' section' : ' sections'),
+      secSummary: (function () { var L = c.roles[0].levels, q = L.reduce(function (t, l) { return t + l.assignments.length; }, 0); return L.length + (L.length === 1 ? ' section' : ' sections') + ' · ' + total + (total === 1 ? ' video' : ' videos') + ' · ' + q + (q === 1 ? ' quiz' : ' quizzes'); })(),
+      rateLabel: c.rating ? c.rating.toFixed(1) : 'No ratings yet',
+      lessonLabel: total + ' videos',
+      total: total,
+      pct: c.progress + '%',
+      cta: done ? 'Watch again' : c.progress > 0 ? 'Continue' : 'Start course',
+      statusLabel: done ? 'Completed' : c.progress > 0 ? 'In progress' : 'Not started',
+      go: go,
+      nextTitle: done ? 'All ' + total + ' videos watched' : go.title,
+      nextPrefix: done ? 'Completed \u00b7' : 'Next up:',
+      trackName: c.roles[go.ri].levels[go.li].name,
+      barColor: done ? '#16A34A' : '#1F4FD1',
+      statusKey: done ? 'done' : c.progress > 0 ? 'progress' : 'new',
+      stCls: done ? 'st-done' : c.progress > 0 ? 'st-progress' : '',
+      starFill: c.rating ? '#F5A400' : 'none',
+      playLabel: 'Open ' + c.title,
+      open: function () { self.setState({ screen: 'detail', courseId: c.id }); },
+      play: function () { self.setState({ screen: 'player', courseId: c.id, rl: go.ri, lv: go.li, lesson: go.i, playing: false }); },
+      resume: function () { self.setState({ screen: 'detail', courseId: c.id }); }
+    });
+  }
+  lessonStatus(l) {
+    return l.progress >= 100 ? 'Completed' : l.progress > 0 ? 'In progress \u00b7 ' + l.progress + '% watched' : 'Not started';
+  }
+  renderVals() {
+    var self = this, s = this.state;
+    var all = this.data().map(function (c) { return self.decorate(c); });
+    var mine = all.filter(function (c) { return c.enrolled; });
+    var base = s.tab === 'mine' ? mine : all;
+    var q = s.query.trim().toLowerCase();
+    var visible = q ? base.filter(function (c) { return (c.title + ' ' + c.desc).toLowerCase().indexOf(q) > -1; }) : base;
+    if (s.tab === 'mine' && s.filter !== 'any') visible = visible.filter(function (c) { return c.statusKey === s.filter; });
+    visible = visible.slice();
+    if (s.sort === 'default') { var ord = { progress: 0, 'new': 1, done: 2 }; visible.sort(function (a, b) { return ord[a.statusKey] - ord[b.statusKey]; }); }
+    if (s.sort === 'az') visible.sort(function (a, b) { return a.title.localeCompare(b.title); });
+    if (s.sort === 'rating') visible.sort(function (a, b) { return b.rating - a.rating; });
+    if (s.sort === 'progress') visible.sort(function (a, b) { return b.progress - a.progress; });
+    var cnt = function (k) { return mine.filter(function (c) { return c.statusKey === k; }).length; };
+    var filters = [['any', 'All', mine.length], ['progress', 'In progress', cnt('progress')], ['done', 'Completed', cnt('done')]].map(function (f) {
+      return { label: f[1], n: f[2], cls: (s.filter === f[0] ? 'on ' : '') + 'f-' + f[0], pressed: s.filter === f[0] ? 'true' : 'false', pick: function () { self.setState({ filter: f[0] }); } };
+    });
+    var resumeC = mine.filter(function (c) { return c.statusKey === 'progress'; })[0] || null;
+    var cur = all.filter(function (c) { return c.id === s.courseId; })[0] || all[0];
+    var results = s.results || {};
+
+    var makeAsg = function (ri, li, a, from) {
+      var key = cur.id + ':' + ri + ':' + li + ':' + a.id;
+      var r = results[key];
+      var lvlObj = cur.roles[ri] && cur.roles[ri].levels[li];
+      var nL = lvlObj ? lvlObj.lessons.length : 0;
+      var watchedL = lvlObj ? lvlObj.lessons.filter(function (x) { return x.progress >= 100; }).length : 0;
+      var locked = !r && nL > 0 && watchedL < nL;
+      var firstUnw = 0;
+      if (lvlObj) { for (var ui = 0; ui < nL; ui++) { if (lvlObj.lessons[ui].progress < 100) { firstUnw = ui; break; } } }
+      return {
+        title: a.title, pass: a.pass + '%', qCount: a.questions.length + ' questions', required: a.required,
+        statusText: r ? (r.passed ? 'Passed \u00b7 ' + r.score + '%' : 'Not passed \u00b7 ' + r.score + '%') : locked ? 'Locked \u00b7 ' + watchedL + ' of ' + nL + ' videos watched' : 'Ready',
+        stCls: r ? (r.passed ? 'st-done' : 'st-fail') : locked ? 'st-lock' : 'st-progress',
+        cta: r ? (r.passed ? 'Review results' : 'Retake quiz') : locked ? 'Watch videos first' : 'Take quiz',
+        ctaCls: locked ? 's' : (r && r.passed ? 's' : 'p'),
+        start: function () {
+          if (locked) { self.setState({ screen: 'player', rl: ri, lv: li, lesson: firstUnw, playing: false }); self.wflash('Watch all ' + nL + ' videos in this section to unlock the quiz'); return; }
+          var patch = { screen: 'quiz', playing: false, rl: ri, lv: li };
+          if (from === 'level') patch.lesson = 0;
+          patch.quiz = r && r.passed ? { key: key, from: from, q: 0, answers: r.answers, error: false, submitted: true } : { key: key, from: from, q: 0, answers: {}, error: false, submitted: false };
+          self.setState(patch);
+        }
+      };
+    };
+
+    // ---- Course detail: levels only (role comes from backend config) ----
+    var roleIdx = cur.go.ri;
+    var role = cur.roles[roleIdx];
+    var selIdx = s.lvSel && s.lvSel[cur.id] !== undefined ? s.lvSel[cur.id] : cur.go.li;
+    var LC = [{ c: '#1F4FD1', t: '#EEF3FE', s: '#C9D7FA' }];
+    var firstOpenSec = 0;
+    role.levels.some(function (l, i) { if (l.lessons.length && !l.lessons.every(function (x) { return x.progress >= 100; })) { firstOpenSec = i; return true; } return false; });
+    var defOpen = {}; defOpen[firstOpenSec] = true;
+    var storedSec = s.secOpen && s.secOpen[cur.id];
+    var openMap = (storedSec && storedSec._first === firstOpenSec) ? storedSec : defOpen;
+    var isOpen = function (i) { return !!openMap[i]; };
+    var levels = role.levels.map(function (l, li) {
+      var lc = LC[li] || LC[0];
+      var n = l.lessons.length;
+      var raw = n ? l.lessons.reduce(function (t, x) { return t + x.progress; }, 0) / n : 0;
+      var avg = Math.round(raw);
+      var allDone = n > 0 && l.lessons.every(function (x) { return x.progress >= 100; });
+      var any = l.lessons.some(function (x) { return x.progress > 0; });
+      var asgList = l.assignments.map(function (a) { return makeAsg(roleIdx, li, a, 'level'); });
+      var metaBits = [n ? n + (n === 1 ? ' video' : ' videos') : 'No videos yet'];
+      if (asgList.length) metaBits.push(asgList.length + (asgList.length === 1 ? ' quiz' : ' quizzes'));
+      var watched = l.lessons.filter(function (x) { return x.progress >= 100; }).length;
+      var sk = n === 0 ? 'soon' : allDone ? 'done' : any ? 'prog' : 'new';
+      var SK = {
+        done: { top: '#16A34A', dotBg: '#16A34A', dotFg: '#fff', prog: '#16A34A', dot: '#16A34A', btn: 's', note: 'All videos watched' },
+        prog: { top: '#1F4FD1', dotBg: '#1F4FD1', dotFg: '#fff', prog: '#1F4FD1', dot: '#1F4FD1', btn: 'p', note: watched + ' of ' + n + ' watched' },
+        'new': { top: '#C6CEDA', dotBg: '#EEF1F5', dotFg: '#3D4757', prog: '#AEB8C7', dot: '#8D9AB0', btn: 's', note: '' },
+        soon: { top: '#E1E5EC', dotBg: '#F3F5F8', dotFg: '#8D9AB0', prog: '#D3D9E2', dot: '#AEB8C7', btn: 's', note: '' }
+      }[sk];
+      if (SK.note) metaBits.push(SK.note);
+      var firstOpen = 0;
+      for (var i = 0; i < n; i++) { if (l.lessons[i].progress < 100) { firstOpen = i; break; } }
+      var on = li === selIdx;
+      var rec = li === cur.go.li && n > 0;
+      var DESC = ['Start here. Learn the basics step by step.', 'Build on the basics with everyday tasks.', 'Master advanced features and settings.'];
+      return {
+        n: li + 1, name: l.name, tabId: 'level-tab-' + li,
+        b1: lc.c, b2: li >= 1 ? lc.c : '#D3D9E2', b3: li >= 2 ? lc.c : '#D3D9E2',
+        color: lc.c, tint: lc.t, soft: lc.s,
+        dotBg: SK.dotBg, dotFg: SK.dotFg, stDot: SK.dot, ctaCls: SK.btn, isProg: sk === 'prog', notProg: sk !== 'prog' && sk !== 'done',
+        topColor: SK.top,
+        open: isOpen(li), exp: isOpen(li) ? 'true' : 'false', chev: isOpen(li) ? 'rotate(180deg)' : 'none', bodyId: 'sec-body-' + li,
+        accCls: (isOpen(li) ? 'open ' : '') + sk,
+        toggle: function () { var o = Object.assign({}, openMap); o[li] = !isOpen(li); o._first = firstOpenSec; var m = Object.assign({}, s.secOpen || {}); m[cur.id] = o; self.setState({ secOpen: m }); },
+        showCta: n > 0 && (sk === 'prog' || isOpen(li)),
+        progColor: SK.prog,
+        bg: rec ? 'linear-gradient(180deg,' + lc.t + ' 0%,#FFFFFF 85%)' : '#FFFFFF', border: rec ? lc.c : '#E1E5EC',
+        desc: DESC[li] || '',
+        hasBadge: rec && !allDone, badge: any ? 'Continue here' : 'Recommended',
+        ctaLabel: n === 0 ? 'Coming soon' : allDone ? 'Review' : any ? 'Continue' : 'Open level',
+        ctaBg: n === 0 ? '#AEB8C7' : lc.c,
+        pillBg: on ? lc.c : '#FFFFFF', pillFg: on ? '#FFFFFF' : lc.c, pillBd: on ? lc.c : lc.s, pillDot: on ? '#FFFFFF' : lc.c,
+        meta: metaBits.join(' \u00b7 '),
+        pct: raw > 0 && avg === 0 ? '<1%' : avg + '%', barW: raw + '%', barColor: lc.c,
+        status: n === 0 ? 'Coming soon' : allDone ? 'Completed' : any ? 'In progress' : 'Not started',
+        stCls: n === 0 ? 'st-soon' : allDone ? 'st-done' : any ? 'st-progress' : 'st-new',
+        done: allDone, notDone: !allDone,
+        cls: (rec ? 'on ' : '') + (allDone ? 'done' : ''), sel: on ? 'true' : 'false',
+        pick: function () { var m = Object.assign({}, s.lvSel || {}); m[cur.id] = li; self.setState({ lvSel: m, screen: 'detail' }); },
+        hasLessons: n > 0, noLessons: n === 0,
+        cta: allDone ? 'Watch again' : any ? 'Continue' : 'Start section',
+        resume: function () { self.setState({ screen: 'player', rl: roleIdx, lv: li, lesson: allDone ? 0 : firstOpen, playing: false }); },
+        lessons: l.lessons.map(function (x, i) {
+          return { n: i + 1, title: x.title, pct: x.progress + '%', status: self.lessonStatus(x), numCls: x.progress > 0 ? 'go' : '',
+            barColor: x.progress >= 100 ? '#16A34A' : '#1F4FD1',
+            play: function () { self.setState({ screen: 'player', rl: roleIdx, lv: li, lesson: i, playing: false }); } };
+        }),
+        asgs: asgList, hasAsg: asgList.length > 0
+      };
+    });
+    var selLv = levels[selIdx] || levels[0];
+    var allOpen = levels.length > 0 && levels.every(function (x) { return x.open; });
+    var toggleAllSec = function () { var o = { _first: firstOpenSec }; if (!allOpen) levels.forEach(function (x, i) { o[i] = true; }); var m = Object.assign({}, s.secOpen || {}); m[cur.id] = o; self.setState({ secOpen: m }); };
+
+    // ---- Player: current role + level track ----
+    var rl = cur.roles[s.rl] ? s.rl : cur.go.ri;
+    var lvI = cur.roles[rl].levels[s.lv] ? s.lv : 0;
+    var track = cur.roles[rl].levels[lvI];
+    var tLessons = track.lessons.length ? track.lessons : [{ title: '[Video title]', progress: 0 }];
+    var trackLabel = track.name;
+    var li = Math.min(s.lesson || 0, tLessons.length - 1);
+    var curLessons = tLessons.map(function (l, i) {
+      return {
+        n: i + 1, title: l.title, pct: l.progress + '%', status: self.lessonStatus(l),
+        numCls: l.progress > 0 ? 'go' : '', curCls: i === li ? 'cur' : '', ariaCur: i === li ? 'true' : 'false',
+        play: function () { self.setState({ screen: 'player', lesson: i, playing: false }); }
+      };
+    });
+    var lesson = Object.assign({}, curLessons[li], { time: tLessons[li].time || '0:00 / [duration]' });
+    var asgs = track.assignments.map(function (a) { return makeAsg(rl, lvI, a, 'player'); });
+
+    // ---- Assignment ----
+    var qv = { dots: [], options: [], review: [] };
+    var qz = s.quiz;
+    var qa = null, qk = null;
+    if (s.screen === 'quiz' && qz) {
+      qk = qz.key.split(':');
+      var qRole = cur.roles[+qk[1]];
+      var qLv = qRole && qRole.levels[+qk[2]];
+      qa = qLv ? (qLv.assignments.filter(function (a) { return a.id === qk[3]; })[0] || null) : null;
+    }
+    if (qa) {
+      var total = qa.questions.length, qi = qz.q, qq = qa.questions[qi];
+      var answered = Object.keys(qz.answers).length;
+      var correct = qa.questions.filter(function (x, i) { return qz.answers[i] === x.correct; }).length;
+      var score = Math.round(correct / total * 100);
+      var passed = score >= qa.pass;
+      var fromDetail = qz.from === 'level';
+      var setQ = function (patch) { self.setState({ quiz: Object.assign({}, qz, patch) }); };
+      qv = {
+        title: qa.title, pass: qa.pass + '%', total: total, n: qi + 1, required: qa.required,
+        answeredNum: answered, progressPct: Math.round(answered / total * 100) + '%', answeredLabel: answered + ' of ' + total + ' answered',
+        text: qq.text,
+        options: qq.options.map(function (o, oi) {
+          var sel = qz.answers[qi] === oi;
+          return { text: o, letter: 'ABCD'.charAt(oi), id: 'q' + qi + 'o' + oi, checked: sel, cls: sel ? 'sel' : '',
+            pick: function () { var a = Object.assign({}, qz.answers); a[qi] = oi; setQ({ answers: a, error: false }); } };
+        }),
+        dots: qa.questions.map(function (x, i) {
+          var done = qz.answers[i] !== undefined;
+          return { n: i + 1, cls: (i === qi ? 'cur ' : '') + (done ? 'done' : ''), label: 'Question ' + (i + 1) + (done ? ', answered' : ', not answered'), go: function () { setQ({ q: i, error: false }); } };
+        }),
+        error: qz.error, isFirst: qi === 0, isLast: qi === total - 1, notLast: qi < total - 1,
+        prev: function () { setQ({ q: Math.max(0, qi - 1), error: false }); },
+        next: function () { if (qz.answers[qi] === undefined) { setQ({ error: true }); return; } setQ({ q: qi + 1, error: false }); },
+        submit: function () {
+          var missing = -1;
+          for (var i = 0; i < total; i++) { if (qz.answers[i] === undefined) { missing = i; break; } }
+          if (missing > -1) { setQ({ q: missing, error: true }); return; }
+          var res = Object.assign({}, results); res[qz.key] = { score: score, passed: passed, answers: qz.answers };
+          self.setState({ results: res, quiz: Object.assign({}, qz, { submitted: true, error: false }) });
+        },
+        answering: !qz.submitted, submitted: !!qz.submitted,
+        score: score + '%', correct: correct, passed: passed, failed: !passed,
+        resultTitle: passed ? 'You passed the quiz' : 'Not passed yet',
+        scoreColor: passed ? '#11643C' : '#9B1C12',
+        review: qa.questions.map(function (x, i) {
+          var ok = qz.answers[i] === x.correct;
+          return { n: i + 1, text: x.text, ok: ok, bad: !ok, showRight: !ok && passed, yours: x.options[qz.answers[i]] || 'No answer', right: x.options[x.correct] };
+        }),
+        exitLabel: fromDetail ? 'Back to course' : 'Back to video',
+        retake: function () { self.setState({ quiz: Object.assign({}, qz, { q: 0, answers: {}, error: false, submitted: false }) }); },
+        exit: function () { self.setState({ screen: fromDetail ? 'detail' : 'player' }); },
+        watch: function () { self.setState({ screen: 'player', playing: false }); }
+      };
+    }
+    var goTrack = function () { var m = Object.assign({}, s.lvSel || {}); m[cur.id] = lvI; self.setState({ screen: 'detail', lvSel: m }); };
+    return {
+      isList: s.screen === 'list', isDetail: s.screen === 'detail', isLevel: s.screen === 'level', isPlayer: s.screen === 'player',
+      isAll: s.tab === 'all', isMine: s.tab === 'mine',
+      allCls: s.tab === 'all' ? 'on' : '', myCls: s.tab === 'mine' ? 'on' : '',
+      allSel: s.tab === 'all' ? 'true' : 'false', mySel: s.tab === 'mine' ? 'true' : 'false',
+      totalCount: all.length, mineCount: mine.length,
+      showAll: function () { self.setState({ tab: 'all' }); },
+      showMine: function () { self.setState({ tab: 'mine', filter: 'progress' }); },
+      query: s.query, hasQuery: q.length > 0,
+      onQuery: function (e) { self.setState({ query: e.target.value }); },
+      clearQuery: function () { self.setState({ query: '' }); },
+      visible: visible, hasResults: visible.length > 0, noResults: visible.length === 0,
+      filters: filters, resumeC: resumeC || all[0], hasResume: !!resumeC,
+      ov: (function () {
+        var avg = mine.length ? Math.round(mine.reduce(function (t, c) { return t + c.progress; }, 0) / mine.length) : 0;
+        var doneN = mine.filter(function (c) { return c.statusKey === 'done'; }).length;
+        var inProg = mine.filter(function (c) { return c.statusKey === 'progress'; }).sort(function (a, b) { return b.progress - a.progress; });
+        var progN = inProg.length, newN = mine.length - doneN - progN;
+        return {
+          pct: avg + '%', dash: (avg / 100 * 2 * Math.PI * 44).toFixed(1),
+          summary: doneN + ' of ' + mine.length + (mine.length === 1 ? ' course' : ' courses') + ' completed',
+          done: doneN, prog: progN, notStarted: newN,
+          wDone: (mine.length ? doneN / mine.length * 100 : 0) + '%',
+          wProg: (mine.length ? progN / mine.length * 100 : 0) + '%',
+          wNew: (mine.length ? newN / mine.length * 100 : 0) + '%',
+          top: inProg.slice(0, 3).map(function (c) { return { title: c.title, pct: c.progress + '%', open: c.open }; }),
+          hasProg: inProg.length > 0, more: Math.max(0, inProg.length - 3), hasMore: inProg.length > 3,
+          seeMore: function () { self.goToList('progress'); },
+          viewAll: function () { self.goToList('any'); }
+        };
+      })(),
+      statEnrolled: mine.length, statProg: cnt('progress'), statDone: cnt('done'),
+      statPassed: Object.keys(s.results || {}).filter(function (k) { return s.results[k].passed; }).length,
+      countLabel: visible.length + (visible.length === 1 ? ' course' : ' courses'),
+      sortVal: s.sort, onSort: function (e) { self.setState({ sort: e.target.value }); },
+      emptyTitle: q ? 'No courses match "' + s.query.trim() + '"' : 'No courses in this list yet',
+      emptyHint: q ? 'Check the spelling or search by app name, like Plum POS or Schedules.' : 'Courses you start or finish will show up here.',
+      resetList: function () { self.setState({ query: '', filter: 'any' }); },
+      goCourses: function () { self.setState({ screen: 'list' }); },
+      goDetail: function () { self.setState({ screen: 'detail' }); },
+      goTrack: goTrack,
+      listFlashCls: s.listFlash ? 'listflash' : '',
+      cur: cur, levels: levels, selLv: selLv, toggleAllSec: toggleAllSec, toggleAllSecLabel: allOpen ? 'Collapse all' : 'Expand all',
+      curLessons: curLessons, curCount: tLessons.length, trackLabel: trackLabel,
+      resumeCur: cur.play,
+      lesson: lesson,
+      paused: !s.playing, playing: s.playing, playLabel: s.playing ? 'Pause video' : 'Play video',
+      togglePlay: function () { self.toggleWeb(); },
+      hasToast: !!s.toast, toast: s.toast,
+      noPrev: li === 0, noNext: li >= tLessons.length - 1,
+      isQuiz: s.screen === 'quiz' && !!qa, asgs: asgs, hasAsg: asgs.length > 0, noAsg: asgs.length === 0, qv: qv,
+      asgCountLabel: asgs.length === 1 ? '1 quiz' : asgs.length + ' quizzes',
+      prev: function () { self.setState({ lesson: Math.max(0, li - 1), playing: false }); },
+      next: function () { self.setState({ lesson: Math.min(tLessons.length - 1, li + 1), playing: false }); }
+    };
+  }
+}
+
+DC.mount(Component, document.getElementById('dc-root'), document.getElementById('dc-src').textContent);
+</script>
+</body>
+</html>
