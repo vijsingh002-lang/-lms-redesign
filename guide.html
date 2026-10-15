@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LMS Redesign – Functional Flow Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&display=swap">
+<style>
+html,body{margin:0}
+body{font-family:"Instrument Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#F3F5F8;color:#121826}
+#guideview{min-height:100%;background:#F3F5F8;padding:40px 24px 80px;box-sizing:border-box}
+.guide{max-width:1100px;margin:0 auto;background:#fff;border:1px solid #E1E5EC;border-radius:18px;padding:40px 48px;box-shadow:0 6px 18px rgba(15,30,54,.05);line-height:1.6;font-size:16px}
+.guide h1{font-size:32px;margin:0 0 6px;letter-spacing:-.01em}.gsub{color:#556070;margin:0 0 20px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px;padding:12px 0 18px;border-bottom:1px solid #EDF0F4;position:sticky;top:0;background:#fff;z-index:2}
+.toc a{color:#1F4FD1;text-decoration:none;font-weight:600;font-size:14px;background:#EEF3FE;border-radius:20px;padding:6px 12px}.toc a:hover{background:#E0E9FD}
+.guide section{padding-top:18px;scroll-margin-top:70px}.guide h2{font-size:23px;margin:10px 0 8px}
+.guide ul,.guide ol{padding-left:22px}.guide li{margin:4px 0}.guide ol>li>b{font-size:16.5px}
+.tw{overflow-x:auto;margin:10px 0 14px;border:1px solid #E1E5EC;border-radius:12px}
+.guide table{width:100%;border-collapse:collapse;font-size:15px}.guide th{text-align:left;background:#F7F9FC;color:#3D4757;font-size:13px;text-transform:uppercase;letter-spacing:.04em;padding:10px 14px;border-bottom:1px solid #E1E5EC}
+.guide td{padding:10px 14px;border-bottom:1px solid #EDF0F4;vertical-align:top}.guide tr:last-child td{border-bottom:0}.guide td:first-child{font-weight:600;white-space:nowrap}
+.st{display:inline-block;font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid transparent;white-space:nowrap}
+.s-new{background:#F2F3F5;color:#4B5563;border-color:#E1E4E9}.s-prog{background:#EAF1FE;color:#1D4ED8;border-color:#BFD3FB}.s-done{background:#E9F9F1;color:#0B7A55;border-color:#B6EBD3}
+.s-soon{background:#fff;color:#8D9AB0;border:1px dashed #C6CEDA}.s-fail{background:#FDECEA;color:#9B1C12;border-color:#F5C2BC}.s-req{background:#FFF4E5;color:#8A4B00;border-color:#F3D3A6}
+
+.top{max-width:1100px;margin:0 auto 14px;display:flex;justify-content:space-between;align-items:center}
+.top a{color:#1F4FD1;font-weight:600;text-decoration:none}.top a:hover{text-decoration:underline}
+html{scroll-behavior:smooth}
+@media (max-width:1100px){.guide{padding:28px 22px}}
+@media print{body{background:#fff}#guideview{padding:0}.guide{border:0;box-shadow:none}.toc,.top{display:none}}
+</style>
+</head>
+<body>
+<div id="guideview">
+<div class="top"><a href="index.html">← All prototypes</a><span style="color:#556070;font-size:14px">Admin · Web · Mobile</span></div>
+<article class="guide">
+<header class="ghead">
+  <h1>LMS Redesign – Functional Flow Guide</h1>
+  <p class="gsub">How the training module works across the Admin app, the Web learner app and the Mobile learner app. Updated 15 Oct 2026.</p>
+</header>
+<nav class="toc" aria-label="Guide contents">
+  <a href="#g-overview">Overview</a><a href="#g-rules">Key rules</a><a href="#g-admin">Admin flow</a><a href="#g-web">Web learner flow</a><a href="#g-mobile">Mobile learner flow</a><a href="#g-status">Statuses and labels</a><a href="#g-notes">Notes</a>
+</nav>
+
+<section id="g-overview">
+<h2>Overview</h2>
+<p>The training module is one content structure, <b>Course → Section → Videos + one Section Quiz</b>, delivered through three surfaces that share the same rules.</p>
+<div class="tw"><table>
+<thead><tr><th>Surface</th><th>Who uses it</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>Admin app</td><td>Training admins</td><td>Create courses, sections, videos and quizzes</td></tr>
+<tr><td>Web learner app</td><td>Employees on desktop</td><td>Watch courses, take section quizzes, track progress</td></tr>
+<tr><td>Mobile learner app</td><td>Employees in a mobile app</td><td>Same as web, opened from the app's side menu, themed to the host app</td></tr>
+</tbody></table></div>
+<p>Content model:</p>
+<ul>
+<li><b>Course</b>: one per product, for example Schedules, Sales app, Plum POS. Has a name and an Active switch.</li>
+<li><b>Section</b>: an ordered group of videos inside a course, for example Getting started, Scheduling shifts, Report, Settings.</li>
+<li><b>Video</b>: a name, a URL, a sequence number (1 is first) and an Active switch. Belongs to one section.</li>
+<li><b>Section Quiz</b>: optional, one per section. Has questions, answer options, a pass mark and learner rules.</li>
+</ul>
+<p>Difficulty levels and role tabs (Cashier, Manager, Server) were removed from the learner UI. Role filtering, if used, happens in the backend.</p>
+</section>
+
+<section id="g-rules">
+<h2>Key rules</h2>
+<p>These rules apply on web and mobile alike.</p>
+<div class="tw"><table>
+<thead><tr><th>Rule</th><th>Behaviour</th></tr></thead>
+<tbody>
+<tr><td>Video progress</td><td>Saved automatically as the learner watches. Rewind is allowed; skipping ahead is not. A video counts as watched at 100%.</td></tr>
+<tr><td>Auto-advance</td><td>When a video finishes and the section has more videos, the next one loads and starts about 1 second later, with an "Up next" message.</td></tr>
+<tr><td>Quiz unlock</td><td>A Section Quiz unlocks only when every video in that section is watched. Until then it shows Locked with "x of y watched".</td></tr>
+<tr><td>Pass mark</td><td>Set per quiz (for example 70%). Score = correct answers ÷ questions. Best score is kept.</td></tr>
+<tr><td>Section status</td><td>Not Started → In Progress (any video watched) → Completed (all videos watched and, if there is a quiz, quiz passed). Coming Soon if it has no videos.</td></tr>
+<tr><td>Course status</td><td>Completed when every section with videos is completed; In Progress once anything is watched; otherwise Not Started.</td></tr>
+<tr><td>Course progress %</td><td>Average watched % across all videos in the course. Shown as &lt;1% when above zero but rounds to 0.</td></tr>
+<tr><td>Section focus</td><td>Opening a course expands the first section that is not completed. When a section is completed, it collapses and the next unfinished section opens.</td></tr>
+<tr><td>Resume</td><td>Continue buttons go to the first partly watched video, else the first unwatched one.</td></tr>
+<tr><td>Correct answers</td><td>After a pass, wrong answers show the correct one. After a fail, correct answers stay hidden so a retake still tests the learner.</td></tr>
+<tr><td>Completed courses (mobile)</td><td>Hidden from Other Courses; "Show Completed Courses (n)" brings them back for review.</td></tr>
+<tr><td>Ordering</td><td>Videos follow their sequence number within a section. Sections follow the order set in the admin Curriculum.</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="g-admin">
+<h2>Admin flow</h2>
+<p>Admins build every course in one place: Course list → Course manager (Curriculum) → sections, videos and quizzes.</p>
+<ol>
+<li><b>Course list</b>
+  <ul><li>Search and Status filter (All, Active, Inactive).</li>
+  <li>Table: #, Course, Sections and videos, Quizzes, Status, Actions.</li>
+  <li>3-dot Actions menu: <b>Edit this course</b>, <b>View course on frontend</b> (learner preview), <b>Delete course</b> (asks first, lists what will be removed, suggests setting Inactive instead).</li>
+  <li><b>New course</b>: enter a name, then the course manager opens.</li></ul></li>
+<li><b>Course manager</b>
+  <ul><li>Header: name, counts, status, View on frontend, Back to course list.</li>
+  <li>Tabs: <b>Curriculum</b> and <b>Basic info</b> (name and Active switch, saved automatically).</li></ul></li>
+<li><b>Curriculum</b>
+  <ul><li>Toolbar: Add section, Add videos, Add quiz, Sort sections (shows up/down arrows on sections).</li>
+  <li>Each section card: Section n: name, video and quiz counts, + Video, + Quiz, Rename, Delete (warns how many videos and quizzes go with it). Sections open and close.</li>
+  <li>Video rows: sequence box, up/down arrows, Active switch, Edit, Delete. Typing a sequence number moves the video and renumbers the rest (no gaps or duplicates).</li>
+  <li>Quiz rows: name, question count, pass mark, Required and Active badges, Edit quiz, Delete.</li></ul></li>
+<li><b>Add / edit videos</b>
+  <ul><li>Choose the section, then add rows one by one or <b>Paste a list</b> ("Name, URL" per line, or two Excel columns), review, and save.</li>
+  <li>Optional sequence per row; empty means add to the end. Missing names and invalid URLs are flagged per row.</li></ul></li>
+<li><b>Quiz builder (3 steps)</b>
+  <ol><li><b>Details</b>: section, quiz name, type, order in the section, description.</li>
+  <li><b>Settings</b>: pass mark; attempts (Unlimited or a limit); time limit (none or minutes); when it unlocks (Any time or After the section videos); switches for Active, Required, Shuffle questions, Shuffle answer options, Show correct answers after submitting, Allow skipping questions.</li>
+  <li><b>Questions &amp; answers</b>: question list on the left, editor on the right. Answer type (one or more correct), points, Active, options with a correct-answer marker, optional image/video link, reorder, duplicate, delete.</li></ol>
+  <ul><li>Next is blocked until a step's required fields are valid. Save is blocked until every question is valid and opens the step and question that need fixing. Unsaved changes are protected when leaving.</li></ul></li>
+</ol>
+</section>
+
+<section id="g-web">
+<h2>Web learner flow</h2>
+<p>The web app takes a learner from My courses to a course page, then into videos and the Section Quiz.</p>
+<ol>
+<li><b>My courses (home)</b>
+  <ul><li>Header panel: overall completion ring, a status bar split into completed, in progress and not started, and up to 3 "Pick up where you left off" chips ("+n more" if there are more).</li>
+  <li>"View all my courses" switches the filter to All and scrolls to the list.</li>
+  <li>Summary tiles: Enrolled courses, In progress, Completed, Quizzes passed.</li>
+  <li>Filters: All, In progress (default), Completed. Search by course name or description. Sort: Recommended, Title A–Z, Highest rated, Most progress.</li>
+  <li>In the All view, Recommended order lists in-progress courses first, then not started, then completed.</li>
+  <li>Every action on a course card (title, cover play button, Start, Continue, Watch again) opens the course page.</li></ul></li>
+<li><b>Course page</b>
+  <ul><li>Top bar: a Back button (top-right) returns to My courses.</li>
+  <li>Header: course name, section and video counts, overall progress and a Continue button that jumps to the next video.</li>
+  <li>Course content: one accordion card per section, colored by status (green = completed, blue = in progress, grey = not started).</li>
+  <li>The first unfinished section is open by default; completed sections collapse and the next opens. "Expand all / Collapse all" toggles every section.</li>
+  <li>Each open section lists its videos in sequence order with progress, then its Section Quiz.</li></ul></li>
+<li><b>Video player</b>
+  <ul><li>Top bar: course · section label and a <b>Back to Course</b> button (top-right).</li>
+  <li>Play fills the progress bar; course and section progress update as the learner watches.</li>
+  <li>Auto-advance to the next video in the section; Previous and Next buttons for manual moves.</li>
+  <li>Right column: the section's video list (current highlighted) and its Section Quiz panel.</li></ul></li>
+<li><b>Section Quiz</b>
+  <ul><li>Locked until all section videos are watched. Clicking a locked quiz ("Watch videos first") opens the first unwatched video.</li>
+  <li>One question at a time with numbered jump buttons and an answered count. Next is blocked until an answer is chosen; Submit sends the learner to any skipped question.</li></ul></li>
+<li><b>Result</b>
+  <ul><li>Score, correct count and pass mark, then each answer marked right or wrong.</li>
+  <li>Pass: Back to course (and optional retake). Fail: Retake quiz or Watch the video again.</li></ul></li>
+</ol>
+</section>
+
+<section id="g-mobile">
+<h2>Mobile learner flow</h2>
+<p>On mobile, the course for the app the learner is signed into comes first, and every other course sits under Other Courses.</p>
+<ol>
+<li><b>Entry</b>
+  <ul><li>Side menu (☰) → My Account → <b>Training Videos</b>. The menu item shows an "n In Progress" count.</li>
+  <li>Colors come from the host app's theme. Schedules uses the blue theme; Sales app and Plum POS use their own.</li></ul></li>
+<li><b>Home – Courses tab</b>
+  <ul><li><b>Continue Watching</b> card: jumps straight to the next video, preferring the signed-in app's course.</li>
+  <li><b>[App] Training</b> (for example Schedules Training): a featured card in the app's colors with progress, watched counts, a Continue Course button and the section list. The next section to work on is highlighted; tapping a section opens the course with that section expanded.</li>
+  <li><b>Other Courses</b>: highlighted cards for the other products, each with status, progress, video and quiz counts and a Start, Continue or Review button. Tapping the card header opens the course.</li>
+  <li>Completed courses are hidden from Other Courses. "Show Completed Courses (n)" shows them again.</li>
+  <li>Search (magnifier in the header) filters courses and matches video titles.</li></ul></li>
+<li><b>Home – Evaluation tab</b>
+  <ul><li>Section quizzes grouped the same way: the signed-in app first, then Other Courses.</li>
+  <li>Each card shows course and section, pass mark, best score and status: Locked, Ready, Passed or Not Passed.</li>
+  <li>Locked quizzes show "Watch Videos to Unlock" and open that section.</li></ul></li>
+<li><b>Course screen</b>
+  <ul><li>Progress summary, then sections as an accordion. The first unfinished section is open by default; completed sections collapse and the next opens.</li>
+  <li>Each section lists its videos with status, then its Section Quiz (lock icon and "Unlocks after all n videos" until unlocked).</li>
+  <li>Bottom button: Continue Watching, Start Course or Watch Again.</li></ul></li>
+<li><b>Video screen</b>
+  <ul><li>Dark player with Play/Pause and Fullscreen. Rewind only; progress saves automatically.</li>
+  <li><b>Fullscreen</b>: plays in landscape with its own controls and an Exit Fullscreen button (Esc also exits).</li>
+  <li>"Up Next in [section]" list and the Section Quiz card below the player.</li>
+  <li>Auto-advance to the next video. On the last video the button becomes Take the Section Quiz once all videos are watched, otherwise Back to Course.</li></ul></li>
+<li><b>Quiz and result</b>
+  <ul><li>All questions on one scrolling page with a fixed Submit Answers button. Unanswered questions are highlighted on submit.</li>
+  <li>Pass: "Nice Work, You Passed!" and a button to continue to the next section. Fail: Try Again or Watch the Videos Again.</li></ul></li>
+</ol>
+</section>
+
+<section id="g-status">
+<h2>Statuses and labels</h2>
+<p>Every status uses the same color on web and mobile.</p>
+<div class="tw"><table>
+<thead><tr><th>Applies to</th><th>Status</th><th>Shown when</th><th>Look</th></tr></thead>
+<tbody>
+<tr><td>Course / section</td><td><span class="st s-new">Not Started</span></td><td>Nothing watched yet</td><td>Grey badge, grey number</td></tr>
+<tr><td>Course / section</td><td><span class="st s-prog">In Progress</span></td><td>At least one video watched, not complete</td><td>Blue badge, blue play icon, blue edge</td></tr>
+<tr><td>Course / section</td><td><span class="st s-done">Completed / Done</span></td><td>All videos watched and section quizzes passed</td><td>Green badge, green tick, green edge</td></tr>
+<tr><td>Section</td><td><span class="st s-soon">Coming Soon</span></td><td>Section has no videos yet</td><td>Dashed outline</td></tr>
+<tr><td>Video</td><td>Not Started / x% Watched / Watched</td><td>Based on watched %</td><td>Grey, blue, green icon</td></tr>
+<tr><td>Section Quiz</td><td><span class="st s-new">Locked</span></td><td>Some section videos not watched</td><td>Grey badge with lock icon</td></tr>
+<tr><td>Section Quiz</td><td><span class="st s-prog">Ready / Start</span></td><td>All section videos watched, not attempted</td><td>Blue badge</td></tr>
+<tr><td>Section Quiz</td><td><span class="st s-done">Passed</span></td><td>Best score at or above pass mark</td><td>Green badge</td></tr>
+<tr><td>Section Quiz</td><td><span class="st s-fail">Not Passed / Retry</span></td><td>Attempted, below pass mark</td><td>Red badge</td></tr>
+<tr><td>Quiz setting</td><td><span class="st s-req">Required</span></td><td>Must be passed to complete the section</td><td>Amber badge</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="g-notes">
+<h2>Notes</h2>
+<ul>
+<li>This is a native app and there is no dependency on <b>Moodle</b>.</li>
+<li>All course, video and quiz configuration is done in our Admin platform.</li>
+</ul>
+</section>
+</article>
+
+</div>
+</body>
+</html>
